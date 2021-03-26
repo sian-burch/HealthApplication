@@ -21,6 +21,13 @@
     <%= render "home/header" %>
     <div class ="container">
       <br>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+        
       <%= yield %>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
