@@ -1,20 +1,20 @@
 class CreateUserData < ActiveRecord::Migration[5.2]
   def change
     create_table :user_data do |t|
-      t.integer :height
-      t.float :weight
-      t.integer :age
-      t.string :gender
-      t.string :athletic_lvl
-      t.boolean :physical
-      t.boolean :mental
-      t.integer :indoor
-      t.integer :outdoor
-      t.integer :meditation
-      t.integer :running
-      t.integer :walking
-      t.integer :frequency_pref
-      t.integer :duration_pref
+      t.integer :height, null: false
+      t.float :weight, null: false
+      t.integer :age, null: false
+      t.string :gender, null: false
+      t.string :athletic_lvl, null: false
+      t.boolean :physical, null: false
+      t.boolean :mental, null: false
+      t.integer :indoor, null: false
+      t.integer :outdoor, null: false
+      t.integer :meditation, null: false
+      t.integer :running, null: false
+      t.integer :walking, null: false
+      t.integer :frequency_pref, null: false
+      t.integer :duration_pref, null: false
       t.float :BMI
 
       t.timestamps
