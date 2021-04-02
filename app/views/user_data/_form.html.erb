@@ -33,7 +33,7 @@
     <% form.label :gender %>
     <%= label_tag(:gender, "Gender") %>
     <%= form.select :gender, ['Male', 'Female','Other']%>
-   
+
   </div>
 
   <div class="field">
@@ -59,45 +59,67 @@
   <div class="field">
     <% form.label :indoor %>
     <%= label_tag(:indoor, "How much do you like indoor activities?") %>
-    <%= form.number_field :indoor %>
+    <%= form.radio_button :indoor, '1' %> 1<br />
+    <%= form.radio_button :indoor, '2' %> 2<br />
+    <%= form.radio_button :indoor, '3' %> 3<br />
+    <%= form.radio_button :indoor, '4' %> 4<br />
+    <%= form.radio_button :indoor, '5' %> 5<br />
+
   </div>
+
 
   <div class="field">
     <% form.label :outdoor %>
     <%= label_tag(:outdoor, "How much do you like outdoor activities?") %>
-    <%= form.number_field :outdoor %>
+    <%= form.radio_button :outdoor, '1' %> 1<br />
+    <%= form.radio_button :outdoor, '2' %> 2<br />
+    <%= form.radio_button :outdoor, '3' %> 3<br />
+    <%= form.radio_button :outdoor, '4' %> 4<br />
+    <%= form.radio_button :outdoor, '5' %> 5<br />
   </div>
 
   <div class="field">
     <% form.label :meditation %>
     <%= label_tag(:meditation, "How interested are you in meditating ?") %>
-    <%= form.number_field :meditation %>
+    <%= form.radio_button :meditation, '1' %> 1<br />
+    <%= form.radio_button :meditation, '2' %> 2<br />
+    <%= form.radio_button :meditation, '3' %> 3<br />
+    <%= form.radio_button :meditation, '4' %> 4<br />
+    <%= form.radio_button :meditation, '5' %> 5<br />
   </div>
 
   <div class="field">
     <% form.label :running %>
     <%= label_tag(:running, "How much do you like running?") %>
-    <%= form.number_field :running %>
+    <%= form.radio_button :running, '1' %> 1<br />
+    <%= form.radio_button :running, '2' %> 2<br />
+    <%= form.radio_button :running, '3' %> 3<br />
+    <%= form.radio_button :running, '4' %> 4<br />
+    <%= form.radio_button :running, '5' %> 5<br />
   </div>
 
   <div class="field">
     <% form.label :walking %>
     <%= label_tag(:walking, "How much do you like going for a walk?") %>
-    <%= form.number_field :walking %>
+    <%= form.radio_button :walking, '1' %> 1<br />
+    <%= form.radio_button :walking, '2' %> 2<br />
+    <%= form.radio_button :walking, '3' %> 3<br />
+    <%= form.radio_button :walking, '4' %> 4<br />
+    <%= form.radio_button :walking, '5' %> 5<br />
   </div>
 
   <div class="field">
     <% form.label :frequency_pref %>
     <%= label_tag(:frequency_pref, "How many days per week are you able to do the activities going to be suggested to you?") %>
     <%= form.select :frequency_pref, ['1-2 days', '3-5 days','6-7 days']%>
-  
+
   </div>
 
   <div class="field">
     <% form.label :duration_pref %>
     <%= label_tag(:duration_pref, "How much time would like to devote on the activities going to be suggested to you?") %>
      <%= form.select :duration_pref, ['15 min', '30 min','60 min']%>
-   
+
   </div>
 
   <div class="actions">
