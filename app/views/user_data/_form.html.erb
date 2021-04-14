@@ -1,0 +1,129 @@
+<%= form_with(model: user_datum, local: true) do |form| %>
+  <% if user_datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user_datum.errors.count, "error") %> prohibited this user_datum from being saved:</h2>
+
+      <ul>
+      <% user_datum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <% form.label :height %>
+    <%= label_tag(:height, "What is your height(cm)?") %>
+    <%= form.number_field :height %>
+  </div>
+
+  <div class="field">
+    <% form.label :weight %>
+    <%= label_tag(:weight, "What is your weight?(kg)") %>
+    <%= form.text_field :weight %>
+  </div>
+
+  <div class="field">
+    <% form.label :age %>
+    <%= label_tag(:age, "How old are you?") %>
+    <%= form.number_field :age %>
+  </div>
+
+  <div class="field">
+    <% form.label :gender %>
+    <%= label_tag(:gender, "Gender") %>
+    <%= form.select :gender, ['Male', 'Female','Other']%>
+
+  </div>
+
+  <div class="field">
+    <% form.label :athletic_lvl %>
+    <%= label_tag(:athletic_lvl, "How athletic are you?") %>
+     <%= form.select :athletic_lvl, ['Beginner', 'Intermediate','Advanced']%>
+  </div>
+
+  <%= label_tag("Which aspect of your health would you like to improve?") %>
+  <br/>
+  <div class="field">
+    <% form.label :physical %>
+    <%= label_tag(:physical, "Physical") %>
+    <%= form.check_box :physical %>
+  </div>
+
+  <div class="field">
+    <% form.label :mental %>
+    <%= label_tag(:mental, "Mental") %>
+    <%= form.check_box :mental %>
+  </div>
+
+  <div class="field">
+    <% form.label :indoor %>
+    <%= label_tag(:indoor, "How much do you like indoor activities?") %>
+    <%= form.radio_button :indoor, '1' %> 1<br />
+    <%= form.radio_button :indoor, '2' %> 2<br />
+    <%= form.radio_button :indoor, '3' %> 3<br />
+    <%= form.radio_button :indoor, '4' %> 4<br />
+    <%= form.radio_button :indoor, '5' %> 5<br />
+
+  </div>
+
+
+  <div class="field">
+    <% form.label :outdoor %>
+    <%= label_tag(:outdoor, "How much do you like outdoor activities?") %>
+    <%= form.radio_button :outdoor, '1' %> 1<br />
+    <%= form.radio_button :outdoor, '2' %> 2<br />
+    <%= form.radio_button :outdoor, '3' %> 3<br />
+    <%= form.radio_button :outdoor, '4' %> 4<br />
+    <%= form.radio_button :outdoor, '5' %> 5<br />
+  </div>
+
+  <div class="field">
+    <% form.label :meditation %>
+    <%= label_tag(:meditation, "How interested are you in meditating ?") %>
+    <%= form.radio_button :meditation, '1' %> 1<br />
+    <%= form.radio_button :meditation, '2' %> 2<br />
+    <%= form.radio_button :meditation, '3' %> 3<br />
+    <%= form.radio_button :meditation, '4' %> 4<br />
+    <%= form.radio_button :meditation, '5' %> 5<br />
+  </div>
+
+  <div class="field">
+    <% form.label :running %>
+    <%= label_tag(:running, "How much do you like running?") %>
+    <%= form.radio_button :running, '1' %> 1<br />
+    <%= form.radio_button :running, '2' %> 2<br />
+    <%= form.radio_button :running, '3' %> 3<br />
+    <%= form.radio_button :running, '4' %> 4<br />
+    <%= form.radio_button :running, '5' %> 5<br />
+  </div>
+
+  <div class="field">
+    <% form.label :walking %>
+    <%= label_tag(:walking, "How much do you like going for a walk?") %>
+    <%= form.radio_button :walking, '1' %> 1<br />
+    <%= form.radio_button :walking, '2' %> 2<br />
+    <%= form.radio_button :walking, '3' %> 3<br />
+    <%= form.radio_button :walking, '4' %> 4<br />
+    <%= form.radio_button :walking, '5' %> 5<br />
+  </div>
+
+  <div class="field">
+    <% form.label :frequency_pref %>
+    <%= label_tag(:frequency_pref, "How many days per week are you able to do the activities going to be suggested to you?") %>
+    <%= form.select :frequency_pref, ['1-2 days', '3-5 days','6-7 days']%>
+
+  </div>
+
+  <div class="field">
+    <% form.label :duration_pref %>
+    <%= label_tag(:duration_pref, "How much time would like to devote on the activities going to be suggested to you?") %>
+     <%= form.select :duration_pref, ['15 min', '30 min','60 min']%>
+
+  </div>
+  
+
+  <div class="actions">
+    <%= form.submit "Submit" %>
+  </div>
+<% end %>

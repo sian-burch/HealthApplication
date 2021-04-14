@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Data</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Height(cm)</th>
+      <th>Weight(kg)</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Athletic Level</th>
+      <th>Physical</th>
+      <th>Mental</th>
+      <th>Indoor</th>
+      <th>Outdoor</th>
+      <th>Meditation</th>
+      <th>Running</th>
+      <th>Walking</th>
+      <th>Frequency pref</th>
+      <th>Duration pref</th>
+      <th>BMI</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_data.each do |user_datum| %>
+      <tr>
+        <td><%= user_datum.height %></td>
+        <td><%= user_datum.weight %></td>
+        <td><%= user_datum.age %></td>
+        <td><%= user_datum.gender %></td>
+        <td><%= user_datum.athletic_lvl %></td>
+        <td><%= user_datum.physical %></td>
+        <td><%= user_datum.mental %></td>
+        <td><%= user_datum.indoor %></td>
+        <td><%= user_datum.outdoor %></td>
+        <td><%= user_datum.meditation %></td>
+        <td><%= user_datum.running %></td>
+        <td><%= user_datum.walking %></td>
+        <td><%= user_datum.frequency_pref %></td>
+        <td><%= user_datum.duration_pref %></td>
+        <td><%= user_datum.BMI %></td>
+        <td><%= link_to 'Show', user_datum %></td>
+        <td><%= link_to 'Edit', edit_user_datum_path(user_datum) %></td>
+        <td><%= link_to 'Destroy', user_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User Datum', new_user_datum_path %>
