@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @activity.name %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @activity.duration %>
+</p>
+
+<p>
+  <strong>Indoor score:</strong>
+  <%= @activity.indoor_score %>
+</p>
+
+<p>
+  <strong>Outdoor score:</strong>
+  <%= @activity.outdoor_score %>
+</p>
+
+<p>
+  <strong>Cardio score:</strong>
+  <%= @activity.cardio_score %>
+</p>
+
+<p>
+  <strong>Strength score:</strong>
+  <%= @activity.strength_score %>
+</p>
+
+<p>
+  <strong>Physicality score:</strong>
+  <%= @activity.physicality_score %>
+</p>
+
+<p>
+  <strong>Mentality score:</strong>
+  <%= @activity.mentality_score %>
+</p>
+
+<p>
+  <strong>Solo score:</strong>
+  <%= @activity.solo_score %>
+</p>
+
+<p>
+  <strong>Team score:</strong>
+  <%= @activity.team_score %>
+</p>
+
+<p>
+  <strong>Intensity score:</strong>
+  <%= @activity.intensity_score %>
+</p>
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', activities_path %>

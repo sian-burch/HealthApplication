@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Activities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Duration</th>
+      <th>Indoor score</th>
+      <th>Outdoor score</th>
+      <th>Cardio score</th>
+      <th>Strength score</th>
+      <th>Physicality score</th>
+      <th>Mentality score</th>
+      <th>Solo score</th>
+      <th>Team score</th>
+      <th>Intensity score</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= activity.name %></td>
+        <td><%= activity.duration %></td>
+        <td><%= activity.indoor_score %></td>
+        <td><%= activity.outdoor_score %></td>
+        <td><%= activity.cardio_score %></td>
+        <td><%= activity.strength_score %></td>
+        <td><%= activity.physicality_score %></td>
+        <td><%= activity.mentality_score %></td>
+        <td><%= activity.solo_score %></td>
+        <td><%= activity.team_score %></td>
+        <td><%= activity.intensity_score %></td>
+        <td><%= link_to 'Show', activity %></td>
+        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Activity', new_activity_path %>
