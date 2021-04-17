@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_071542) do
+ActiveRecord::Schema.define(version: 2021_04_17_081258) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name", null: false
@@ -36,17 +36,21 @@ ActiveRecord::Schema.define(version: 2021_04_17_071542) do
     t.string "athletic_lvl", null: false
     t.boolean "physical", null: false
     t.boolean "mental", null: false
-    t.integer "indoor", null: false
-    t.integer "outdoor", null: false
-    t.integer "meditation", null: false
-    t.integer "running", null: false
-    t.integer "walking", null: false
+    t.integer "indoor_score", default: 0, null: false
+    t.integer "outdoor_score", default: 0, null: false
     t.integer "frequency_pref", null: false
     t.integer "duration_pref", null: false
     t.float "BMI"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "cardio_score", default: 0, null: false
+    t.integer "strength_score", default: 0, null: false
+    t.integer "physicality_score", default: 0, null: false
+    t.integer "mentality_score", default: 0, null: false
+    t.integer "solo_score", default: 0, null: false
+    t.integer "team_score", default: 0, null: false
+    t.integer "intensity_score", default: 0, null: false
     t.index ["user_id"], name: "index_user_data_on_user_id"
   end
 

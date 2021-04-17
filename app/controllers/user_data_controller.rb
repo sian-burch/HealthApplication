@@ -66,7 +66,7 @@ class UserDataController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_datum_params
-      params.require(:user_datum).permit(:height, :weight, :age, :gender, :athletic_lvl, :physical, :mental, :indoor, :outdoor, :meditation, :running, :walking, :frequency_pref, :duration_pref, :BMI)
+      params.require(:user_datum).permit(:height, :weight, :age, :gender, :athletic_lvl, :physical, :mental, :indoor_score, :outdoor_score,:cardio_score,:strength_score,:physicality_score,:mentality_score,:solo_score,:team_score,:intensity_score ,:frequency_pref, :duration_pref, :BMI)
     end
 
   

@@ -57,56 +57,91 @@
   </div>
 
   <div class="field">
-    <% form.label :indoor %>
-    <%= label_tag(:indoor, "How much do you like indoor activities?") %>
-    <%= form.radio_button :indoor, '1' %> 1<br />
-    <%= form.radio_button :indoor, '2' %> 2<br />
-    <%= form.radio_button :indoor, '3' %> 3<br />
-    <%= form.radio_button :indoor, '4' %> 4<br />
-    <%= form.radio_button :indoor, '5' %> 5<br />
+    <% form.label :indoor_score %>
+    <%= label_tag(:indoor_score, "How much do you like indoor activities?") %>
+    <%= form.radio_button :indoor_score, '1' %> 1<br />
+    <%= form.radio_button :indoor_score, '2' %> 2<br />
+    <%= form.radio_button :indoor_score, '3' %> 3<br />
+    <%= form.radio_button :indoor_score, '4' %> 4<br />
+    <%= form.radio_button :indoor_score, '5' %> 5<br />
 
   </div>
 
 
   <div class="field">
-    <% form.label :outdoor %>
-    <%= label_tag(:outdoor, "How much do you like outdoor activities?") %>
-    <%= form.radio_button :outdoor, '1' %> 1<br />
-    <%= form.radio_button :outdoor, '2' %> 2<br />
-    <%= form.radio_button :outdoor, '3' %> 3<br />
-    <%= form.radio_button :outdoor, '4' %> 4<br />
-    <%= form.radio_button :outdoor, '5' %> 5<br />
+    <% form.label :outdoor_score %>
+    <%= label_tag(:outdoor_score, "How much do you like outdoor activities?") %>
+    <%= form.radio_button :outdoor_score, '1' %> 1<br />
+    <%= form.radio_button :outdoor_score, '2' %> 2<br />
+    <%= form.radio_button :outdoor_score, '3' %> 3<br />
+    <%= form.radio_button :outdoor_score, '4' %> 4<br />
+    <%= form.radio_button :outdoor_score, '5' %> 5<br />
   </div>
 
   <div class="field">
-    <% form.label :meditation %>
-    <%= label_tag(:meditation, "How interested are you in meditating ?") %>
-    <%= form.radio_button :meditation, '1' %> 1<br />
-    <%= form.radio_button :meditation, '2' %> 2<br />
-    <%= form.radio_button :meditation, '3' %> 3<br />
-    <%= form.radio_button :meditation, '4' %> 4<br />
-    <%= form.radio_button :meditation, '5' %> 5<br />
+      <% form.label :cardio_score %>
+      <%= label_tag(:cardio_score, "How much do you like cardio?") %>
+      <%= form.radio_button :cardio_score, '1' %> 1<br />
+      <%= form.radio_button :cardio_score, '2' %> 2<br />
+      <%= form.radio_button :cardio_score, '3' %> 3<br />
+      <%= form.radio_button :cardio_score, '4' %> 4<br />
+      <%= form.radio_button :cardio_score, '5' %> 5<br />
+  </div>
+  <div class="field">
+    <% form.label :strength_score %>
+    <%= label_tag(:strength_score, "How much do you like strength activities?") %>
+    <%= form.radio_button :strength_score, '1' %> 1<br />
+    <%= form.radio_button :strength_score, '2' %> 2<br />
+    <%= form.radio_button :strength_score, '3' %> 3<br />
+    <%= form.radio_button :strength_score, '4' %> 4<br />
+    <%= form.radio_button :strength_score, '5' %> 5<br />
+  </div>
+  <div class="field">
+    <% form.label :physicality_score %>
+    <%= label_tag(:physicality_score, "How interested are you in physical activities?") %>
+    <%= form.radio_button :physicality_score, '1' %> 1<br />
+    <%= form.radio_button :physicality_score, '2' %> 2<br />
+    <%= form.radio_button :physicality_score, '3' %> 3<br />
+    <%= form.radio_button :physicality_score, '4' %> 4<br />
+    <%= form.radio_button :physicality_score, '5' %> 5<br />
+  </div>
+  <div class="field">
+    <% form.label :mentality_score %>
+    <%= label_tag(:mentality_score, "How interested are you in mental activities?") %>
+    <%= form.radio_button :mentality_score, '1' %> 1<br />
+    <%= form.radio_button :mentality_score, '2' %> 2<br />
+    <%= form.radio_button :mentality_score, '3' %> 3<br />
+    <%= form.radio_button :mentality_score, '4' %> 4<br />
+    <%= form.radio_button :mentality_score, '5' %> 5<br />
+  </div>
+  <div class="field">
+    <% form.label :solo_score %>
+    <%= label_tag(:solo_score, "How much do you like doing activities on your own?") %>
+    <%= form.radio_button :solo_score, '1' %> 1<br />
+    <%= form.radio_button :solo_score, '2' %> 2<br />
+    <%= form.radio_button :solo_score, '3' %> 3<br />
+    <%= form.radio_button :solo_score, '4' %> 4<br />
+    <%= form.radio_button :solo_score, '5' %> 5<br />
+  </div>
+  <div class="field">
+    <% form.label :team_score %>
+    <%= label_tag(:team_score, "How much do you like doing activities with others?") %>
+    <%= form.radio_button :team_score, '1' %> 1<br />
+    <%= form.radio_button :team_score, '2' %> 2<br />
+    <%= form.radio_button :team_score, '3' %> 3<br />
+    <%= form.radio_button :team_score, '4' %> 4<br />
+    <%= form.radio_button :team_score, '5' %> 5<br />
+  </div>
+  <div class="field">
+    <% form.label :intensity_score %>
+    <%= label_tag(:intensity_score, "How intense would you like your activities to be?") %>
+    <%= form.radio_button :intensity_score, '1' %> 1<br />
+    <%= form.radio_button :intensity_score, '2' %> 2<br />
+    <%= form.radio_button :intensity_score, '3' %> 3<br />
+    <%= form.radio_button :intensity_score, '4' %> 4<br />
+    <%= form.radio_button :intensity_score, '5' %> 5<br />
   </div>
 
-  <div class="field">
-    <% form.label :running %>
-    <%= label_tag(:running, "How much do you like running?") %>
-    <%= form.radio_button :running, '1' %> 1<br />
-    <%= form.radio_button :running, '2' %> 2<br />
-    <%= form.radio_button :running, '3' %> 3<br />
-    <%= form.radio_button :running, '4' %> 4<br />
-    <%= form.radio_button :running, '5' %> 5<br />
-  </div>
-
-  <div class="field">
-    <% form.label :walking %>
-    <%= label_tag(:walking, "How much do you like going for a walk?") %>
-    <%= form.radio_button :walking, '1' %> 1<br />
-    <%= form.radio_button :walking, '2' %> 2<br />
-    <%= form.radio_button :walking, '3' %> 3<br />
-    <%= form.radio_button :walking, '4' %> 4<br />
-    <%= form.radio_button :walking, '5' %> 5<br />
-  </div>
 
   <div class="field">
     <% form.label :frequency_pref %>
