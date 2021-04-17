@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_143819) do
+ActiveRecord::Schema.define(version: 2021_04_17_071542) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "duration", null: false
+    t.integer "duration_mins", null: false
     t.integer "indoor_score", default: 0, null: false
     t.integer "outdoor_score", default: 0, null: false
     t.integer "cardio_score", default: 0, null: false

@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Duration</th>
+      <th>Duration Mins</th>
       <th>Indoor score</th>
       <th>Outdoor score</th>
       <th>Cardio score</th>
@@ -24,7 +24,7 @@
     <% @activities.each do |activity| %>
       <tr>
         <td><%= activity.name %></td>
-        <td><%= activity.duration %></td>
+        <td><%= activity.duration_mins %></td>
         <td><%= activity.indoor_score %></td>
         <td><%= activity.outdoor_score %></td>
         <td><%= activity.cardio_score %></td>
