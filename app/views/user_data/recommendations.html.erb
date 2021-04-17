@@ -1,0 +1,38 @@
+<table>
+  <thead>
+    <tr>
+      <th>Activity Name</th>
+      <th>Duration Mins</th>
+      <th>Indoor score</th>
+      <th>Outdoor score</th>
+      <th>Cardio score</th>
+      <th>Strength score</th>
+      <th>Physicality score</th>
+      <th>Mentality score</th>
+      <th>Solo score</th>
+      <th>Team score</th>
+      <th>Intensity score</th>
+      <th>Similarity score</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recs.each do |rec| %>
+      <tr>
+        <td><%= rec[:activity].name %></td>
+        <td><%= rec[:activity].duration_mins %></td>
+        <td><%= rec[:activity].indoor_score %></td>
+        <td><%= rec[:activity].outdoor_score %></td>
+        <td><%= rec[:activity].cardio_score %></td>
+        <td><%= rec[:activity].strength_score %></td>
+        <td><%= rec[:activity].physicality_score %></td>
+        <td><%= rec[:activity].mentality_score %></td>
+        <td><%= rec[:activity].solo_score %></td>
+        <td><%= rec[:activity].team_score %></td>
+        <td><%= rec[:activity].intensity_score %></td>
+        <td><%= rec[:similarity_score] %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
