@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Feedback Questionnaires</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Questionnairedate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_feedback_questionnaires.each do |user_feedback_questionnaire| %>
+      <tr>
+        <td><%= user_feedback_questionnaire.questionnaireDate %></td>
+        <td><%= link_to 'Show', user_feedback_questionnaire %></td>
+        <td><%= link_to 'Edit', edit_user_feedback_questionnaire_path(user_feedback_questionnaire) %></td>
+        <td><%= link_to 'Destroy', user_feedback_questionnaire, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User Feedback Questionnaire', new_user_feedback_questionnaire_path %>

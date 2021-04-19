@@ -1,0 +1,1 @@
+json.partial! "user_daily_questionnaires/user_daily_questionnaire", user_daily_questionnaire: @user_daily_questionnaire

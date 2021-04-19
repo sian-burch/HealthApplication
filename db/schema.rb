@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_081258) do
+ActiveRecord::Schema.define(version: 2021_04_18_115812) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name", null: false
@@ -26,6 +26,21 @@ ActiveRecord::Schema.define(version: 2021_04_17_081258) do
     t.integer "intensity_score", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_daily_questionnaires", force: :cascade do |t|
+    t.date "questionnaireDate", null: false
+    t.integer "user_datum_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_datum_id"], name: "index_user_daily_questionnaires_on_user_datum_id"
+  end
+
+  create_table "user_daily_questionnaires_data", id: false, force: :cascade do |t|
+    t.integer "user_datum_id", null: false
+    t.integer "user_daily_questionnaire_id", null: false
+    t.index ["user_daily_questionnaire_id"], name: "user_daily_questionnaire_id_on_user_datum_id_"
+    t.index ["user_datum_id"], name: "user_datum_id_on_user_daily_questionnaire_id"
   end
 
   create_table "user_data", force: :cascade do |t|
@@ -52,6 +67,21 @@ ActiveRecord::Schema.define(version: 2021_04_17_081258) do
     t.integer "team_score", default: 0, null: false
     t.integer "intensity_score", default: 0, null: false
     t.index ["user_id"], name: "index_user_data_on_user_id"
+  end
+
+  create_table "user_data_feedback_questionnaires", id: false, force: :cascade do |t|
+    t.integer "user_datum_id", null: false
+    t.integer "user_feedback_questionnaire_id", null: false
+    t.index ["user_datum_id"], name: "user_datum_id_on_user_feedback_questionnaire_id"
+    t.index ["user_feedback_questionnaire_id"], name: "user_feedback_questionnaire_id_on_user_datum_id_"
+  end
+
+  create_table "user_feedback_questionnaires", force: :cascade do |t|
+    t.date "questionnaireDate", null: false
+    t.integer "user_datum_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_datum_id"], name: "index_user_feedback_questionnaires_on_user_datum_id"
   end
 
   create_table "users", force: :cascade do |t|

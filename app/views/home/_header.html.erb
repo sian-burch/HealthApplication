@@ -2,12 +2,15 @@
   <div class="container-fluid">
     <%= link_to 'Health App', root_path, class:"navbar-brand" %>
     <%= link_to 'Recommendations', '/recommendations' %>
+    <%= link_to 'My Daily Questionnaires', "user_daily_questionnaires#index" %>
+    <%= link_to 'My Feedback Questionnaires', "user_feedback_questionnaires#index" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="navbar-text float-right">
       <% if user_signed_in? %>
         Logged in as <strong><%= current_user.email %></strong>.
+        
         <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
         <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
       <% else %>

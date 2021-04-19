@@ -1,6 +1,8 @@
 class UserDatum < ApplicationRecord
 	require 'matrix'
 	before_save :calculate_BMI
+	has_and_belongs_to_many :user_daily_questionnaires
+	has_and_belongs_to_many :user_feedback_questionnaires
 	belongs_to :user
 
 	scope :user_user_data, ->(user){where(['user_id = ?',user.id])}
