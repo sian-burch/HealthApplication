@@ -1,5 +1,26 @@
 <h1>New Daily Questionnaire</h1>
 
-<%= render 'form', daily_questionnaire: @daily_questionnaire %>
+<%# New form view will be switched to according to the day of week it is created %>
+<%if @dayOfWeek == "Monday" %>
+    <%= render 'form_monday', daily_questionnaire: @daily_questionnaire %>
+<%end%>
+<%if @dayOfWeek == "Tuesday" %>
+    <%= render 'form_tuesday', daily_questionnaire: @daily_questionnaire %>
+<%end%>
+<%if @dayOfWeek == "Wednesday" %>
+    <%= render 'form_wednesday', daily_questionnaire: @daily_questionnaire %>
+<%end%>
+<%if @dayOfWeek == "Thursday" %>
+    <%= render 'form_thursday', daily_questionnaire: @daily_questionnaire %>
+<%end%>
+<%if @dayOfWeek == "Friday" %>
+    <%= render 'form_friday', daily_questionnaire: @daily_questionnaire %>
+<%end%>
+<%if @dayOfWeek == "Saturday" %>
+    <%= render 'form_saturday', daily_questionnaire: @daily_questionnaire %>
+<%end%>
+<%if @dayOfWeek == "Sunday" %>
+    <%= render 'form_sunday', daily_questionnaire: @daily_questionnaire %>
+<%end%>
 
 <%= link_to 'Back', daily_questionnaires_path %>
