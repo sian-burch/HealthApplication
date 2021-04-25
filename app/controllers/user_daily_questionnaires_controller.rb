@@ -1,5 +1,6 @@
 class UserDailyQuestionnairesController < ApplicationController
   before_action :set_user_daily_questionnaire, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /user_daily_questionnaires or /user_daily_questionnaires.json
   def index

@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dayOfWeek: MyString
+  user_mood: 1
+  duration_mins: 1
+  indoor_score: 1
+  outdoor_score: 1
+  cardio_score: 1
+  strength_score: 1
+  physicality_score: 1
+  mentality_score: 
+  team_score: 
+  intensity_score: 
+  duration_score: 
+
+two:
+  dayOfWeek: MyString
+  user_mood: 1
+  duration_mins: 1
+  indoor_score: 1
+  outdoor_score: 1
+  cardio_score: 1
+  strength_score: 1
+  physicality_score: 1
+  mentality_score: 
+  team_score: 
+  intensity_score: 
+  duration_score: 

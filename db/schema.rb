@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_18_115812) do
+ActiveRecord::Schema.define(version: 2021_04_22_140229) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name", null: false
@@ -28,11 +28,32 @@ ActiveRecord::Schema.define(version: 2021_04_18_115812) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "daily_questionnaires", force: :cascade do |t|
+    t.string "dayOfWeek", null: false
+    t.integer "user_daily_questionnaire_id"
+    t.integer "user_mood", null: false
+    t.integer "duration_mins", default: 0, null: false
+    t.integer "indoor_score", default: 0, null: false
+    t.integer "outdoor_score", default: 0, null: false
+    t.integer "cardio_score", default: 0, null: false
+    t.integer "strength_score", default: 0, null: false
+    t.integer "physicality_score", default: 0, null: false
+    t.integer "mentality_score", default: 0, null: false
+    t.integer "solo_score", default: 0, null: false
+    t.integer "team_score", default: 0, null: false
+    t.integer "intensity_score", default: 0, null: false
+    t.integer "duration_score", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_daily_questionnaires", force: :cascade do |t|
     t.date "questionnaireDate", null: false
     t.integer "user_datum_id", null: false
+    t.integer "daily_questionnaire_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["daily_questionnaire_id"], name: "index_user_daily_questionnaires_on_daily_questionnaire_id"
     t.index ["user_datum_id"], name: "index_user_daily_questionnaires_on_user_datum_id"
   end
 

@@ -1,5 +1,6 @@
 class UserFeedbackQuestionnairesController < ApplicationController
   before_action :set_user_feedback_questionnaire, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /user_feedback_questionnaires or /user_feedback_questionnaires.json
   def index
