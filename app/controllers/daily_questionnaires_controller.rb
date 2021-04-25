@@ -1,6 +1,7 @@
 class DailyQuestionnairesController < ApplicationController
   before_action :set_daily_questionnaire, only: %i[ show edit update destroy ]
-
+  require 'date'
+  
   # GET /daily_questionnaires or /daily_questionnaires.json
   def index
     @daily_questionnaires = DailyQuestionnaire.all
@@ -21,12 +22,17 @@ class DailyQuestionnairesController < ApplicationController
 
   # POST /daily_questionnaires or /daily_questionnaires.json
   def create
+    @currentUserData = UserDatum.user_user_data(current_user)
     @daily_questionnaire = DailyQuestionnaire.new(daily_questionnaire_params)
-
+    @daily_questionnaire.dayOfWeek=Date.today.strftime('%A')
     respond_to do |format|
       if @daily_questionnaire.save
-        format.html { redirect_to @daily_questionnaire, notice: "Daily questionnaire was successfully created." }
+        format.html { redirect_to root_path, notice: "Daily questionnaire was successfully created." }
         format.json { render :show, status: :created, location: @daily_questionnaire }
+        new_User_Daily_Questionnaire = UserDailyQuestionnaire.new(questionnaireDate: Date.today, user_data: @currentUserData, user_datum_id: @currentUserData.ids.first)
+        new_User_Daily_Questionnaire.save!
+        @daily_questionnaire.user_daily_questionnaires=[new_User_Daily_Questionnaire]
+        @daily_questionnaire.user_daily_questionnaire_id=new_User_Daily_Questionnaire.id
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @daily_questionnaire.errors, status: :unprocessable_entity }

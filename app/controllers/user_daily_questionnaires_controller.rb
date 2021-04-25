@@ -1,6 +1,7 @@
 class UserDailyQuestionnairesController < ApplicationController
   before_action :set_user_daily_questionnaire, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
+  require 'date'
 
   # GET /user_daily_questionnaires or /user_daily_questionnaires.json
   def index
@@ -24,6 +25,25 @@ class UserDailyQuestionnairesController < ApplicationController
 
   # POST /user_daily_questionnaires or /user_daily_questionnaires.json
   def create
+    @currentUserData = UserDatum.user_user_data(current_user)
+    @user_daily_questionnaire = UserDailyQuestionnaire.new(user_daily_questionnaire_params)
+    # Pair the new daily questionnaire created by user with current user
+    @user_daily_questionnaire.user_data=@currentUserData
+    @user_daily_questionnaire.questionnaireDate=Date.today
+    @user_daily_questionnaire.user_datum_id=@currentUserData.ids.first
+
+    respond_to do |format|
+      if @user_daily_questionnaire.save
+        format.html { redirect_to @user_daily_questionnaire, notice: "User daily questionnaire was successfully created." }
+        format.json { render :show, status: :created, location: @user_daily_questionnaire }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @user_daily_questionnaire.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def create_new_user_daily_questionnaire_for_daily_questionnaire
     @currentUserData = UserDatum.user_user_data(current_user)
     @user_daily_questionnaire = UserDailyQuestionnaire.new(user_daily_questionnaire_params)
     # Pair the new daily questionnaire created by user with current user
