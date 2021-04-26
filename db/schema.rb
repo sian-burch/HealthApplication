@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_22_140229) do
+ActiveRecord::Schema.define(version: 2021_04_26_121120) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name", null: false
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(version: 2021_04_22_140229) do
     t.integer "team_score", default: 0, null: false
     t.integer "intensity_score", default: 0, null: false
     t.integer "duration_score", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "feedback_questionnaires", force: :cascade do |t|
+    t.string "dayOfWeek", null: false
+    t.integer "user_satisfaction", default: 0, null: false
+    t.integer "soreness_level", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -102,6 +110,8 @@ ActiveRecord::Schema.define(version: 2021_04_22_140229) do
     t.integer "user_datum_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "feedback_questionnaire_id"
+    t.index ["feedback_questionnaire_id"], name: "feedbackQuestionnaireIndex"
     t.index ["user_datum_id"], name: "index_user_feedback_questionnaires_on_user_datum_id"
   end
 

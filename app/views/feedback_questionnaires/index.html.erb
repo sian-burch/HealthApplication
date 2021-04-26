@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Feedback Questionnaires</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Day of week</th>
+      <th>User satisfaction</th>
+      <th>Soreness level</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @feedback_questionnaires.each do |feedback_questionnaire| %>
+      <tr>
+        <td><%= feedback_questionnaire.dayOfWeek %></td>
+        <td><%= feedback_questionnaire.user_satisfaction %></td>
+        <td><%= feedback_questionnaire.soreness_level %></td>
+        <td><%= link_to 'Show', feedback_questionnaire %></td>
+        <td><%= link_to 'Edit', edit_feedback_questionnaire_path(feedback_questionnaire) %></td>
+        <td><%= link_to 'Destroy', feedback_questionnaire, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Feedback Questionnaire', new_feedback_questionnaire_path %>

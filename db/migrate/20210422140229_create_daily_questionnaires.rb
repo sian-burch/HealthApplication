@@ -2,7 +2,6 @@ class CreateDailyQuestionnaires < ActiveRecord::Migration[5.2]
   def change
     create_table :daily_questionnaires do |t|
       t.string :dayOfWeek, :null => false
-      #Ex:- :null => false
       t.integer :user_daily_questionnaire_id
       t.integer :user_mood, :null => false
       t.integer :duration_mins, default: 0, :null => false

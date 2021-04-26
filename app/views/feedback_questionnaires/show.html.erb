@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Day of week:</strong>
+  <%= @feedback_questionnaire.dayOfWeek %>
+</p>
+
+<p>
+  <strong>User satisfaction:</strong>
+  <%= @feedback_questionnaire.user_satisfaction %>
+</p>
+
+<p>
+  <strong>Soreness level:</strong>
+  <%= @feedback_questionnaire.soreness_level %>
+</p>
+
+<%= link_to 'Edit', edit_feedback_questionnaire_path(@feedback_questionnaire) %> |
+<%= link_to 'Back', feedback_questionnaires_path %>

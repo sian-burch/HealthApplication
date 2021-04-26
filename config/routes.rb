@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :feedback_questionnaires
   resources :daily_questionnaires
   resources :user_feedback_questionnaires
   resources :user_daily_questionnaires
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   get '/new_daily_questionnaire' => 'daily_questionnaires#new'
   get '/create_new_user_daily_questionnaire_for_daily_questionnaire' => 'user_daily_questionnaire#create_new_user_daily_questionnaire_for_daily_questionnaire'
   get '/my_feedback_questionnaire' => 'user_feedback_questionnaires#index'
+  get '/feedback_questionnaire' => 'feedback_questionnaires#index'
   get '/daily_questionnaires' => 'daily_questionnaires#index'
 
 

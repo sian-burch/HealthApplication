@@ -3,6 +3,7 @@ class DailyQuestionnairesController < ApplicationController
   before_action :set_today_time
   require 'date'
   
+  # Function to set the day of week as today's week day
   def set_today_time
     @dayOfWeek=Date.today.strftime('%A')
   end
