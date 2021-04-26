@@ -1,6 +1,19 @@
 <h1>Hello world!</h1>
-<button id="myBtn1">Today's daily questionnaire</button>
+
+<%# Display the pop-up modal if no daily questionnaire record exist today%>
+<%if @userDailyQuestionnaireToday == nil %>
+  <button id="myBtn1">Today's daily questionnaire</button>
+<%end%>
+
+<%# Display the pop-up modal if no feedback questionnaire record exist today and after 8:00 PM%>
+<%# Or display the pop-up modal when user finished all tasks allocated %>
+<%if @userDailyQuestionnaireToday == nil && @currentTime > "20:00:00"%>
 <button id="myBtn2">Today's feedback questionnaire</button>
+<%end%>
+
+<pre>
+  <%= @currentTime.inspect %>
+</pre>
 <%# Modal pop-up for daily questionnaire code referenced from https://www.w3schools.com/howto/howto_css_modals.asp %>
 <%# This code should be updated to be activated when user initially visits home page every day and pop up for only once %>
 <!-- The Modal -->
