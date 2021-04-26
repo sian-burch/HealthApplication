@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_081258) do
+ActiveRecord::Schema.define(version: 2021_04_26_103636) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name", null: false
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2021_04_17_081258) do
     t.integer "solo_score", default: 0, null: false
     t.integer "team_score", default: 0, null: false
     t.integer "intensity_score", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recommended_daily_steps", force: :cascade do |t|
+    t.integer "age", null: false
+    t.integer "minimum", null: false
+    t.integer "medium", null: false
+    t.integer "high", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
