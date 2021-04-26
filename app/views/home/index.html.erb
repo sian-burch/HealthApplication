@@ -1,15 +1,25 @@
 <h1>Hello world!</h1>
-<button id="myBtn">Open Modal</button>
-
+<button id="myBtn1">Today's daily questionnaire</button>
+<button id="myBtn2">Today's feedback questionnaire</button>
 <%# Modal pop-up for daily questionnaire code referenced from https://www.w3schools.com/howto/howto_css_modals.asp %>
 <%# This code should be updated to be activated when user initially visits home page every day and pop up for only once %>
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<div id="myDailyQuestionnaireModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span class="close1">&times;</span>
     <%= link_to "Today's Questionnaire", "/new_daily_questionnaire"%>
+  </div>
+
+</div>
+
+<div id="myFeedbackQuestionnaireModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close2">&times;</span>
+    <%= link_to "Tell us how you feel about the exercise today", "/new_feedback_questionnaire"%>
   </div>
 
 </div>
@@ -17,28 +27,39 @@
 <script>
 
 // Get the modal
-var modal = document.getElementById("myModal");
+var modal1 = document.getElementById("myDailyQuestionnaireModal");
+var modal2 = document.getElementById("myFeedbackQuestionnaireModal");
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
+var btn1 = document.getElementById("myBtn1");
+var btn2 = document.getElementById("myBtn2");
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
+var span1 = document.getElementsByClassName("close1")[0];
+var span2 = document.getElementsByClassName("close2")[0];
 // When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
+btn1.onclick = function() {
+  modal1.style.display = "block";
+}
+
+btn2.onclick = function() {
+  modal2.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+span1.onclick = function() {
+  modal1.style.display = "none";
+}
+span2.onclick = function() {
+  modal2.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target == modal1) {
+    modal1.style.display = "none";
+  }
+  if (event.target == modal2) {
+    modal2.style.display = "none";
   }
 }
 </script>
