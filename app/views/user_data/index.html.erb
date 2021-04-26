@@ -24,6 +24,7 @@
       <th>Frequency pref</th>
       <th>Duration pref</th>
       <th>BMI</th>
+      <th>Recommended Daily Steps</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -50,6 +51,7 @@
         <td><%= user_datum.frequency_pref %></td>
         <td><%= user_datum.duration_pref %></td>
         <td><%= user_datum.BMI %></td>
+        <td><%= user_datum.recommended_daily_steps %></td>
         <td><%= link_to 'Show', user_datum %></td>
         <td><%= link_to 'Edit', edit_user_datum_path(user_datum) %></td>
         <td><%= link_to 'Destroy', user_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>

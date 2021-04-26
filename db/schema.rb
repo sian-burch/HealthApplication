@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_103636) do
+ActiveRecord::Schema.define(version: 2021_04_26_104931) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name", null: false
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2021_04_26_103636) do
     t.integer "solo_score", default: 0, null: false
     t.integer "team_score", default: 0, null: false
     t.integer "intensity_score", default: 0, null: false
+    t.integer "recommended_daily_steps"
     t.index ["user_id"], name: "index_user_data_on_user_id"
   end
 

@@ -88,6 +88,10 @@
   <strong>Bmi:</strong>
   <%= @user_datum.BMI %>
 </p>
+<p>
+  <strong>Recommended Daily Steps:</strong>
+  <%= @user_datum.recommended_daily_steps %>
+</p>
 
 <%= link_to 'Edit', edit_user_datum_path(@user_datum) %> |
 <%= link_to 'Back', user_data_path %>
