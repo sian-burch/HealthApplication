@@ -47,6 +47,28 @@ class DailyQuestionnairesController < ApplicationController
         @daily_questionnaire.user_daily_questionnaires=[@new_User_Daily_Questionnaire]
         @daily_questionnaire.user_daily_questionnaire_id=@new_User_Daily_Questionnaire.id
         @daily_questionnaire.save
+        @daily_questionnaire.update_attribute(:user_mood, 5)
+        @daily_questionnaire.save
+        # ----------
+        # This part should be recommendation algorithm calculating new scores (temporary questionnaire)
+        # by putting in (the scores @daily_questionnaire just filled in by user),
+        # (the weight values from previous feedback questionnaire's attributes) and 
+        # (base scores from sign-up questionnaire).
+
+        # end
+        # ----------
+        # This part should be updating (replacing) the new score values calculated from (temporary questionnaire)
+        # to the (@daily_questionnaire). So that @daily_questionnaire will be updated each day with only one instance
+        # for each user, rather than a new instance created each day for each user.
+
+        
+        # end
+        # ----------
+        # This part should be updating (replacing) the new value
+
+        
+        # end
+        # ----------
         # Redirect back to root path after new daily questionnaire is created
         format.html { redirect_to root_path, notice: "Daily questionnaire was successfully created." }
         format.json { render :show, status: :created, location: @daily_questionnaire }
