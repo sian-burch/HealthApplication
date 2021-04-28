@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   get '/user_data' => 'user_data#show'
   get '/my_daily_questionnaire' => 'user_daily_questionnaires#index'
   get '/new_daily_questionnaire' => 'user_daily_questionnaires#new'
-
-
+  get '/create_initial_UDQ' => 'user_daily_questionnaires#createInitialUDQ', as: :createInitialUDQ
   
 end

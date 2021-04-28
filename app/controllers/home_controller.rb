@@ -11,6 +11,11 @@ class HomeController < ApplicationController
   end
 
   def index
+    # @user_datum = UserDatum.where(user:current_user).first
+    # if UserDailyQuestionnaire.where(user: current_user).first == nil && @user_datum !=nil
+    #   puts("IFSUCCESSFUL")
+    #   redirect_to createInitialUDQ_path and return
+    # end
   end
 
   def about

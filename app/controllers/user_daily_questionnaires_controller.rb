@@ -26,7 +26,7 @@ class UserDailyQuestionnairesController < ApplicationController
   # GET /user_daily_questionnaires/1/edit
   def edit
   end
-
+  
   # POST /user_daily_questionnaires or /user_daily_questionnaires.json
   def create
     # Initializing current user data as the current user
