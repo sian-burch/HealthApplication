@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @recommended_daily_step.age %>
+</p>
+
+<p>
+  <strong>Minimum:</strong>
+  <%= @recommended_daily_step.minimum %>
+</p>
+
+<p>
+  <strong>Medium:</strong>
+  <%= @recommended_daily_step.medium %>
+</p>
+
+<p>
+  <strong>High:</strong>
+  <%= @recommended_daily_step.high %>
+</p>
+
+<%= link_to 'Edit', edit_recommended_daily_step_path(@recommended_daily_step) %> |
+<%= link_to 'Back', recommended_daily_steps_path %>

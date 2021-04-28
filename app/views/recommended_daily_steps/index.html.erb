@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Recommended Daily Steps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Age</th>
+      <th>Minimum</th>
+      <th>Medium</th>
+      <th>High</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recommended_daily_steps.each do |recommended_daily_step| %>
+      <tr>
+        <td><%= recommended_daily_step.age %></td>
+        <td><%= recommended_daily_step.minimum %></td>
+        <td><%= recommended_daily_step.medium %></td>
+        <td><%= recommended_daily_step.high %></td>
+        <td><%= link_to 'Show', recommended_daily_step %></td>
+        <td><%= link_to 'Edit', edit_recommended_daily_step_path(recommended_daily_step) %></td>
+        <td><%= link_to 'Destroy', recommended_daily_step, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Recommended Daily Step', new_recommended_daily_step_path %>

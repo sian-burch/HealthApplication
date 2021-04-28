@@ -36,29 +36,43 @@
 </p>
 
 <p>
-  <strong>Indoor:</strong>
-  <%= @user_datum.indoor %>
+  <strong>Indoor Score:</strong>
+  <%= @user_datum.indoor_score %>
 </p>
 
 <p>
-  <strong>Outdoor:</strong>
-  <%= @user_datum.outdoor %>
+  <strong>Outdoor Score:</strong>
+  <%= @user_datum.outdoor_score %>
+</p>
+<p>
+  <strong>Cardio Score:</strong>
+  <%= @user_datum.cardio_score %>
+</p>
+<p>
+  <strong>Strength Score:</strong>
+  <%= @user_datum.strength_score %>
+</p>
+<p>
+  <strong>Physicality Score:</strong>
+  <%= @user_datum.physicality_score %>
+</p>
+<p>
+  <strong>Mentality Score:</strong>
+  <%= @user_datum.mentality_score %>
+</p>
+<p>
+  <strong>Solo Score:</strong>
+  <%= @user_datum.solo_score %>
+</p>
+<p>
+  <strong>Team Score:</strong>
+  <%= @user_datum.team_score %>
+</p>
+<p>
+  <strong>Intensity Score:</strong>
+  <%= @user_datum.intensity_score %>
 </p>
 
-<p>
-  <strong>Meditation:</strong>
-  <%= @user_datum.meditation %>
-</p>
-
-<p>
-  <strong>Running:</strong>
-  <%= @user_datum.running %>
-</p>
-
-<p>
-  <strong>Walking:</strong>
-  <%= @user_datum.walking %>
-</p>
 
 <p>
   <strong>Frequency pref:</strong>
@@ -73,6 +87,10 @@
 <p>
   <strong>Bmi:</strong>
   <%= @user_datum.BMI %>
+</p>
+<p>
+  <strong>Recommended Daily Steps:</strong>
+  <%= @user_datum.recommended_daily_steps %>
 </p>
 
 <%= link_to 'Edit', edit_user_datum_path(@user_datum) %> |

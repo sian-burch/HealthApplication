@@ -1,0 +1,2 @@
+class RecommendedDailyStep < ApplicationRecord
+end

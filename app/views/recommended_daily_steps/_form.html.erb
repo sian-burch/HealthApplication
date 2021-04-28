@@ -1,0 +1,37 @@
+<%= form_with(model: recommended_daily_step, local: true) do |form| %>
+  <% if recommended_daily_step.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(recommended_daily_step.errors.count, "error") %> prohibited this recommended_daily_step from being saved:</h2>
+
+      <ul>
+      <% recommended_daily_step.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :age %>
+    <%= form.number_field :age %>
+  </div>
+
+  <div class="field">
+    <%= form.label :minimum %>
+    <%= form.number_field :minimum %>
+  </div>
+
+  <div class="field">
+    <%= form.label :medium %>
+    <%= form.number_field :medium %>
+  </div>
+
+  <div class="field">
+    <%= form.label :high %>
+    <%= form.number_field :high %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

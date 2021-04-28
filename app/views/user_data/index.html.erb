@@ -12,14 +12,19 @@
       <th>Athletic Level</th>
       <th>Physical</th>
       <th>Mental</th>
-      <th>Indoor</th>
-      <th>Outdoor</th>
-      <th>Meditation</th>
-      <th>Running</th>
-      <th>Walking</th>
+      <th>Indoor Score</th>
+      <th>Outdoor Score</th>
+      <th>Cardio Score</th>
+      <th>Strength Score</th>
+      <th>Physicality Score</th>
+      <th>Mentality Score</th>
+      <th>Solo Score</th>
+      <th>Team Score</th>
+      <th>Intensity Score</th>
       <th>Frequency pref</th>
       <th>Duration pref</th>
       <th>BMI</th>
+      <th>Recommended Daily Steps</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -34,14 +39,19 @@
         <td><%= user_datum.athletic_lvl %></td>
         <td><%= user_datum.physical %></td>
         <td><%= user_datum.mental %></td>
-        <td><%= user_datum.indoor %></td>
-        <td><%= user_datum.outdoor %></td>
-        <td><%= user_datum.meditation %></td>
-        <td><%= user_datum.running %></td>
-        <td><%= user_datum.walking %></td>
+        <td><%= user_datum.indoor_score %></td>
+        <td><%= user_datum.outdoor_score %></td>
+        <td><%= user_datum.cardio_score %></td>
+        <td><%= user_datum.strength_score %></td>
+        <td><%= user_datum.physicality_score %></td>
+        <td><%= user_datum.mentality_score %></td>
+        <td><%= user_datum.solo_score %></td>
+        <td><%= user_datum.team_score %></td>
+        <td><%= user_datum.intensity_score %></td>
         <td><%= user_datum.frequency_pref %></td>
         <td><%= user_datum.duration_pref %></td>
         <td><%= user_datum.BMI %></td>
+        <td><%= user_datum.recommended_daily_steps %></td>
         <td><%= link_to 'Show', user_datum %></td>
         <td><%= link_to 'Edit', edit_user_datum_path(user_datum) %></td>
         <td><%= link_to 'Destroy', user_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
