@@ -12,8 +12,63 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :questionnaireDate %>
-    <%= form.date_select :questionnaireDate %>
+    <%= form.label :user_mood %>
+    <%= form.number_field :user_mood %>
+  </div>
+
+  <div class="field">
+    <%= form.label :duration_mins %>
+    <%= form.number_field :duration_mins %>
+  </div>
+
+  <div class="field">
+    <%= form.label :duration_score %>
+    <%= form.text_field :duration_score %>
+  </div>
+
+  <div class="field">
+    <%= form.label :indoor_score %>
+    <%= form.number_field :indoor_score %>
+  </div>
+
+  <div class="field">
+    <%= form.label :outdoor_score %>
+    <%= form.number_field :outdoor_score %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cardio_score %>
+    <%= form.number_field :cardio_score %>
+  </div>
+
+  <div class="field">
+    <%= form.label :strength_score %>
+    <%= form.number_field :strength_score %>
+  </div>
+
+  <div class="field">
+    <%= form.label :physicality_score %>
+    <%= form.number_field :physicality_score %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mentality_score %>
+    <%= form.number_field :mentality_score %>
+  </div>
+
+  <div class="field">
+    <%= form.label :solo_score %>
+    <%= form.number_field :solo_score %>
+  </div>
+
+  <div class="field">
+    <%= form.label :team_score %>
+    <%= form.number_field :team_score %>
+  </div>
+
+  <div class="field">
+    <%= form.label :intensity_score %>
+    <%= form.number_field :intensity_score %>
   </div>
 
   <div class="actions">

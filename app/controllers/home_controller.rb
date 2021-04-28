@@ -1,20 +1,16 @@
 class HomeController < ApplicationController
-  before_action :set_today_time
+  before_action :set_user_today, only: %i[ index ]
   require 'date'
   require 'time'
   
   # Function to set the day of week as today's week day
-  def set_today_time
+  def set_user_today
     @dayOfWeek=Date.today.strftime('%A')
-    @currentTime=Time.zone.now.strftime("%H:%M:%S")
+    # Variables for showing the pop-ups if they don't exist
+    @userDailyQuestionnaireToday = UserDailyQuestionnaire.where(user: current_user, questionnaire_date: Date.today).first
   end
 
   def index
-    # Variables for showing the pop-ups if they don't exist
-    @currentUserData = UserDatum.user_user_data(current_user)
-    @userDailyQuestionnaireToday = UserDailyQuestionnaire.where(user_datum_id: @currentUserData.ids.first, questionnaireDate:Date.today)
-
-    @userFeedbackQuestionnaireToday = UserFeedbackQuestionnaire.where(user_datum_id: @currentUserData.ids.first, questionnaireDate:Date.today)
   end
 
   def about

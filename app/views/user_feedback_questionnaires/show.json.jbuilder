@@ -1,1 +1,0 @@
-json.partial! "user_feedback_questionnaires/user_feedback_questionnaire", user_feedback_questionnaire: @user_feedback_questionnaire

@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  user_satisfaction: 1
-  soreness_level: 1
-
-two:
-  user_satisfaction: 1
-  soreness_level: 1

@@ -1,13 +1,17 @@
 class UserDailyQuestionnairesController < ApplicationController
   before_action :set_user_daily_questionnaire, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!
+  before_action :set_today_time
   require 'date'
+
+    
+  # Function to set the day of week as today's week day
+  def set_today_time
+    @day_of_week=Date.today.strftime('%A')
+  end
 
   # GET /user_daily_questionnaires or /user_daily_questionnaires.json
   def index
-    # Restrict user's daily questionnaires index view on current user's questionnaires
-    @currentUserData = UserDatum.user_user_data(current_user)
-    @user_daily_questionnaires = UserDailyQuestionnaire.where(user_datum_id: @currentUserData.ids.first)
+    @user_daily_questionnaires = UserDailyQuestionnaire.all
   end
 
   # GET /user_daily_questionnaires/1 or /user_daily_questionnaires/1.json
@@ -25,34 +29,41 @@ class UserDailyQuestionnairesController < ApplicationController
 
   # POST /user_daily_questionnaires or /user_daily_questionnaires.json
   def create
-    @currentUserData = UserDatum.user_user_data(current_user)
+    # Initializing current user data as the current user
     @user_daily_questionnaire = UserDailyQuestionnaire.new(user_daily_questionnaire_params)
-    # Pair the new daily questionnaire created by user with current user
-    @user_daily_questionnaire.user_data=@currentUserData
-    @user_daily_questionnaire.questionnaireDate=Date.today
-    @user_daily_questionnaire.user_datum_id=@currentUserData.ids.first
+    @user_daily_questionnaire.day_of_week = @day_of_week
+    @user_daily_questionnaire.questionnaire_date = Date.today
+    @user_daily_questionnaire.user = current_user
 
     respond_to do |format|
       if @user_daily_questionnaire.save
-        format.html { redirect_to @user_daily_questionnaire, notice: "User daily questionnaire was successfully created." }
-        format.json { render :show, status: :created, location: @user_daily_questionnaire }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user_daily_questionnaire.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
-  def create_new_user_daily_questionnaire_for_daily_questionnaire
-    @currentUserData = UserDatum.user_user_data(current_user)
-    @user_daily_questionnaire = UserDailyQuestionnaire.new(user_daily_questionnaire_params)
-    # Pair the new daily questionnaire created by user with current user
-    @user_daily_questionnaire.user_data=@currentUserData
-    @user_daily_questionnaire.user_datum_id=@currentUserData.ids.first
+# ----------
+        # This part should be recommendation algorithm calculating new scores (temporary questionnaire)
+        # by putting in (the scores @daily_questionnaire just filled in by user),
+        # (the weight values from previous feedback questionnaire's attributes) and 
+        # (base scores from sign-up questionnaire).
 
-    respond_to do |format|
-      if @user_daily_questionnaire.save
-        format.html { redirect_to @user_daily_questionnaire, notice: "User daily questionnaire was successfully created." }
+        # end
+        # ----------
+        # This part should be updating (replacing) the new score values calculated from (temporary questionnaire)
+        # to the (@daily_questionnaire). So that @daily_questionnaire will be updated each day with only one instance
+        # for each user, rather than a new instance created each day for each user.
+
+        # @daily_questionnaire.update_attribute(:user_mood, 5)
+        # @daily_questionnaire.update_attribute(:indoor_score, 5)
+        # @daily_questionnaire.update_attribute(:outdoor_score, 5)
+        # @daily_questionnaire.save
+        
+        # end
+        # ----------
+        # This part should be updating (replacing) the new date field of user_daily_questionnaire
+
+        
+        # end
+        # ----------
+
+        format.html { redirect_to root_path, notice: "User daily questionnaire was successfully created." }
         format.json { render :show, status: :created, location: @user_daily_questionnaire }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -91,6 +102,6 @@ class UserDailyQuestionnairesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_daily_questionnaire_params
-      params.require(:user_daily_questionnaire).permit(:questionnaireDate)
+      params.require(:user_daily_questionnaire).permit(:day_of_week, :questionnaire_date, :user_mood, :duration_mins, :duration_score, :indoor_score, :outdoor_score, :cardio_score, :strength_score, :physicality_score, :mentality_score, :solo_score, :team_score, :intensity_score)
     end
 end

@@ -1,10 +1,10 @@
-<%= form_with(model: daily_questionnaire, local: true) do |form| %>
-  <% if daily_questionnaire.errors.any? %>
+<%= form_with(model: user_daily_questionnaire, local: true) do |form| %>
+  <% if user_daily_questionnaire.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(daily_questionnaire.errors.count, "error") %> prohibited this daily_questionnaire from being saved:</h2>
+      <h2><%= pluralize(user_daily_questionnaire.errors.count, "error") %> prohibited this user_daily_questionnaire from being saved:</h2>
 
       <ul>
-      <% daily_questionnaire.errors.full_messages.each do |message| %>
+      <% user_daily_questionnaire.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -12,9 +12,7 @@
   <% end %>
 
 
-<b>Monday Questionnaire</b>
-<br>
-<b>Have a good start of the week!</b>
+<b>Wednesday, Thusday and Friday Questionnaire</b>
 
   <div class="field">
     <%= form.label t(".greeting_msg") %>
