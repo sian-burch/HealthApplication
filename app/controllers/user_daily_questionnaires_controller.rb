@@ -94,6 +94,11 @@ class UserDailyQuestionnairesController < ApplicationController
     end
   end
 
+  def daily_recommendations
+    @recs=current_user.user_daily_questionnaire.user_recommendations
+    
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_daily_questionnaire

@@ -82,9 +82,6 @@ class UserDataController < ApplicationController
     end
   end
 
-  def recommendations
-    @recs=current_user.user_datum.user_recommendations
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
