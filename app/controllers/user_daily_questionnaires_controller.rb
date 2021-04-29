@@ -30,13 +30,36 @@ class UserDailyQuestionnairesController < ApplicationController
   # POST /user_daily_questionnaires or /user_daily_questionnaires.json
   def create
     # Initializing current user data as the current user
-    @user_daily_questionnaire = UserDailyQuestionnaire.new(user_daily_questionnaire_params)
-    @user_daily_questionnaire.day_of_week = @day_of_week
-    @user_daily_questionnaire.questionnaire_date = Date.today
-    @user_daily_questionnaire.user = current_user
+    # BEFORE MODIFYING
+    # @user_daily_questionnaire = UserDailyQuestionnaire.new(user_daily_questionnaire_params)
+    # @user_daily_questionnaire.day_of_week = @day_of_week
+    # @user_daily_questionnaire.questionnaire_date = Date.today
+    # @user_daily_questionnaire.user = current_user
+    #when "creating" new DQ we need to take their input but use them as weights to recalculate based on previous DQ
+    #make "create" behave like "update"
+    
+    
+    daily_questionnaire=UserDailyQuestionnaire.find_by_user_id(current_user.id)
+    @modifications=UserDailyQuestionnaire.new(user_daily_questionnaire_params)
+    #@user_daily_questionnaire=UserDailyQuestionnaire.new
+    #DQ.user_id=current_user.id #possibly not needed?
+    daily_questionnaire.day_of_week=@day_of_week
+    daily_questionnaire.questionnaire_date=Date.today
+    daily_questionnaire.user_mood=@modifications.user_mood
+    daily_questionnaire.duration_mins=@modifications.duration_mins
+    daily_questionnaire.duration_score=calculate_new_score(daily_questionnaire.duration_score,@modifications.duration_score)
+    daily_questionnaire.indoor_score=calculate_new_score(daily_questionnaire.indoor_score,@modifications.indoor_score)
+    daily_questionnaire.outdoor_score=calculate_new_score(daily_questionnaire.outdoor_score,@modifications.outdoor_score)
+    daily_questionnaire.cardio_score=calculate_new_score(daily_questionnaire.cardio_score,@modifications.cardio_score)
+    daily_questionnaire.strength_score=calculate_new_score(daily_questionnaire.strength_score,@modifications.strength_score)
+    daily_questionnaire.physicality_score=calculate_new_score(daily_questionnaire.physicality_score,@modifications.physicality_score)
+    daily_questionnaire.mentality_score=calculate_new_score(daily_questionnaire.mentality_score,@modifications.mentality_score)
+    daily_questionnaire.solo_score=calculate_new_score(daily_questionnaire.solo_score,@modifications.solo_score)
+    daily_questionnaire.team_score=calculate_new_score(daily_questionnaire.team_score,@modifications.team_score)
+    daily_questionnaire.intensity_score=calculate_new_score(daily_questionnaire.intensity_score,@modifications.intensity_score)
 
     respond_to do |format|
-      if @user_daily_questionnaire.save
+      if daily_questionnaire.save
 
 # ----------
         # This part should be recommendation algorithm calculating new scores (temporary questionnaire)
@@ -55,6 +78,8 @@ class UserDailyQuestionnairesController < ApplicationController
         # @daily_questionnaire.update_attribute(:outdoor_score, 5)
         # @daily_questionnaire.save
         
+
+
         # end
         # ----------
         # This part should be updating (replacing) the new date field of user_daily_questionnaire
@@ -64,10 +89,10 @@ class UserDailyQuestionnairesController < ApplicationController
         # ----------
 
         format.html { redirect_to root_path, notice: "User daily questionnaire was successfully created." }
-        format.json { render :show, status: :created, location: @user_daily_questionnaire }
+        format.json { render :show, status: :created, location: daily_questionnaire }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user_daily_questionnaire.errors, status: :unprocessable_entity }
+        format.json { render json: daily_questionnaire.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -100,6 +125,31 @@ class UserDailyQuestionnairesController < ApplicationController
   end
 
   private
+    def calculate_new_score(prev_score,modification)
+      new_score=0
+      case modification
+      when 1
+        new_score=prev_score-2
+      when 2
+        new_score=prev_score-1
+      when 3
+        new_score=prev_score
+      when 4
+        new_score=prev_score+1
+      when 5
+        new_score=prev_score+2
+      else
+        new_score=prev_score
+      end
+
+      if new_score<0
+        new_score=0
+      elsif new_score>5
+        new_score=5
+      end
+
+      return new_score      
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_user_daily_questionnaire
       @user_daily_questionnaire = UserDailyQuestionnaire.find(params[:id])
