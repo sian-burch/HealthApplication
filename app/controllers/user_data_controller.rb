@@ -57,6 +57,40 @@ class UserDataController < ApplicationController
 
   # PATCH/PUT /user_data/1 or /user_data/1.json
   def update
+    #need to update daily questionnaire values to match updated user data values
+     # User datum does not have field "duration_score", so it can be speculated according to "duration_pref"
+    dur_pref=user_datum_params[:duration_pref]
+    case dur_pref
+    when '15 min'
+      dur_score=1
+    when '30 min'
+      dur_score=3
+    when '60 min'
+      dur_score=5
+    else
+      dur_score=3
+    end
+   
+
+    daily_questionnaire=UserDailyQuestionnaire.find_by_user_id(current_user.id)
+  
+    
+
+    daily_questionnaire.day_of_week=Date.today.strftime('%A')
+    daily_questionnaire.questionnaire_date=Date.today
+    daily_questionnaire.duration_mins=user_datum_params[:duration_pref]
+    daily_questionnaire.duration_score=dur_score
+    daily_questionnaire.indoor_score=user_datum_params[:indoor_score]
+    daily_questionnaire.outdoor_score=user_datum_params[:outdoor_score]
+    daily_questionnaire.cardio_score=user_datum_params[:cardio_score]
+    daily_questionnaire.strength_score=user_datum_params[:strength_score]
+    daily_questionnaire.physicality_score=user_datum_params[:physicality_score]
+    daily_questionnaire.mentality_score=user_datum_params[:mentality_score]
+    daily_questionnaire.solo_score=user_datum_params[:solo_score]
+    daily_questionnaire.team_score=user_datum_params[:team_score]
+    daily_questionnaire.intensity_score=user_datum_params[:intensity_score]
+    daily_questionnaire.save!
+    
     respond_to do |format|
       if @user_datum.update(user_datum_params)
         format.html { redirect_to @user_datum, notice: "User datum was successfully updated." }

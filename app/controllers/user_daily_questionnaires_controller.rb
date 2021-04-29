@@ -39,27 +39,27 @@ class UserDailyQuestionnairesController < ApplicationController
     #make "create" behave like "update"
     
     
-    daily_questionnaire=UserDailyQuestionnaire.find_by_user_id(current_user.id)
+    @user_daily_questionnaire=UserDailyQuestionnaire.find_by_user_id(current_user.id)
     @modifications=UserDailyQuestionnaire.new(user_daily_questionnaire_params)
     #@user_daily_questionnaire=UserDailyQuestionnaire.new
     #DQ.user_id=current_user.id #possibly not needed?
-    daily_questionnaire.day_of_week=@day_of_week
-    daily_questionnaire.questionnaire_date=Date.today
-    daily_questionnaire.user_mood=@modifications.user_mood
-    daily_questionnaire.duration_mins=@modifications.duration_mins
-    daily_questionnaire.duration_score=calculate_new_score(daily_questionnaire.duration_score,@modifications.duration_score)
-    daily_questionnaire.indoor_score=calculate_new_score(daily_questionnaire.indoor_score,@modifications.indoor_score)
-    daily_questionnaire.outdoor_score=calculate_new_score(daily_questionnaire.outdoor_score,@modifications.outdoor_score)
-    daily_questionnaire.cardio_score=calculate_new_score(daily_questionnaire.cardio_score,@modifications.cardio_score)
-    daily_questionnaire.strength_score=calculate_new_score(daily_questionnaire.strength_score,@modifications.strength_score)
-    daily_questionnaire.physicality_score=calculate_new_score(daily_questionnaire.physicality_score,@modifications.physicality_score)
-    daily_questionnaire.mentality_score=calculate_new_score(daily_questionnaire.mentality_score,@modifications.mentality_score)
-    daily_questionnaire.solo_score=calculate_new_score(daily_questionnaire.solo_score,@modifications.solo_score)
-    daily_questionnaire.team_score=calculate_new_score(daily_questionnaire.team_score,@modifications.team_score)
-    daily_questionnaire.intensity_score=calculate_new_score(daily_questionnaire.intensity_score,@modifications.intensity_score)
+    @user_daily_questionnaire.day_of_week=@day_of_week
+    @user_daily_questionnaire.questionnaire_date=Date.today
+    @user_daily_questionnaire.user_mood=@modifications.user_mood
+    @user_daily_questionnaire.duration_mins=@modifications.duration_mins
+    @user_daily_questionnaire.duration_score=calculate_new_score(@user_daily_questionnaire.duration_score,@modifications.duration_score)
+    @user_daily_questionnaire.indoor_score=calculate_new_score(@user_daily_questionnaire.indoor_score,@modifications.indoor_score)
+    @user_daily_questionnaire.outdoor_score=calculate_new_score(@user_daily_questionnaire.outdoor_score,@modifications.outdoor_score)
+    @user_daily_questionnaire.cardio_score=calculate_new_score(@user_daily_questionnaire.cardio_score,@modifications.cardio_score)
+    @user_daily_questionnaire.strength_score=calculate_new_score(@user_daily_questionnaire.strength_score,@modifications.strength_score)
+    @user_daily_questionnaire.physicality_score=calculate_new_score(@user_daily_questionnaire.physicality_score,@modifications.physicality_score)
+    @user_daily_questionnaire.mentality_score=calculate_new_score(@user_daily_questionnaire.mentality_score,@modifications.mentality_score)
+    @user_daily_questionnaire.solo_score=calculate_new_score(@user_daily_questionnaire.solo_score,@modifications.solo_score)
+    @user_daily_questionnaire.team_score=calculate_new_score(@user_daily_questionnaire.team_score,@modifications.team_score)
+    @user_daily_questionnaire.intensity_score=calculate_new_score(@user_daily_questionnaire.intensity_score,@modifications.intensity_score)
 
     respond_to do |format|
-      if daily_questionnaire.save
+      if @user_daily_questionnaire.save
 
 # ----------
         # This part should be recommendation algorithm calculating new scores (temporary questionnaire)
@@ -89,10 +89,10 @@ class UserDailyQuestionnairesController < ApplicationController
         # ----------
 
         format.html { redirect_to root_path, notice: "User daily questionnaire was successfully created." }
-        format.json { render :show, status: :created, location: daily_questionnaire }
+        format.json { render :show, status: :created, location: @user_daily_questionnaire }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: daily_questionnaire.errors, status: :unprocessable_entity }
+        format.json { render json: @user_daily_questionnaire.errors, status: :unprocessable_entity }
       end
     end
   end
