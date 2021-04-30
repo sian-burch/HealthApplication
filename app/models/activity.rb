@@ -17,5 +17,4 @@ class Activity < ApplicationRecord
 	 	similarity_score=(numerator/denominator)*100 #making it in range 0-100
 	 	return similarity_score.to_i
 	 end
-
 end

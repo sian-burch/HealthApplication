@@ -31,3 +31,11 @@
 
 en:
   hello: "Hello world"
+  user_daily_questionnaires:
+    form_weekday1:
+      greeting_msg: How do you feel today?
+    form_weekday2:
+      greeting_msg: How do you feel today?
+    form_weekend:
+      greeting_msg: How do you feel today?
+      
