@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_28_133204) do
+ActiveRecord::Schema.define(version: 2021_04_26_104931) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name", null: false
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(version: 2021_04_28_133204) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "recommended_daily_steps", force: :cascade do |t|
+    t.integer "age", null: false
+    t.integer "minimum", null: false
+    t.integer "medium", null: false
+    t.integer "high", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
 
   create_table "user_daily_questionnaires", force: :cascade do |t|
     t.integer "user_id"
