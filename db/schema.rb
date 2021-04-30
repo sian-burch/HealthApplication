@@ -28,13 +28,14 @@ ActiveRecord::Schema.define(version: 2021_04_26_104931) do
     t.datetime "updated_at", null: false
   end
 
-   create_table "recommended_daily_steps", force: :cascade do |t|
+  create_table "recommended_daily_steps", force: :cascade do |t|
     t.integer "age", null: false
     t.integer "minimum", null: false
     t.integer "medium", null: false
     t.integer "high", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
 
   create_table "user_data", force: :cascade do |t|
     t.integer "height", null: false
