@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :user_daily_questionnaires
   resources :recommended_daily_steps
   resources :activities
   resources :user_data

@@ -1,5 +1,7 @@
 class UserDatum < ApplicationRecord
 	
+	require 'matrix'
+
 	before_save :calculate_BMI, :calculate_recommended_daily_steps
 	belongs_to :user
 
