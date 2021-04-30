@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_daily_questionnaires
   resources :recommended_daily_steps
   resources :activities
   resources :user_data
@@ -9,6 +10,6 @@ Rails.application.routes.draw do
   get '/user_data' => 'user_data#show'
   get '/my_daily_questionnaire' => 'user_daily_questionnaires#index'
   get '/new_daily_questionnaire' => 'user_daily_questionnaires#new'
-  get '/new_user_data' => 'user_data#new'
+  get '/new_user_data' => 'user_data#new', as: :new_user_data
   
 end
