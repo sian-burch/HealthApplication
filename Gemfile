@@ -15,6 +15,7 @@ gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem "highcharts-rails"
 gem 'jquery-rails'
+gem 'rails-controller-testing'
 gem 'gon'
 gem 'coffee-script-source', '1.8.0'
 

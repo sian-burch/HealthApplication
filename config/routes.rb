@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get '/user_data' => 'user_data#show'
   get '/my_daily_questionnaire' => 'user_daily_questionnaires#index'
   get '/new_daily_questionnaire' => 'user_daily_questionnaires#new'
+  get '/contact' => 'home#contact'
+  get '/feedback' => 'home#feedback'
   get '/new_user_data' => 'user_data#new', as: :new_user_data
   
 end
