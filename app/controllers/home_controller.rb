@@ -8,14 +8,13 @@ class HomeController < ApplicationController
     @dayOfWeek=Date.today.strftime('%A')
     # Variables for showing the pop-ups if they don't exist
     @userDailyQuestionnaireToday = UserDailyQuestionnaire.where(user: current_user, questionnaire_date: Date.today).first
+    @userData = UserDatum.where(user: current_user).first
   end
 
   def index
-    # @user_datum = UserDatum.where(user:current_user).first
-    # if UserDailyQuestionnaire.where(user: current_user).first == nil && @user_datum !=nil
-    #   puts("IFSUCCESSFUL")
-    #   redirect_to createInitialUDQ_path and return
-    # end
+    # gem "gon" is used to be assigned with variable from controller to javascript
+    gon.UserData = UserDatum.where(user: current_user).first
+    gon.UserDailyQuestionnaire = UserDailyQuestionnaire.where(user: current_user).first
   end
 
   def about

@@ -28,15 +28,6 @@ ActiveRecord::Schema.define(version: 2021_04_28_133204) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "recommended_daily_steps", force: :cascade do |t|
-    t.integer "age", null: false
-    t.integer "minimum", null: false
-    t.integer "medium", null: false
-    t.integer "high", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "user_daily_questionnaires", force: :cascade do |t|
     t.integer "user_id"
     t.string "day_of_week", null: false
@@ -81,7 +72,6 @@ ActiveRecord::Schema.define(version: 2021_04_28_133204) do
     t.integer "solo_score", default: 0, null: false
     t.integer "team_score", default: 0, null: false
     t.integer "intensity_score", default: 0, null: false
-    t.integer "recommended_daily_steps"
     t.index ["user_id"], name: "index_user_data_on_user_id"
   end
 

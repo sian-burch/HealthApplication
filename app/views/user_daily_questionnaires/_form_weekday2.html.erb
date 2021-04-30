@@ -25,7 +25,9 @@
 
   <div class="field">
     <%= form.label :duration_mins %>
-    <%= form.number_field :duration_mins %>
+    <%= form.radio_button :duration_mins, '15' %> 15<br />
+    <%= form.radio_button :duration_mins, '30' %> 30<br />
+    <%= form.radio_button :duration_mins, '60' %> 60<br />
   </div>
 
   <div class="field">

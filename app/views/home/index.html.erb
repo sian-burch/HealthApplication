@@ -1,8 +1,13 @@
 <h1>Hello world!</h1>
 
+
 <%# Display the pop-up modal if no daily questionnaire record exist today%>
-<%if @userDailyQuestionnaireToday == nil%>
+<%if @userDailyQuestionnaireToday == nil && @userData != nil%>
   <button id="myBtn1">Today's daily questionnaire</button>
+<%end%>
+
+<%if @userData == nil%>
+<button id="myBtn2">Please fill-in signup questionnaire</button>
 <%end%>
 
 <%# Modal pop-up for daily questionnaire code referenced from https://www.w3schools.com/howto/howto_css_modals.asp %>
@@ -18,27 +23,61 @@
 
 </div>
 
+<div id="mySignUpQuestionnaireModal" class="modal">
+
+  <div class="modal-content2">
+    <span class="close2">&times;</span>
+    <%= link_to "Sign-up Questionnaire", "/new_user_data"%>
+  </div>
+
+</div>
+
 <script>
 // Get the modal
 var modal1 = document.getElementById("myDailyQuestionnaireModal");
 
+var modal2 = document.getElementById("mySignUpQuestionnaireModal");
 // Get the button that opens the modal
 var btn1 = document.getElementById("myBtn1");
+
+var btn2 = document.getElementById("myBtn2");
 // Get the <span> element that closes the modal
 var span1 = document.getElementsByClassName("close1")[0];
+
+var span2 = document.getElementsByClassName("close2")[0];
 // When the user clicks the button, open the modal 
 btn1.onclick = function() {
   modal1.style.display = "block";
+}
+
+btn2.onclick = function() {
+  modal2.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
 span1.onclick = function() {
   modal1.style.display = "none";
 }
+span2.onclick = function() {
+  modal2.style.display = "none";
+}
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal1) {
     modal1.style.display = "none";
   }
+  if (event.target == modal2) {
+    modal2.style.display = "none";
+  }
 }
 </script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<figure class="highcharts-figure">
+    <div id="user_preference_container"></div>
+</figure>
