@@ -30,4 +30,35 @@ class HomeController < ApplicationController
 
   def feedback
   end
+
+  def request_contact
+    name = params[:name]
+    email = params[:email]
+    telephone = params[:telephone]
+    message = params[:message]
+
+    if email.blank?
+      flash.now[:alert] = I18n.t('emailNotEmpty')
+      render "contact"
+    else
+      flash[:notice] = I18n.t('email_sent')
+      redirect_to root_path
+    end
+    
+  end
+
+  def request_feedback
+    name = params[:name]
+    email = params[:email]
+    telephone = params[:telephone]
+    feedback = params[:feedback]
+
+    if email.blank?
+      flash.now[:alert] = I18n.t('emailNotEmpty')
+      render "feedback"
+    else
+      flash[:notice] = I18n.t('email_sent')
+      redirect_to root_path
+    end
+  end
 end

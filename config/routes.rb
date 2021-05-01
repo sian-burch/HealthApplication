@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   get '/contact' => 'home#contact'
   get '/feedback' => 'home#feedback'
   get '/new_user_data' => 'user_data#new', as: :new_user_data
-  
+  post 'request_contact', to: 'home#request_contact'
+  post 'request_feedback', to: 'home#request_feedback'
 end

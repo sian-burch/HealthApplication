@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class UserDataControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
   setup do
+    get '/users/sign_in'
+    sign_in users(:one)
+    post user_session_url
     @user_datum = user_data(:one)
   end
 
@@ -17,7 +21,7 @@ class UserDataControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user_datum" do
     assert_difference('UserDatum.count') do
-      post user_data_url, params: { user_datum: { BMI: @user_datum.BMI, age: @user_datum.age, athletic_lvl: @user_datum.athletic_lvl, duration_pref: @user_datum.duration_pref, frequency_pref: @user_datum.frequency_pref, gender: @user_datum.gender, height: @user_datum.height, indoor: @user_datum.indoor, meditation: @user_datum.meditation, mental: @user_datum.mental, outdoor: @user_datum.outdoor, physical: @user_datum.physical, running: @user_datum.running, walking: @user_datum.walking, weight: @user_datum.weight } }
+      post user_data_url, params: { user_datum: { height: @user_datum.height, weight: @user_datum.weight, age:@user_datum.age, gender: @user_datum.gender, athletic_lvl: @user_datum.athletic_lvl, physical: @user_datum.physical, mental: @user_datum.mental, indoor_score: @user_datum.indoor_score, outdoor_score: @user_datum.outdoor_score,cardio_score: @user_datum.cardio_score,strength_score: @user_datum.strength_score,physicality_score: @user_datum.physicality_score,mentality_score: @user_datum.mentality_score,solo_score: @user_datum.solo_score,team_score: @user_datum.team_score,intensity_score: @user_datum.intensity_score ,frequency_pref: @user_datum.frequency_pref, duration_pref: @user_datum.duration_pref, BMI: @user_datum.BMI } }
     end
 
     assert_redirected_to user_datum_url(UserDatum.last)
@@ -34,7 +38,7 @@ class UserDataControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update user_datum" do
-    patch user_datum_url(@user_datum), params: { user_datum: { BMI: @user_datum.BMI, age: @user_datum.age, athletic_lvl: @user_datum.athletic_lvl, duration_pref: @user_datum.duration_pref, frequency_pref: @user_datum.frequency_pref, gender: @user_datum.gender, height: @user_datum.height, indoor: @user_datum.indoor, meditation: @user_datum.meditation, mental: @user_datum.mental, outdoor: @user_datum.outdoor, physical: @user_datum.physical, running: @user_datum.running, walking: @user_datum.walking, weight: @user_datum.weight } }
+    patch user_datum_url(@user_datum), params: { user_datum: { height: @user_datum.height, weight: @user_datum.weight, age:@user_datum.age, gender: @user_datum.gender, athletic_lvl: @user_datum.athletic_lvl, physical: @user_datum.physical, mental: @user_datum.mental, indoor_score: @user_datum.indoor_score, outdoor_score: @user_datum.outdoor_score,cardio_score: @user_datum.cardio_score,strength_score: @user_datum.strength_score,physicality_score: @user_datum.physicality_score,mentality_score: @user_datum.mentality_score,solo_score: @user_datum.solo_score,team_score: @user_datum.team_score,intensity_score: @user_datum.intensity_score ,frequency_pref: @user_datum.frequency_pref, duration_pref: @user_datum.duration_pref, BMI: @user_datum.BMI } }
     assert_redirected_to user_datum_url(@user_datum)
   end
 
