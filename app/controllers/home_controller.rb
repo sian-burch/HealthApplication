@@ -41,6 +41,7 @@ class HomeController < ApplicationController
       flash.now[:alert] = I18n.t('emailNotEmpty')
       render "contact"
     else
+      UserMailer.contact_form(email,name,telephone,message).deliver_now
       flash[:notice] = I18n.t('email_sent')
       redirect_to root_path
     end
@@ -57,6 +58,7 @@ class HomeController < ApplicationController
       flash.now[:alert] = I18n.t('emailNotEmpty')
       render "feedback"
     else
+      UserMailer.feedback_form(email,name,telephone,feedback).deliver_now
       flash[:notice] = I18n.t('email_sent')
       redirect_to root_path
     end

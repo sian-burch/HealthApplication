@@ -18,9 +18,11 @@ gem 'jquery-rails'
 gem 'rails-controller-testing'
 gem 'gon'
 gem 'coffee-script-source', '1.8.0'
+gem 'sendgrid-ruby'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'dotenv-rails'
 end
 
 group :development do
