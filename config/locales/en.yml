@@ -30,9 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  email_sent: E-Mail sent to us, we will reply soon!
-  syntaxError: Syntax error, please enter again
+  emailSent: E-Mail sent to us, we will reply soon!
+  emailSyntaxError: E-Mail Syntax error, please enter again
   emailNotEmpty: E-Mail should not be empty
+  telephoneSyntaxError: Telephone syntax error (UK telephone example - 7712345678)
   hello: "Hello world"
   user_daily_questionnaires:
     form_weekday1:

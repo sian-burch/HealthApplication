@@ -12,6 +12,7 @@ class UserMailer < ApplicationMailer
         mail( :to => 'Healthapplicationproject@gmail.com',
             :subject => 'Contact messages' )
 
+        # Option to send a hard copy to user email when sending to website email
         mail cc:@email
     end
 
@@ -24,7 +25,8 @@ class UserMailer < ApplicationMailer
 
         mail( :to => 'Healthapplicationproject@gmail.com',
             :subject => 'Feedback messages' )
-            
+
+        # Option to send a hard copy to user email when sending to website email
         mail cc:@email
 
     end

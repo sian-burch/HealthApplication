@@ -37,13 +37,35 @@ class HomeController < ApplicationController
     telephone = params[:telephone]
     message = params[:message]
 
-    if email.blank?
-      flash.now[:alert] = I18n.t('emailNotEmpty')
-      render "contact"
-    else
-      UserMailer.contact_form(email,name,telephone,message).deliver_now
-      flash[:notice] = I18n.t('email_sent')
+    # Regex for validating email
+    emailRegex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+    # Regex for validating telephone
+    telephoneRegex = /\A(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\z/
+
+    # If email and telephone syntax match regex
+    if (email.match(emailRegex).nil?) == false && (telephone.match(telephoneRegex).nil?) == false
+    # Deliver Email with parameters and email format
+      UserMailer.feedback_form(email,name,telephone,feedback).deliver_now
+      flash[:notice] = I18n.t('emailSent')
+    # Redirect back to home page after email is sent
       redirect_to root_path
+    # If email field is blank
+    elsif email.blank?
+    # Flash alert notification
+      flash.now[:alert] = I18n.t('emailNotEmpty')
+    # Do not redirect, but render this contact view again
+      render "contact"
+    # If telephone syntax does not match regex
+    elsif (telephone.match(telephoneRegex).nil?) == true
+    # Flash alert notification
+      flash.now[:alert] = I18n.t('telephoneSyntaxError')
+    # Do not redirect, but render this contact view again
+      render "contact"
+    # Email syntax error
+    else
+      flash.now[:alert] = I18n.t('emailSyntaxError')
+      render "contact"
     end
     
   end
@@ -54,13 +76,27 @@ class HomeController < ApplicationController
     telephone = params[:telephone]
     feedback = params[:feedback]
 
-    if email.blank?
+    # Regex for validating email
+    emailRegex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+    # Regex for validating telephone
+    telephoneRegex = /\A(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\z/
+
+    # If email and telephone syntax match regex
+    if (email.match(emailRegex).nil?) == false && (telephone.match(telephoneRegex).nil?) == false
+      UserMailer.feedback_form(email,name,telephone,feedback).deliver_now
+      flash[:notice] = I18n.t('emailSent')
+      redirect_to root_path
+    elsif email.blank?
       flash.now[:alert] = I18n.t('emailNotEmpty')
       render "feedback"
+    # If telephone does not  match regex
+    elsif (telephone.match(telephoneRegex).nil?) == true
+      flash.now[:alert] = I18n.t('telephoneSyntaxError')
+      render "feedback"
     else
-      UserMailer.feedback_form(email,name,telephone,feedback).deliver_now
-      flash[:notice] = I18n.t('email_sent')
-      redirect_to root_path
+      flash.now[:alert] = I18n.t('emailSyntaxError')
+      render "feedback"
     end
   end
 end
