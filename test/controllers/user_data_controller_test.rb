@@ -7,6 +7,9 @@ class UserDataControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:one)
     post user_session_url
     @user_datum = user_data(:one)
+    @user_datum.user = users(:one)
+    @user_daily_questionnaire = user_daily_questionnaires(:one)
+    @user_daily_questionnaire.user = users(:one)
   end
 
   test "should get index" do

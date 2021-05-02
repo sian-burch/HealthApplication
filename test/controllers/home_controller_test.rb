@@ -9,8 +9,11 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     post user_session_url
   end
 
-  test "should get home index" do
-    get root_path
+
+  
+  test "should get home index but no user_datum" do
+    # Directed to new user data path to fill in sign-in questionnaire
+    get new_user_data_path
     assert_response :success
   end
   test "should get contact" do
