@@ -54,6 +54,10 @@
   <strong>Intensity score:</strong>
   <%= @activity.intensity_score %>
 </p>
+<p>
+  <strong>Weather Restricted:</strong>
+  <%= @activity.weather_restricted %>
+</p>
 
 <%= link_to 'Edit', edit_activity_path(@activity) %> |
 <%= link_to 'Back', activities_path %>

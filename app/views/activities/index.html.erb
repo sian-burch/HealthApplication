@@ -16,6 +16,7 @@
       <th>Solo score</th>
       <th>Team score</th>
       <th>Intensity score</th>
+      <th>Weather Restricted</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -34,6 +35,7 @@
         <td><%= activity.solo_score %></td>
         <td><%= activity.team_score %></td>
         <td><%= activity.intensity_score %></td>
+        <td><%= activity.weather_restricted %></td>
         <td><%= link_to 'Show', activity %></td>
         <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
         <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
