@@ -20,6 +20,7 @@ gem 'coffee-script-source', '1.8.0'
 # Use excon as networking gem to call API
 gem 'select2-rails'
 gem 'net-http'
+gem 'figaro'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end

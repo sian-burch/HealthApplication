@@ -109,7 +109,7 @@ class UserDailyQuestionnairesController < ApplicationController
     puts("CityName: '" + @city_name + "'")
 
     # This will take in city name and other options including API Key
-    @API_KEY = "f201fad473336eed8415716966b97758"
+    @API_KEY = ENV["API_KEY"]
     @uri = URI("http://api.openweathermap.org/data/2.5/weather?q=#{@city_name}&appid=#{@API_KEY}")
     @response = JSON.parse(Net::HTTP.get(@uri)) # => String
 
@@ -117,7 +117,7 @@ class UserDailyQuestionnairesController < ApplicationController
     puts("API_RESPONSE: " + @response.to_s)
     puts("Weather_Main: " + @response["weather"].to_s)
 
-    if @response["weather"][0]["main"] == [""] || @response["weather"][0]["main"] == nil
+    if @response == nil || @response["weather"][0]["main"] == [""] || @response["weather"][0]["main"] == nil
       puts("No response")
       redirect_to root_path
       flash[:alert] = "Current city is unavailable for weather searching"
