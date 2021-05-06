@@ -96,7 +96,6 @@ class UserDailyQuestionnairesController < ApplicationController
 
   def daily_recommendations
     @recs=current_user.user_daily_questionnaire.user_recommendations
-    
   end
 
   def check_weather
@@ -122,6 +121,10 @@ class UserDailyQuestionnairesController < ApplicationController
       redirect_to root_path
       flash[:alert] = "Current city is unavailable for weather searching"
       return
+    elsif UserDailyQuestionnaire.where(user: current_user).first == nil || UserDatum.where(user: current_user).first == nil
+      redirect_to new_user_data_path(:location => @city_name)
+      # redirect_back(fallback_location: root_path, :location => @city_name)
+      flash[:notice] = "Create a new daily questionnaire first"
     elsif @response["weather"][0]["main"] != nil || @response["weather"] != nil && UserDailyQuestionnaire.where(user: current_user).first != nil
       puts("THIS IF-STATEMENT PASSES")
       @currentUserDailyQuestionnaire = UserDailyQuestionnaire.where(user: current_user).first
@@ -130,10 +133,6 @@ class UserDailyQuestionnairesController < ApplicationController
       @currentWeather = @response["weather"][0]["main"]
       redirect_to root_path
       flash[:notice] = "Location set for today's questionnaire"
-      return
-    elsif UserDailyQuestionnaire.where(user: current_user).first == nil
-      redirect_to new_daily_questionnaire_path
-      flash[:alert] = "Create a new daily questionnaire first"
       return
     else
     end

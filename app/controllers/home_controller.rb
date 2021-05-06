@@ -14,7 +14,7 @@ class HomeController < ApplicationController
   def index
     # Redirect to create new user data when no user data exists
     if UserDatum.where(user: current_user).first == nil
-      redirect_to new_user_data_path
+      redirect_to check_weather_path
     else
       @locationToday = UserDailyQuestionnaire.where(user: current_user, questionnaire_date: Date.today).first.location
     end

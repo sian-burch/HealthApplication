@@ -13,7 +13,7 @@ $(document).on('turbolinks:load',function() {
         var city_name_param = $('#city_name option:selected').text();
     
         window.location = "http://localhost:3000/show_weather?city_name_param=" + city_name_param;
-    
+        
       });
     
 });
