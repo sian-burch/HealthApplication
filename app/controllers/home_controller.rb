@@ -21,7 +21,6 @@ class HomeController < ApplicationController
     # gem "gon" is used to be assigned with variable from controller to javascript
     gon.UserData = UserDatum.where(user: current_user).first
     gon.UserDailyQuestionnaire = UserDailyQuestionnaire.where(user: current_user).first
-
   end
 
   def about

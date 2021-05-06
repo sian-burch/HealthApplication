@@ -117,11 +117,12 @@ class UserDailyQuestionnairesController < ApplicationController
     puts("API_RESPONSE: " + @response.to_s)
     puts("Weather_Main: " + @response["weather"].to_s)
 
-    if @response == nil || @response["weather"][0]["main"] == [""] || @response["weather"][0]["main"] == nil
+    if @response["weather"] == nil
       puts("No response")
       redirect_to root_path
       flash[:alert] = "Current city is unavailable for weather searching"
-    elsif @response["weather"][0]["main"] != nil || @response["weather"][0]["main"] != "" && UserDailyQuestionnaire.where(user: current_user).first != nil
+      return
+    elsif @response["weather"][0]["main"] != nil || @response["weather"] != nil && UserDailyQuestionnaire.where(user: current_user).first != nil
       puts("THIS IF-STATEMENT PASSES")
       @currentUserDailyQuestionnaire = UserDailyQuestionnaire.where(user: current_user).first
       @currentUserDailyQuestionnaire.location = @city_name
@@ -129,8 +130,11 @@ class UserDailyQuestionnairesController < ApplicationController
       @currentWeather = @response["weather"][0]["main"]
       redirect_to root_path
       flash[:notice] = "Location set for today's questionnaire"
+      return
     elsif UserDailyQuestionnaire.where(user: current_user).first == nil
       redirect_to new_daily_questionnaire_path
+      flash[:alert] = "Create a new daily questionnaire first"
+      return
     else
     end
   end
