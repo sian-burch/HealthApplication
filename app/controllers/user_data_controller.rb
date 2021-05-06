@@ -119,7 +119,7 @@ class UserDataController < ApplicationController
     @daily_questionnaire=UserDailyQuestionnaire.where(user: current_user).first
     # Destroy daily questionnaire with user data, FOR TESTING, CAN BE CHANGED IN FINAL VERSION
     @daily_questionnaire.destroy if UserDailyQuestionnaire.where(user: current_user).first != nil
-      
+    puts("Daily Questionnaire is destroyed")
       
     respond_to do |format|
       format.html { redirect_to user_data_url, notice: "User datum was successfully destroyed." }

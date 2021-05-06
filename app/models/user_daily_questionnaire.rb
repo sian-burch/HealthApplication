@@ -40,6 +40,11 @@ class UserDailyQuestionnaire < ApplicationRecord
 
 	 	similarity_score=(numerator/denominator)*100 #making it in range 0-100
 
+		#  Should have catch / if statement for similarity_score = 0
+		# Would cause FloatDomainError which occurs when both values are zero
+		# Because zero divided by zero is NaN
+		# and although NaN is a float, attempting to send it a floor message results in that error
+		
 	 	return similarity_score.to_i
     end
     def user_recommendations

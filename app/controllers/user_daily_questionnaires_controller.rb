@@ -12,7 +12,7 @@ class UserDailyQuestionnairesController < ApplicationController
 
   # GET /user_daily_questionnaires or /user_daily_questionnaires.json
   def index
-    @user_daily_questionnaires = UserDailyQuestionnaire.all
+    @user_daily_questionnaires = UserDailyQuestionnaire.where(user: current_user).all
   end
 
   # GET /user_daily_questionnaires/1 or /user_daily_questionnaires/1.json
