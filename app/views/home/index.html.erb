@@ -4,10 +4,12 @@
 <%# Display the pop-up modal if no daily questionnaire record exist today%>
 <%if @userDailyQuestionnaireToday == nil && @userData != nil%>
   <button id="myBtn1">Today's daily questionnaire</button>
-<%end%>
-
-<%if @userData == nil%>
-<button id="myBtn2">Please fill-in signup questionnaire</button>
+<%elsif @userData == nil%>
+  <button id="myBtn2">Please fill-in signup questionnaire</button>
+<%elsif @userDailyQuestionnaireToday.location == nil%>
+  <%= link_to "Location not set or found",check_weather_path %>
+<%else%>
+  Current Location: <%= @locationToday %>
 <%end%>
 
 <%# Modal pop-up for daily questionnaire code referenced from https://www.w3schools.com/howto/howto_css_modals.asp %>

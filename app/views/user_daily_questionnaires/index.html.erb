@@ -19,6 +19,7 @@
       <th>Solo score</th>
       <th>Team score</th>
       <th>Intensity score</th>
+      <th>Location</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -40,6 +41,7 @@
         <td><%= user_daily_questionnaire.solo_score %></td>
         <td><%= user_daily_questionnaire.team_score %></td>
         <td><%= user_daily_questionnaire.intensity_score %></td>
+        <td><%= user_daily_questionnaire.location %></td>
         <td><%= link_to 'Show', user_daily_questionnaire %></td>
         <td><%= link_to 'Edit', edit_user_daily_questionnaire_path(user_daily_questionnaire) %></td>
         <td><%= link_to 'Destroy', user_daily_questionnaire, method: :delete, data: { confirm: 'Are you sure?' } %></td>

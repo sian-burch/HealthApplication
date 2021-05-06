@@ -15,6 +15,8 @@ class HomeController < ApplicationController
     # Redirect to create new user data when no user data exists
     if UserDatum.where(user: current_user).first == nil
       redirect_to new_user_data_path
+    else
+      @locationToday = UserDailyQuestionnaire.where(user: current_user, questionnaire_date: Date.today).first.location
     end
     # gem "gon" is used to be assigned with variable from controller to javascript
     gon.UserData = UserDatum.where(user: current_user).first
@@ -23,6 +25,9 @@ class HomeController < ApplicationController
   end
 
   def about
+  end
+
+  def header
   end
 
 end

@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2021_05_05_100946) do
     t.integer "solo_score", null: false
     t.integer "team_score", null: false
     t.integer "intensity_score", null: false
+    t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_daily_questionnaires_on_user_id"

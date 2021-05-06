@@ -2,7 +2,8 @@ class UserDailyQuestionnairesController < ApplicationController
   before_action :set_user_daily_questionnaire, only: %i[ show edit update destroy ]
   before_action :set_today_time
   require 'date'
-
+  require 'net/http'
+  require 'json'
     
   # Function to set the day of week as today's week day
   def set_today_time
@@ -57,36 +58,10 @@ class UserDailyQuestionnairesController < ApplicationController
     @user_daily_questionnaire.solo_score=calculate_new_score(@user_daily_questionnaire.solo_score,@modifications.solo_score)
     @user_daily_questionnaire.team_score=calculate_new_score(@user_daily_questionnaire.team_score,@modifications.team_score)
     @user_daily_questionnaire.intensity_score=calculate_new_score(@user_daily_questionnaire.intensity_score,@modifications.intensity_score)
+    @modifications.location=@user_daily_questionnaire.location
 
     respond_to do |format|
       if @user_daily_questionnaire.save
-
-# ----------
-        # This part should be recommendation algorithm calculating new scores (temporary questionnaire)
-        # by putting in (the scores @daily_questionnaire just filled in by user),
-        # (the weight values from previous feedback questionnaire's attributes) and 
-        # (base scores from sign-up questionnaire).
-
-        # end
-        # ----------
-        # This part should be updating (replacing) the new score values calculated from (temporary questionnaire)
-        # to the (@daily_questionnaire). So that @daily_questionnaire will be updated each day with only one instance
-        # for each user, rather than a new instance created each day for each user.
-
-        # @daily_questionnaire.update_attribute(:user_mood, 5)
-        # @daily_questionnaire.update_attribute(:indoor_score, 5)
-        # @daily_questionnaire.update_attribute(:outdoor_score, 5)
-        # @daily_questionnaire.save
-        
-
-
-        # end
-        # ----------
-        # This part should be updating (replacing) the new date field of user_daily_questionnaire
-
-        
-        # end
-        # ----------
 
         format.html { redirect_to root_path, notice: "User daily questionnaire was successfully created." }
         format.json { render :show, status: :created, location: @user_daily_questionnaire }
@@ -123,6 +98,51 @@ class UserDailyQuestionnairesController < ApplicationController
     @recs=current_user.user_daily_questionnaire.user_recommendations
     
   end
+
+  def check_weather
+    @userDailyQuestionnaireToday = UserDailyQuestionnaire.where(user: current_user, questionnaire_date: Date.today).first
+  end
+
+  def show_weather
+    
+    @city_name = params[:city_name_param]
+    puts("CityName: '" + @city_name + "'")
+
+    # This will take in city name and other options including API Key
+    @API_KEY = "f201fad473336eed8415716966b97758"
+    @uri = URI("http://api.openweathermap.org/data/2.5/weather?q=#{@city_name}&appid=#{@API_KEY}")
+    @response = JSON.parse(Net::HTTP.get(@uri)) # => String
+
+    puts("URI: " + @uri.to_s)
+    puts("API_RESPONSE: " + @response.to_s)
+    puts("Weather_Main: " + @response["weather"].to_s)
+
+    if @response["weather"][0]["main"] == [""] || @response["weather"][0]["main"] == nil
+      puts("No response")
+      redirect_to root_path
+      flash[:alert] = "Current city is unavailable for weather searching"
+    elsif @response["weather"][0]["main"] != nil || @response["weather"][0]["main"] != "" && UserDailyQuestionnaire.where(user: current_user).first != nil
+      puts("THIS IF-STATEMENT PASSES")
+      @currentUserDailyQuestionnaire = UserDailyQuestionnaire.where(user: current_user).first
+      @currentUserDailyQuestionnaire.location = @city_name
+      @currentUserDailyQuestionnaire.save
+      @currentWeather = @response["weather"][0]["main"]
+      redirect_to root_path
+      flash[:notice] = "Location set for today's questionnaire"
+    elsif UserDailyQuestionnaire.where(user: current_user).first == nil
+      redirect_to new_daily_questionnaire_path
+    else
+    end
+  end
+
+  # The engine for using API requests, implementing RapidAPI as platform to parse corresponding URL including keys input,
+  # into JSON type, if no response, return nil.
+  # def request_api(url)
+  #   response = Excon.get(url)
+  #   return nil if response.status != 200
+
+  #   JSON.parse(response.body)
+  # end
 
   private
     def calculate_new_score(prev_score,modification)

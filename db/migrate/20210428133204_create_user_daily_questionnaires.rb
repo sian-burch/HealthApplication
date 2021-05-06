@@ -16,6 +16,7 @@ class CreateUserDailyQuestionnaires < ActiveRecord::Migration[5.2]
       t.integer :solo_score, :null => false
       t.integer :team_score, :null => false
       t.integer :intensity_score, :null => false
+      t.string :location
 
       t.timestamps
     end
