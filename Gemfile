@@ -19,6 +19,7 @@ gem 'rails-controller-testing'
 gem 'gon'
 gem 'coffee-script-source', '1.8.0'
 gem 'sendgrid-ruby'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

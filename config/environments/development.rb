@@ -47,18 +47,6 @@ Rails.application.configure do
   #   from:  "no-reply@healthapplicationproject.com"
   # }
 
-  # If we want to use Web API for sendgrid
-  # Corresponding username and password is in .env file
-  # config.action_mailer.smtp_settings = {
-  #   address: "smtp.sendgrid.net",
-  #   port: 587,
-  #   authentication: "plain",
-  #   user_name: ENV["SENDGRID_USERNAME"],
-  #   password: ENV["SENDGRID_PASSWORD"],
-  #   domain: 'localhost:3000',
-  #   enable_starttls_auto: true,
-  # }
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

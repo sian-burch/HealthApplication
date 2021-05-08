@@ -9,7 +9,7 @@ class UserMailer < ApplicationMailer
         @telephone = telephone
         @message = message
 
-        mail( :to => 'Healthapplicationproject@gmail.com',
+        mail( :to => 'healthapplication2021@gmail.com',
             :subject => 'Contact messages' )
 
         # Option to send a hard copy to user email when sending to website email
@@ -23,7 +23,7 @@ class UserMailer < ApplicationMailer
         @telephone = telephone
         @feedback = feedback
 
-        mail( :to => 'Healthapplicationproject@gmail.com',
+        mail( :to => 'healthapplication2021@gmail.com',
             :subject => 'Feedback messages' )
 
         # Option to send a hard copy to user email when sending to website email
@@ -31,7 +31,6 @@ class UserMailer < ApplicationMailer
 
     end
 
-    default :from => 'Healthapplicationproject@gmail.com'
-
+    default :from => 'healthapplication2021@gmail.com'
 
 end
