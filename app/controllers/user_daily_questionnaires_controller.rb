@@ -94,8 +94,34 @@ class UserDailyQuestionnairesController < ApplicationController
     end
   end
 
-  def daily_recommendations
-    @recs=current_user.user_daily_questionnaire.user_recommendations
+ def daily_recommendations
+    initial_recs=current_user.user_daily_questionnaire.user_recommendations
+    loc=UserDailyQuestionnaire.where(user: current_user, questionnaire_date: Date.today).first.location
+    @API_KEY = ENV["API_KEY"]
+    @uri = URI("http://api.openweathermap.org/data/2.5/weather?q=#{loc}&appid=#{@API_KEY}")
+    @response = JSON.parse(Net::HTTP.get(@uri)) # => String
+    weather_main=@response["weather"][0]["main"].to_s
+
+    puts("main weather:"+weather_main)
+    @recs=[]
+    if (weather_main=='Thunderstorm'||weather_main=='Rain' || weather_main=='Snow' || weather_main=='Dust'||weather_main=='Sand'|| weather_main=='Ash'||weather_main=='Squall'||weather_main=='Tornado')
+      restrictive_weather=true
+    else
+      restrictive_weather=false
+    end
+    if restrictive_weather
+      initial_recs.each do |rec|
+        if rec[:activity].weather_restricted==false #not restricted by weather
+          @recs.push(rec)
+        end
+      end
+    else
+      @recs=initial_recs
+    end
+
+
+
+    #@recs=current_user.user_daily_questionnaire.user_recommendations
   end
 
   def check_weather
@@ -127,6 +153,7 @@ class UserDailyQuestionnairesController < ApplicationController
       flash[:notice] = "Create a new daily questionnaire first"
     elsif @response["weather"][0]["main"] != nil || @response["weather"] != nil && UserDailyQuestionnaire.where(user: current_user).first != nil
       puts("THIS IF-STATEMENT PASSES")
+      
       @currentUserDailyQuestionnaire = UserDailyQuestionnaire.where(user: current_user).first
       @currentUserDailyQuestionnaire.location = @city_name
       @currentUserDailyQuestionnaire.save
@@ -146,7 +173,7 @@ class UserDailyQuestionnairesController < ApplicationController
 
   #   JSON.parse(response.body)
   # end
-
+ 
   private
     def calculate_new_score(prev_score,modification)
       new_score=0

@@ -30,7 +30,7 @@ class UserDataController < ApplicationController
   # POST /user_data or /user_data.json
   def create
     
-    puts("The Location to be created is: " + $location)
+    puts("The Location to be created is: " + $location.to_s)
 
     @user_datum = UserDatum.new(user_datum_params)
     @user_datum.user=current_user
@@ -50,7 +50,7 @@ class UserDataController < ApplicationController
       questionnaire_date: Date.today, duration_mins: @user_datum.duration_pref, duration_score: @user_datum_duration_score,
       indoor_score: @user_datum.indoor_score, outdoor_score: @user_datum.outdoor_score, cardio_score: @user_datum.cardio_score,
       strength_score: @user_datum.strength_score, physicality_score: @user_datum.physicality_score, mentality_score: @user_datum.mentality_score,
-      solo_score: @user_datum.solo_score, team_score: @user_datum.team_score, intensity_score: @user_datum.intensity_score, location: $location)
+      solo_score: @user_datum.solo_score, team_score: @user_datum.team_score, intensity_score: @user_datum.intensity_score, location: $location.to_s)
       @initial_user_daily_questionnaire.save!
       puts("UDQ location is: "+ @initial_user_daily_questionnaire.location)
     end
@@ -137,7 +137,7 @@ class UserDataController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_datum_params
-      params.require(:user_datum).permit(:height, :weight, :age, :gender, :athletic_lvl, :physical, :mental, :indoor_score, :outdoor_score,:cardio_score,:strength_score,:physicality_score,:mentality_score,:solo_score,:team_score,:intensity_score ,:frequency_pref, :duration_pref, :BMI)
+      params.require(:user_datum).permit(:height, :weight, :age, :gender, :athletic_lvl, :physical, :mental, :indoor_score, :outdoor_score,:cardio_score,:strength_score,:physicality_score,:mentality_score,:solo_score,:team_score,:intensity_score ,:frequency_pref, :duration_pref, :BMI,:location)
     end
 
 end
