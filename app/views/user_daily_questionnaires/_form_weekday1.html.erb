@@ -13,6 +13,9 @@
 
 
 <b>Monday and Tuesday Questionnaire</b>
+<br>
+  <b> Current Location: 
+  <%= @current_location%>
 
   <div class="field">
     <%= form.label t(".greeting_msg") %>
@@ -119,8 +122,6 @@
     <%= form.radio_button :duration_score, '4' %> 4<br />
     <%= form.radio_button :duration_score, '5' %> 5<br />
   </div>
-
-  <%=link_to "Want to change weather?", check_weather_path%>
 
   <div class="actions">
     <%= form.submit %>

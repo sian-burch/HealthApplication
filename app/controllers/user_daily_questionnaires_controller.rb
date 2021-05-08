@@ -1,6 +1,7 @@
 class UserDailyQuestionnairesController < ApplicationController
   before_action :set_user_daily_questionnaire, only: %i[ show edit update destroy ]
   before_action :set_today_time
+  before_action :set_today_location, only: %i[ new create ]
   require 'date'
   require 'net/http'
   require 'json'
@@ -10,6 +11,10 @@ class UserDailyQuestionnairesController < ApplicationController
     @day_of_week=Date.today.strftime('%A')
   end
 
+  def set_today_location
+    @user_daily_questionnaire=UserDailyQuestionnaire.where(user: current_user).first
+    @current_location = @user_daily_questionnaire.location
+  end
   # GET /user_daily_questionnaires or /user_daily_questionnaires.json
   def index
     @user_daily_questionnaires = UserDailyQuestionnaire.where(user: current_user).all
