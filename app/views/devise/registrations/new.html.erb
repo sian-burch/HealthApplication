@@ -20,6 +20,9 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+  <%= f.check_box :terms_and_agreements %> I have read through and agree on the policy
+  <%# <%= hidden_field_tag 'object[boolean_attribute]', nil %>
+  <%= link_to 'Our Private Policy', '/privacy_policy'%>
 
   <div class="actions">
     <%= f.submit "Sign up" %>

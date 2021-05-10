@@ -13,4 +13,5 @@
  *= require_tree .
  *= require_self
  *= require select2
- */
+ *= require cookies_eu
+*/

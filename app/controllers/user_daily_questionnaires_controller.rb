@@ -1,4 +1,5 @@
 class UserDailyQuestionnairesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_user_daily_questionnaire, only: %i[ show edit update destroy ]
   before_action :set_today_time
   before_action :set_today_location, only: %i[ new create ]
@@ -206,8 +207,9 @@ class UserDailyQuestionnairesController < ApplicationController
       return new_score      
     end
     # Use callbacks to share common setup or constraints between actions.
+    # Restrict user to only access its own User Daily Questionnaires, but not others
     def set_user_daily_questionnaire
-      @user_daily_questionnaire = UserDailyQuestionnaire.find(params[:id])
+      @user_daily_questionnaire = UserDailyQuestionnaire.where(user: current_user).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   get 'show_weather' => 'user_daily_questionnaires#show_weather'
   get 'check_weather' => 'user_daily_questionnaires#check_weather'
   match '/show_weather', to: 'user_daily_questionnaires#show_weather', :via => [:get, :post]
+  get '/cookies', to: 'home#cookies'
+  get '/privacy_policy', to: 'home#privacy_policy'
 end

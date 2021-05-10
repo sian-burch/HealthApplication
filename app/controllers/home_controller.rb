@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   before_action :set_user_today, only: %i[ index ]
+  skip_before_action :authenticate_user!, only: %i[ privacy_policy ]
   require 'date'
   require 'time'
   

@@ -1,4 +1,5 @@
 class UserDataController < ApplicationController
+  load_and_authorize_resource
   before_action :set_user_datum, only: %i[ show edit update destroy ]
   
   # GET /user_data or /user_data.json
@@ -131,8 +132,9 @@ class UserDataController < ApplicationController
   private
   
     # Use callbacks to share common setup or constraints between actions.
+    # Restrict user to only access its own User Data, but not others
     def set_user_datum
-      @user_datum = UserDatum.find(params[:id])
+      @user_datum = UserDatum.where(user: current_user).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

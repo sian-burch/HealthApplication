@@ -21,6 +21,8 @@ gem 'coffee-script-source', '1.8.0'
 gem 'select2-rails'
 gem 'net-http'
 gem 'figaro'
+gem 'cancancan'
+gem 'cookies_eu'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
