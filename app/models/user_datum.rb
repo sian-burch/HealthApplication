@@ -16,7 +16,12 @@ class UserDatum < ApplicationRecord
     end
     def calculate_recommended_daily_steps
         athl_lvl=self.athletic_lvl
+        puts("athl_lvl: " + athl_lvl.to_s)
+        puts("Self.age: " + self.age.to_s)
+        puts("RecommendedDailyStep: " + RecommendedDailyStep.to_s)
+        puts("RecommendedDailyStep.find_by(age: self.age): "+RecommendedDailyStep.find_by(age: self.age).to_s)
         age_recommendation=self.recommended_daily_steps=RecommendedDailyStep.find_by(age: self.age)
+        puts("age_recommendation: " + age_recommendation.to_s)
         case athl_lvl
         when "Beginner"
             self.recommended_daily_steps=age_recommendation.minimum

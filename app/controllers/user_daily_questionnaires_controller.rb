@@ -150,7 +150,7 @@ class UserDailyQuestionnairesController < ApplicationController
     if @response["weather"] == nil
       puts("No response")
       redirect_to root_path
-      flash[:alert] = "Current city is unavailable for weather searching"
+      flash[:alert] = "Current city is unavailable for weather searching or API key incorrect"
       return
     elsif UserDailyQuestionnaire.where(user: current_user).first == nil || UserDatum.where(user: current_user).first == nil
       redirect_to new_user_data_path(:location => @city_name)

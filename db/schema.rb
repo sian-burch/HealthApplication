@@ -68,21 +68,21 @@ ActiveRecord::Schema.define(version: 2021_05_05_100946) do
     t.string "athletic_lvl", null: false
     t.boolean "physical", null: false
     t.boolean "mental", null: false
-    t.integer "indoor_score", default: 0, null: false
-    t.integer "outdoor_score", default: 0, null: false
+    t.integer "indoor_score", default: 3, null: false
+    t.integer "outdoor_score", default: 3, null: false
     t.integer "frequency_pref", null: false
     t.integer "duration_pref", null: false
     t.float "BMI"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "cardio_score", default: 0, null: false
-    t.integer "strength_score", default: 0, null: false
-    t.integer "physicality_score", default: 0, null: false
-    t.integer "mentality_score", default: 0, null: false
-    t.integer "solo_score", default: 0, null: false
-    t.integer "team_score", default: 0, null: false
-    t.integer "intensity_score", default: 0, null: false
+    t.integer "cardio_score", default: 3, null: false
+    t.integer "strength_score", default: 3, null: false
+    t.integer "physicality_score", default: 3, null: false
+    t.integer "mentality_score", default: 3, null: false
+    t.integer "solo_score", default: 3, null: false
+    t.integer "team_score", default: 3, null: false
+    t.integer "intensity_score", default: 3, null: false
     t.integer "recommended_daily_steps"
     t.index ["user_id"], name: "index_user_data_on_user_id"
   end
