@@ -44,7 +44,8 @@
         <td><%= user_daily_questionnaire.location %></td>
         <td><%= link_to 'Show', user_daily_questionnaire %></td>
         <td><%= link_to 'Edit', edit_user_daily_questionnaire_path(user_daily_questionnaire) %></td>
-        <td><%= link_to 'Destroy', user_daily_questionnaire, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%# Deleting and creating a new UDQ causes error using "create" action in controller due to no existing UDQ for user %>
+        <%# <td><%= link_to 'Destroy', user_daily_questionnaire, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,7 +1,7 @@
 class UserDailyQuestionnairesController < ApplicationController
   load_and_authorize_resource
   before_action :set_user_daily_questionnaire, only: %i[ show edit update destroy ]
-  before_action :set_today_time
+  before_action :set_today_time, only: %i[ new create ]
   before_action :set_today_location, only: %i[ new create ]
   require 'date'
   require 'net/http'
@@ -13,8 +13,10 @@ class UserDailyQuestionnairesController < ApplicationController
   end
 
   def set_today_location
-    @user_daily_questionnaire=UserDailyQuestionnaire.where(user: current_user).first
-    @current_location = @user_daily_questionnaire.location
+    if UserDailyQuestionnaire.where(user: current_user).first != nil
+      @user_daily_questionnaire=UserDailyQuestionnaire.where(user: current_user).first
+      @current_location = @user_daily_questionnaire.location
+    end
   end
   # GET /user_daily_questionnaires or /user_daily_questionnaires.json
   def index
@@ -45,12 +47,11 @@ class UserDailyQuestionnairesController < ApplicationController
     #when "creating" new DQ we need to take their input but use them as weights to recalculate based on previous DQ
     #make "create" behave like "update"
     
-    
     @user_daily_questionnaire=UserDailyQuestionnaire.find_by_user_id(current_user.id)
     @modifications=UserDailyQuestionnaire.new(user_daily_questionnaire_params)
     #@user_daily_questionnaire=UserDailyQuestionnaire.new
     #DQ.user_id=current_user.id #possibly not needed?
-    @user_daily_questionnaire.day_of_week=@day_of_week
+    @user_daily_questionnaire.day_of_week=Date.today.strftime('%A')
     @user_daily_questionnaire.questionnaire_date=Date.today
     @user_daily_questionnaire.user_mood=@modifications.user_mood
     @user_daily_questionnaire.duration_mins=@modifications.duration_mins

@@ -52,7 +52,7 @@ class UserDataController < ApplicationController
       indoor_score: @user_datum.indoor_score, outdoor_score: @user_datum.outdoor_score, cardio_score: @user_datum.cardio_score,
       strength_score: @user_datum.strength_score, physicality_score: @user_datum.physicality_score, mentality_score: @user_datum.mentality_score,
       solo_score: @user_datum.solo_score, team_score: @user_datum.team_score, intensity_score: @user_datum.intensity_score, location: $location.to_s)
-      @initial_user_daily_questionnaire.save!
+      @initial_user_daily_questionnaire.save
       puts("UDQ location is: "+ @initial_user_daily_questionnaire.location)
     end
 
@@ -61,6 +61,7 @@ class UserDataController < ApplicationController
         format.html { redirect_to root_path, notice: "User datum was successfully created." }
         format.json { render :show, status: :created, location: @user_datum }
       else
+        # flash.now[:alert] = @user_datum.errors
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user_datum.errors, status: :unprocessable_entity }
       end

@@ -1,7 +1,7 @@
 <%= form_with(model: user_datum, local: true) do |form| %>
   <% if user_datum.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(user_datum.errors.count, "error") %> prohibited this user_datum from being saved:</h2>
+      <h2><%= pluralize(user_datum.errors.count, "error") %> prohibited this user data questionnaire from being saved:</h2>
 
       <ul>
       <% user_datum.errors.full_messages.each do |message| %>
