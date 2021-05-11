@@ -18,10 +18,11 @@ class HomeController < ApplicationController
     if UserDatum.where(user: current_user).first == nil
       redirect_to check_weather_path
     elsif UserDailyQuestionnaire.where(user: current_user).first == nil
-      redirect_to root_path
+      # Remain in root path
+      # Fixed redirect_to root path prevent from infinite loop
     elsif UserDailyQuestionnaire.where(user: current_user).first != nil && UserDailyQuestionnaire.where(user: current_user).first.location != nil
       # Set today's location as UDQ's location
-      @locationToday = UserDailyQuestionnaire.where(user: current_user, questionnaire_date: Date.today).first.location
+      @locationToday = UserDailyQuestionnaire.where(user: current_user).first.location
     end
     # gem "gon" is used to be assigned with variable from controller to javascript
     gon.UserData = UserDatum.where(user: current_user).first

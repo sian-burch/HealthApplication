@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
+  root 'home#index'
   resources :user_daily_questionnaires
   resources :recommended_daily_steps
   resources :activities
   resources :user_data
   devise_for :users
   get 'home/about'
-  root 'home#index'
   get '/daily_recommendations' => 'user_daily_questionnaires#daily_recommendations'
   get '/user_data' => 'user_data#show'
   get '/my_daily_questionnaire' => 'user_daily_questionnaires#index'

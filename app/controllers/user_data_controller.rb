@@ -83,10 +83,7 @@ class UserDataController < ApplicationController
       dur_score=3
     end
    
-
     daily_questionnaire=UserDailyQuestionnaire.find_by_user_id(current_user.id)
-  
-    
 
     daily_questionnaire.day_of_week=Date.today.strftime('%A')
     daily_questionnaire.questionnaire_date=Date.today
