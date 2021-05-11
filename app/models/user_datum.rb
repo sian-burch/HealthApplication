@@ -5,7 +5,7 @@ class UserDatum < ApplicationRecord
 	belongs_to :user
 
 	scope :user_user_data, ->(user){where(['user_id = ?',user.id])}
-	validates :height, :weight, :age, numericality: { greater_than: 0}
+	validates :height, :weight, :age, numericality: { greater_than: 0, less_than: }
 	validates :physical, presence: true, unless: :mental
  	validates :mental, presence: true, unless: :physical
 	validates :age,:gender,:athletic_lvl,:indoor_score, :outdoor_score,:cardio_score,:strength_score,:physicality_score,:mentality_score,:solo_score,:team_score,:intensity_score, presence:true
