@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// Template css for pop-up modal box
+// Template css for pop-up modal box, source code from https://www.w3schools.com/howto/howto_css_modals.asp
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -40,13 +40,14 @@
     cursor: pointer;
   }
 
-  .highcharts-figure, .highcharts-data-table table {
+// Referenced from: https://www.highcharts.com/demo/polar-spider/dark-unica
+// CSS style for highchart spiderchart 
+.highcharts-figure, .highcharts-data-table table {
     min-width: 320px;
     max-width: 700px;
     margin: 1em auto;
 }
 
-// CSS style for highchart spiderchart
 .highcharts-data-table table {
 	font-family: Verdana, sans-serif;
 	border-collapse: collapse;

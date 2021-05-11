@@ -1,6 +1,8 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 // You can use CoffeeScript in this file: http://coffeescript.org/
+
+// Highchart spider-chart, Referenced from https://www.highcharts.com/demo/polar-spider/dark-unica
 $(document).on('turbolinks:load', function(){
     Highcharts.chart('user_preference_container', {
 
