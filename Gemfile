@@ -17,8 +17,8 @@ gem "highcharts-rails"
 gem 'jquery-rails'
 gem 'gon'
 gem 'coffee-script-source', '1.8.0'
-# Use excon as networking gem to call API
 gem 'select2-rails'
+gem 'sendgrid-ruby'
 gem 'net-http'
 gem 'figaro'
 gem 'cancancan'
