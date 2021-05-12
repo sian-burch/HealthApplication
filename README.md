@@ -12,11 +12,11 @@
 1. "Bundle Install" 
 2. Execute "bundle exec figaro install" in terminal
 (This creates a commented config/application.yml file and adds it to your .gitignore. Add your own configuration to this file and you're done!)
-3. In config/application.yml, add "API_KEY: XXXXXXXXX" (Which the value should be the actual API Key for OpenWeather)
+3. In config/application.yml, add "API_KEY: XXXXXXXXX" (Which the value should be the actual API Key for OpenWeather, under development status, please contact with developer to receive the API_KEY for OpenWeather or Input your own API_KEY subscribed with free plan)
 
 **To use Environmental Variable for SMTP Mailer**
 1. Make sure 'figaro' Gem or other ways of implementing Environmental Variables are installed
-2. In config/application.yml, add "SMTP_API_KEY: XXXXXXXXX" (Which the value should be the actual SMTP API Key for SendGrid)
+2. In config/application.yml, add "SMTP_API_KEY: XXXXXXXXX" (Which the value should be the actual SMTP API Key for SendGrid, under development status, please contact with developer to receive the API_KEY)
 3. "Contact" and "Feedback" mailer use SMTP to send E-Mails to actual E-Mail address through SendGrid API
 
 **How the WeatherAPI routing work**
