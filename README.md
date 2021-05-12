@@ -1,6 +1,8 @@
 # README
 
 -----------------------------------------------------------------------------
+**PLEASE FOLLOW THE FOLLOWING STEPS TO RUN THIS APPLICATION UNDER DEVELOPMENT STATUS**
+
 **Todo before starting Rails server**
 1. "Bundle Install"
 2. "rake:db migrate"
