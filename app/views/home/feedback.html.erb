@@ -6,7 +6,7 @@ Give us feedback!
 <%= label_tag :email, t('.email') %>
 <%= email_field_tag :email, '', title: t('.enter_email'), required: true, autofocus: true %>
 <%= label_tag :telephone, t('.telephone') %>
-<%= telephone_field_tag :telephone, '', title: t('.enter_telephone'), required: true, autofocus: true %>
+<%= telephone_field_tag :telephone, '', title: t('.enter_telephone'), required: false, autofocus: true %>
 <%= label_tag :feedback, t('.feedback') %>
 <%= text_area_tag :feedback, '', title: t('.enter_feedback'), size: 100, class: "form-group", required: true, autofocus: true %>
 <%= submit_tag t('.submit'), class:"btn btn-success" %>

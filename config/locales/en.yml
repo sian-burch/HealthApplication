@@ -45,6 +45,12 @@ en:
   home:
 
     contact:
+      email: E-Mail Address *
+      telephone: Telephone Number
       submit: Submit
+      message: Message
     feedback:
+      email: E-Mail Address *
+      telephone: Telephone Number
       submit: Submit
+      feedback: Your Feedback *
