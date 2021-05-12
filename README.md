@@ -35,7 +35,10 @@ by copying scores from UserDatum and the global "$location" as its "location" fi
 
 **To use Cookies_eu for Cookies Consents**
 1. "Bundle Install"
-2. "bundle exec rails g cookies_eu:install"
+2. "bundle exec rails g cookies_eu:install" or manually add in application.js:
+//= require cookies_eu
+And in application.css:
+*= require cookies_eu
 -----------------------------------------------------------------------------
 This README would normally document whatever steps are necessary to get the
 application up and running.
