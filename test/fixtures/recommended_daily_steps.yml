@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  age: 1
+  age: 20
   minimum: 1
   medium: 1
   high: 1
 
 two:
-  age: 1
+  age: 30
   minimum: 1
   medium: 1
   high: 1

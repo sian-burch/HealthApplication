@@ -30,6 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  emailSent: E-Mail sent to us, we will reply soon!
+  emailSyntaxError: E-Mail Syntax error, please enter again
+  emailNotEmpty: E-Mail should not be empty
+  telephoneSyntaxError: Telephone syntax error (UK telephone example - 7712345678)
   hello: "Hello world"
   user_daily_questionnaires:
     form_weekday1:
@@ -38,4 +42,15 @@ en:
       greeting_msg: How do you feel today?
     form_weekend:
       greeting_msg: How do you feel today?
-      
+  home:
+
+    contact:
+      email: E-Mail Address *
+      telephone: Telephone Number
+      submit: Submit
+      message: Message
+    feedback:
+      email: E-Mail Address *
+      telephone: Telephone Number
+      submit: Submit
+      feedback: Your Feedback *

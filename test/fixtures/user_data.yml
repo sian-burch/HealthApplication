@@ -1,35 +1,45 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  height: 1
-  weight: 1.5
-  age: 1
+  user_id: 1
+  height: 15
+  weight: 15
+  age: 15
   gender: MyString
   athletic_lvl: MyString
   physical: false
   mental: false
-  indoor: 1
-  outdoor: 1
-  meditation: 1
-  running: 1
-  walking: 1
+  indoor_score: 1
+  outdoor_score: 1
   frequency_pref: 1
   duration_pref: 1
   BMI: 1.5
+  cardio_score: 3
+  strength_score: 2
+  physicality_score: 3
+  mentality_score: 4
+  solo_score: 5
+  team_score: 2
+  intensity_score: 2
 
 two:
-  height: 1
-  weight: 1.5
-  age: 1
+  user_id: 2
+  height: 15
+  weight: 15
+  age: 15
   gender: MyString
   athletic_lvl: MyString
   physical: false
   mental: false
-  indoor: 1
-  outdoor: 1
-  meditation: 1
-  running: 1
-  walking: 1
+  indoor_score: 1
+  outdoor_score: 1
   frequency_pref: 1
   duration_pref: 1
   BMI: 1.5
+  cardio_score: 3
+  strength_score: 2
+  physicality_score: 3
+  mentality_score: 4
+  solo_score: 5
+  team_score: 2
+  intensity_score: 2

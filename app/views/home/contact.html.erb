@@ -1,0 +1,14 @@
+<h1>Contact Us!</h1>
+
+<%= form_tag request_contact_path, method: 'post' do %>
+<%= label_tag :name, t('.name') %>
+<%= text_field_tag :name, '', title: t('.enter_name'), size: 50, required: true, autofocus: true %>
+<%= label_tag :email, t('.email') %>
+<%= email_field_tag :email, '', title: t('.enter_email'), required: true, autofocus: true %>
+<%= label_tag :telephone, t('.telephone'), required: false, autofocus: true %>
+<%= telephone_field_tag :telephone, '', title: t('.enter_telephone') %>
+<%= label_tag :message, t('.message'), required: true, autofocus: true %>
+<%= text_area_tag :message, '', title: t('.enter_message'), size: 100, class: "form-group", required: true, autofocus: true %>
+<%= submit_tag t('.submit'), class:"btn btn-success" %>
+<% end %>
+
