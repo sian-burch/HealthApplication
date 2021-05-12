@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'show_weather' => 'user_daily_questionnaires#show_weather'
   get 'check_weather' => 'user_daily_questionnaires#check_weather'
   match '/show_weather', to: 'user_daily_questionnaires#show_weather', :via => [:get, :post]
+  post 'request_contact', to: 'home#request_contact'
+  post 'request_feedback', to: 'home#request_feedback'
   # Routes for cookies  
   get '/cookies', to: 'home#cookies'
   get 'users/cookies', to: 'home#cookies'

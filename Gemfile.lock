@@ -242,6 +242,7 @@ DEPENDENCIES
   coffee-script-source (= 1.8.0)
   cookies_eu
   devise (~> 4.7, >= 4.7.3)
+  dotenv-rails
   figaro
   gon
   highcharts-rails
