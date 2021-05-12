@@ -64,7 +64,6 @@ class HomeController < ApplicationController
       flash.now[:alert] = I18n.t('emailSyntaxError')
       render "contact"
     end
-    
   end
 
   def request_feedback
