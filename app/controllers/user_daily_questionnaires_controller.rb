@@ -1,17 +1,26 @@
 class UserDailyQuestionnairesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_user_daily_questionnaire, only: %i[ show edit update destroy ]
-  before_action :set_today_time
+  before_action :set_today_time, only: %i[ new create ]
+  before_action :set_today_location, only: %i[ new create ]
   require 'date'
-
+  require 'net/http'
+  require 'json'
     
   # Function to set the day of week as today's week day
   def set_today_time
     @day_of_week=Date.today.strftime('%A')
   end
 
+  def set_today_location
+    if UserDailyQuestionnaire.where(user: current_user).first != nil
+      @user_daily_questionnaire=UserDailyQuestionnaire.where(user: current_user).first
+      @current_location = @user_daily_questionnaire.location
+    end
+  end
   # GET /user_daily_questionnaires or /user_daily_questionnaires.json
   def index
-    @user_daily_questionnaires = UserDailyQuestionnaire.all
+    @user_daily_questionnaires = UserDailyQuestionnaire.where(user: current_user).all
   end
 
   # GET /user_daily_questionnaires/1 or /user_daily_questionnaires/1.json
@@ -38,12 +47,11 @@ class UserDailyQuestionnairesController < ApplicationController
     #when "creating" new DQ we need to take their input but use them as weights to recalculate based on previous DQ
     #make "create" behave like "update"
     
-    
     @user_daily_questionnaire=UserDailyQuestionnaire.find_by_user_id(current_user.id)
     @modifications=UserDailyQuestionnaire.new(user_daily_questionnaire_params)
     #@user_daily_questionnaire=UserDailyQuestionnaire.new
     #DQ.user_id=current_user.id #possibly not needed?
-    @user_daily_questionnaire.day_of_week=@day_of_week
+    @user_daily_questionnaire.day_of_week=Date.today.strftime('%A')
     @user_daily_questionnaire.questionnaire_date=Date.today
     @user_daily_questionnaire.user_mood=@modifications.user_mood
     @user_daily_questionnaire.duration_mins=@modifications.duration_mins
@@ -57,36 +65,10 @@ class UserDailyQuestionnairesController < ApplicationController
     @user_daily_questionnaire.solo_score=calculate_new_score(@user_daily_questionnaire.solo_score,@modifications.solo_score)
     @user_daily_questionnaire.team_score=calculate_new_score(@user_daily_questionnaire.team_score,@modifications.team_score)
     @user_daily_questionnaire.intensity_score=calculate_new_score(@user_daily_questionnaire.intensity_score,@modifications.intensity_score)
+    @modifications.location=@user_daily_questionnaire.location
 
     respond_to do |format|
       if @user_daily_questionnaire.save
-
-# ----------
-        # This part should be recommendation algorithm calculating new scores (temporary questionnaire)
-        # by putting in (the scores @daily_questionnaire just filled in by user),
-        # (the weight values from previous feedback questionnaire's attributes) and 
-        # (base scores from sign-up questionnaire).
-
-        # end
-        # ----------
-        # This part should be updating (replacing) the new score values calculated from (temporary questionnaire)
-        # to the (@daily_questionnaire). So that @daily_questionnaire will be updated each day with only one instance
-        # for each user, rather than a new instance created each day for each user.
-
-        # @daily_questionnaire.update_attribute(:user_mood, 5)
-        # @daily_questionnaire.update_attribute(:indoor_score, 5)
-        # @daily_questionnaire.update_attribute(:outdoor_score, 5)
-        # @daily_questionnaire.save
-        
-
-
-        # end
-        # ----------
-        # This part should be updating (replacing) the new date field of user_daily_questionnaire
-
-        
-        # end
-        # ----------
 
         format.html { redirect_to root_path, notice: "User daily questionnaire was successfully created." }
         format.json { render :show, status: :created, location: @user_daily_questionnaire }
@@ -119,11 +101,86 @@ class UserDailyQuestionnairesController < ApplicationController
     end
   end
 
-  def daily_recommendations
-    @recs=current_user.user_daily_questionnaire.user_recommendations
-    
+ def daily_recommendations
+    initial_recs=current_user.user_daily_questionnaire.user_recommendations
+    loc=UserDailyQuestionnaire.where(user: current_user, questionnaire_date: Date.today).first.location
+    @API_KEY = ENV["API_KEY"]
+    @uri = URI("http://api.openweathermap.org/data/2.5/weather?q=#{loc}&appid=#{@API_KEY}")
+    @response = JSON.parse(Net::HTTP.get(@uri)) # => String
+    weather_main=@response["weather"][0]["main"].to_s
+
+    puts("main weather:"+weather_main)
+    @recs=[]
+    if (weather_main=='Thunderstorm'||weather_main=='Rain' || weather_main=='Snow' || weather_main=='Dust'||weather_main=='Sand'|| weather_main=='Ash'||weather_main=='Squall'||weather_main=='Tornado')
+      restrictive_weather=true
+    else
+      restrictive_weather=false
+    end
+    if restrictive_weather
+      initial_recs.each do |rec|
+        if rec[:activity].weather_restricted==false #not restricted by weather
+          @recs.push(rec)
+        end
+      end
+    else
+      @recs=initial_recs
+    end
+
+
+
+    #@recs=current_user.user_daily_questionnaire.user_recommendations
   end
 
+  def check_weather
+    @userDailyQuestionnaireToday = UserDailyQuestionnaire.where(user: current_user, questionnaire_date: Date.today).first
+  end
+
+  def show_weather
+    
+    @city_name = params[:city_name_param]
+    puts("CityName: '" + @city_name + "'")
+
+    # This will take in city name and other options including API Key
+    @API_KEY = ENV["API_KEY"]
+    @uri = URI("http://api.openweathermap.org/data/2.5/weather?q=#{@city_name}&appid=#{@API_KEY}")
+    @response = JSON.parse(Net::HTTP.get(@uri)) # => String
+
+    puts("URI: " + @uri.to_s)
+    puts("API_RESPONSE: " + @response.to_s)
+    puts("Weather_Main: " + @response["weather"].to_s)
+
+    if @response["weather"] == nil
+      puts("No response")
+      redirect_to root_path
+      flash[:alert] = "Current city is unavailable for weather searching or API key incorrect"
+      return
+    elsif UserDailyQuestionnaire.where(user: current_user).first == nil || UserDatum.where(user: current_user).first == nil
+      redirect_to new_user_data_path(:location => @city_name)
+      # redirect_back(fallback_location: root_path, :location => @city_name)
+      flash[:notice] = "Create a new daily questionnaire first"
+    elsif @response["weather"][0]["main"] != nil || @response["weather"] != nil && UserDailyQuestionnaire.where(user: current_user).first != nil
+      puts("THIS IF-STATEMENT PASSES")
+      
+      @currentUserDailyQuestionnaire = UserDailyQuestionnaire.where(user: current_user).first
+      @currentUserDailyQuestionnaire.location = @city_name
+      @currentUserDailyQuestionnaire.save
+      @currentWeather = @response["weather"][0]["main"]
+      redirect_to root_path
+      flash[:notice] = "Location set for today's questionnaire"
+      return
+    else
+    end
+  end
+
+  # The engine for using API requests, implementing RapidAPI as platform to parse corresponding URL including keys input,
+  # into JSON type, if no response, return nil.
+  # def request_api(url)
+  #   response = Excon.get(url)
+  #   return nil if response.status != 200
+
+  #   JSON.parse(response.body)
+  # end
+ 
   private
     def calculate_new_score(prev_score,modification)
       new_score=0
@@ -151,8 +208,9 @@ class UserDailyQuestionnairesController < ApplicationController
       return new_score      
     end
     # Use callbacks to share common setup or constraints between actions.
+    # Restrict user to only access its own User Daily Questionnaires, but not others
     def set_user_daily_questionnaire
-      @user_daily_questionnaire = UserDailyQuestionnaire.find(params[:id])
+      @user_daily_questionnaire = UserDailyQuestionnaire.where(user: current_user).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

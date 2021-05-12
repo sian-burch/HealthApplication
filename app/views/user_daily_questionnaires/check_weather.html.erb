@@ -1,0 +1,29 @@
+<b> Please Search For or Select  your current location by city name
+<%= form_with(url: show_weather_path, method: 'get', local: true) do %>
+    <!-- <%= label_tag :city_name_param, 'Search for a city ' %>
+    <%= select_tag :city_name_param, options_for_select(['London','Shanghai','Guildford']) %>
+    <%= button_tag 'Search', class: 'btn btn-success btn-block', id: "btnSubmit" %> -->
+    <select class="js-example-placeholder-single js-states form-control", id="city_name">
+        <option value="London">London</option>
+        <option value="Guildford">Guildford</option>
+        <option value="Aberdeen">Aberdeen</option>
+        <option value="Armagh">Armagh</option>
+        <option value="Bath">Bath</option>
+        <option value="Birmingham">Birmingham</option>
+        <option value="New York">New York</option>
+        <option value="Bradford">Bradford</option>
+        <option value="Brighton">Brighton</option>
+        <option value="Bristol">Bristol</option>
+        <option value="Cambridge">Cambridge</option>
+        <option value="Canterbury">Canterbury</option>
+        <option value="Cardiff">Cardiff</option>
+        <option value="Carlisle">Carlisle</option>
+        <option value="Chelmsford">Chelmsford</option>
+        <option value="Edinburgh">Edinburgh</option>
+        <option value="Lancaster">Lancaster</option>
+        <option value="Leeds">Leeds</option>
+    </select>
+    <input type='button' value='Search', id='button', class='btn btn-success btn-block'>
+    <!-- <%= button_tag 'Search', class: 'btn btn-success btn-block', id: "btnSubmit" %>  -->
+<% end %>
+<div id="result"></div>

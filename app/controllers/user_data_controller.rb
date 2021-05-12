@@ -1,4 +1,5 @@
 class UserDataController < ApplicationController
+  load_and_authorize_resource
   before_action :set_user_datum, only: %i[ show edit update destroy ]
   
   # GET /user_data or /user_data.json
@@ -13,6 +14,13 @@ class UserDataController < ApplicationController
 
   # GET /user_data/new
   def new
+    if params[:location] == nil
+      redirect_to check_weather_path
+    else
+      # Set global location variable to be accessible through for create function
+      $location = params[:location]
+      puts("Location is: " + $location)
+    end
     @user_datum = UserDatum.new
   end
 
@@ -22,6 +30,9 @@ class UserDataController < ApplicationController
 
   # POST /user_data or /user_data.json
   def create
+    
+    puts("The Location to be created is: " + $location.to_s)
+
     @user_datum = UserDatum.new(user_datum_params)
     @user_datum.user=current_user
 
@@ -34,21 +45,23 @@ class UserDataController < ApplicationController
     # and copy the common score variables of user data to the new daily questionnaire
 
     if UserDailyQuestionnaire.where(user: current_user).first == nil
+      puts("No UDQ exist")
       # Fields which were not specified in this table would be average values in the UDQ table
       @initial_user_daily_questionnaire = UserDailyQuestionnaire.new(user: current_user, user_mood: 3, day_of_week: Date.today.strftime('%A'),
       questionnaire_date: Date.today, duration_mins: @user_datum.duration_pref, duration_score: @user_datum_duration_score,
       indoor_score: @user_datum.indoor_score, outdoor_score: @user_datum.outdoor_score, cardio_score: @user_datum.cardio_score,
       strength_score: @user_datum.strength_score, physicality_score: @user_datum.physicality_score, mentality_score: @user_datum.mentality_score,
-      solo_score: @user_datum.solo_score, team_score: @user_datum.team_score, intensity_score: @user_datum.intensity_score)
-      @initial_user_daily_questionnaire.save!
-      
+      solo_score: @user_datum.solo_score, team_score: @user_datum.team_score, intensity_score: @user_datum.intensity_score, location: $location.to_s)
+      @initial_user_daily_questionnaire.save
+      puts("UDQ location is: "+ @initial_user_daily_questionnaire.location)
     end
 
     respond_to do |format|
       if @user_datum.save
-        format.html { redirect_to @user_datum, notice: "User datum was successfully created." }
+        format.html { redirect_to root_path, notice: "User datum was successfully created." }
         format.json { render :show, status: :created, location: @user_datum }
       else
+        # flash.now[:alert] = @user_datum.errors
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user_datum.errors, status: :unprocessable_entity }
       end
@@ -71,10 +84,7 @@ class UserDataController < ApplicationController
       dur_score=3
     end
    
-
     daily_questionnaire=UserDailyQuestionnaire.find_by_user_id(current_user.id)
-  
-    
 
     daily_questionnaire.day_of_week=Date.today.strftime('%A')
     daily_questionnaire.questionnaire_date=Date.today
@@ -108,7 +118,7 @@ class UserDataController < ApplicationController
     @daily_questionnaire=UserDailyQuestionnaire.where(user: current_user).first
     # Destroy daily questionnaire with user data, FOR TESTING, CAN BE CHANGED IN FINAL VERSION
     @daily_questionnaire.destroy if UserDailyQuestionnaire.where(user: current_user).first != nil
-      
+    puts("Daily Questionnaire is destroyed")
       
     respond_to do |format|
       format.html { redirect_to user_data_url, notice: "User datum was successfully destroyed." }
@@ -118,14 +128,16 @@ class UserDataController < ApplicationController
 
 
   private
+  
     # Use callbacks to share common setup or constraints between actions.
+    # Restrict user to only access its own User Data, but not others
     def set_user_datum
-      @user_datum = UserDatum.find(params[:id])
+      @user_datum = UserDatum.where(user: current_user).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def user_datum_params
-      params.require(:user_datum).permit(:height, :weight, :age, :gender, :athletic_lvl, :physical, :mental, :indoor_score, :outdoor_score,:cardio_score,:strength_score,:physicality_score,:mentality_score,:solo_score,:team_score,:intensity_score ,:frequency_pref, :duration_pref, :BMI)
+      params.require(:user_datum).permit(:height, :weight, :age, :gender, :athletic_lvl, :physical, :mental, :indoor_score, :outdoor_score,:cardio_score,:strength_score,:physicality_score,:mentality_score,:solo_score,:team_score,:intensity_score ,:frequency_pref, :duration_pref, :BMI,:location)
     end
 
 end

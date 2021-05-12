@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_28_133204) do
+ActiveRecord::Schema.define(version: 2021_05_05_100946) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name", null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_04_28_133204) do
     t.integer "intensity_score", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "weather_restricted"
   end
 
   create_table "recommended_daily_steps", force: :cascade do |t|
@@ -53,6 +54,7 @@ ActiveRecord::Schema.define(version: 2021_04_28_133204) do
     t.integer "solo_score", null: false
     t.integer "team_score", null: false
     t.integer "intensity_score", null: false
+    t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_daily_questionnaires_on_user_id"
@@ -91,6 +93,7 @@ ActiveRecord::Schema.define(version: 2021_04_28_133204) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.boolean "terms_and_agreements"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
