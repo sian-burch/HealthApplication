@@ -25,6 +25,16 @@
 by copying scores from UserDatum and the global "$location" as its "location" field.
 5. Redirect back to home page is UDQ and UD is set.
 
+**To use CanCanCan gem for authentication**
+
+(CanCanCan is an authorization library for Ruby and Ruby on Rails which restricts what resources a given user is allowed to access.)
+1. "Bundle Install"
+2. Make sure Ability class is generated already in the project (which should of been generated through "rails g cancan:ability")
+
+**To use Cookies_eu for Cookies Consents**
+1. "Bundle Install"
+2. "bundle exec rails g cookies_eu:install"
+
 -----------------------------------------------------------------------------
 This README would normally document whatever steps are necessary to get the
 application up and running.

@@ -40,9 +40,6 @@ class HomeController < ApplicationController
     # Regex for validating email
     emailRegex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-    # Regex for validating telephone
-    telephoneRegex = /\A(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\z/
-
     # If email and telephone syntax match regex
     if (email.match(emailRegex).nil?) == false
     # Deliver Email with parameters and email format
