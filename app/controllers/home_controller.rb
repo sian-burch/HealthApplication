@@ -32,7 +32,62 @@ class HomeController < ApplicationController
   def about
   end
 
-  def header
+  def contact
+  end
+
+  def feedback
+  end
+
+  def request_contact
+    name = params[:name]
+    email = params[:email]
+    telephone = params[:telephone]
+    message = params[:message]
+
+    # Regex for validating email
+    emailRegex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+    # If email and telephone syntax match regex
+    if (email.match(emailRegex).nil?) == false
+    # Deliver Email with parameters and email format
+      UserMailer.feedback_form(email,name,telephone,feedback).deliver_now
+      flash[:notice] = I18n.t('emailSent')
+    # Redirect back to home page after email is sent
+      redirect_to root_path
+    # If email field is blank
+    elsif email.blank?
+    # Flash alert notification
+      flash.now[:alert] = I18n.t('emailNotEmpty')
+    # Do not redirect, but render this contact view again
+      render "contact"
+    else
+      flash.now[:alert] = I18n.t('emailSyntaxError')
+      render "contact"
+    end
+    
+  end
+
+  def request_feedback
+    name = params[:name]
+    email = params[:email]
+    telephone = params[:telephone]
+    feedback = params[:feedback]
+
+    # Regex for validating email
+    emailRegex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+    # If email and telephone syntax match regex
+    if (email.match(emailRegex).nil?) == false
+      UserMailer.feedback_form(email,name,telephone,feedback).deliver_now
+      flash[:notice] = I18n.t('emailSent')
+      redirect_to root_path
+    elsif email.blank?
+      flash.now[:alert] = I18n.t('emailNotEmpty')
+      render "feedback"
+    else
+      flash.now[:alert] = I18n.t('emailSyntaxError')
+      render "feedback"
+    end
   end
 
 end
