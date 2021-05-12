@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   get '/contact' => 'home#contact'
   get '/feedback' => 'home#feedback'
   get '/new_user_data' => 'user_data#new', as: :new_user_data
-  get '/new_user_data' => 'user_data#new', as: :new_user_data
   get 'show_weather' => 'user_daily_questionnaires#show_weather'
   get 'check_weather' => 'user_daily_questionnaires#check_weather'
   match '/show_weather', to: 'user_daily_questionnaires#show_weather', :via => [:get, :post]
