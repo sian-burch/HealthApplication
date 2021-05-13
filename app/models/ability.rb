@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+# Admin Tutorial referenced from: https://altalogy.com/blog/rails-6-user-accounts-with-3-types-of-roles/
 class Ability
   include CanCan::Ability
 
@@ -7,9 +7,13 @@ class Ability
 
     user ||= User.new # guest user (not logged in)
     # If user is admin
-    if user.admin?
+    if user.superadmin_role?
       can :manage, :all
+      can :access, :rails_admin       # only allow admin users to access Rails Admin
+      can :manage, :dashboard         # allow access to dashboard
     # If guest user and also not admin
+    elsif user.supervisor_role?
+      can :manage, User
     else
       # Only able to manage their own User Datum and UDQ but not others
       can :manage, UserDatum, user_id: user.id
