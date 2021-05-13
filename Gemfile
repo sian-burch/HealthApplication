@@ -24,6 +24,8 @@ gem 'net-http'
 gem 'figaro'
 gem 'cancancan'
 gem 'cookies_eu'
+gem 'rails_admin', '~> 2.0'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'

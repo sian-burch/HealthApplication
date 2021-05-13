@@ -39,6 +39,10 @@ by copying scores from UserDatum and the global "$location" as its "location" fi
 //= require cookies_eu
 And in application.css:
 *= require cookies_eu
+
+**To use Rails Admin gem**
+1. "Bundle Install"
+2. Make sure "rails g rails_admin:install" is ran or route for admin is created and "config/Initializers/railsadmin.rb" file is created
 -----------------------------------------------------------------------------
 This README would normally document whatever steps are necessary to get the
 application up and running.
