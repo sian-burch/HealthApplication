@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   
   # Function to set the day of week as today's week day
   def set_user_today
-    @dayOfWeek=Date.today.strftime('%A')
+    @day_of_week=Date.today.strftime('%A')
     # Variables for showing the pop-ups if they don't exist
     @userDailyQuestionnaireToday = UserDailyQuestionnaire.where(user: current_user, questionnaire_date: Date.today).first
     @userData = UserDatum.where(user: current_user).first
@@ -23,6 +23,8 @@ class HomeController < ApplicationController
     elsif UserDailyQuestionnaire.where(user: current_user).first != nil && UserDailyQuestionnaire.where(user: current_user).first.location != nil
       # Set today's location as UDQ's location
       @locationToday = UserDailyQuestionnaire.where(user: current_user).first.location
+    elsif UserDailyQuestionnaire.where(user: current_user).first != nil && UserDailyQuestionnaire.where(user: current_user).first.location == nil
+      redirect_to check_weather_path
     end
     # gem "gon" is used to be assigned with variable from controller to javascript
     gon.UserData = UserDatum.where(user: current_user).first

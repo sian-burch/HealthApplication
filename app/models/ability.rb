@@ -14,6 +14,8 @@ class Ability
     # If guest user and also not admin
     elsif user.supervisor_role?
       can :manage, User
+      can :manage, UserDatum, user_id: user.id
+      can :manage, UserDailyQuestionnaire, user_id: user.id
     else
       # Only able to manage their own User Datum and UDQ but not others
       can :manage, UserDatum, user_id: user.id
