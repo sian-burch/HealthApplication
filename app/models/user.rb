@@ -6,11 +6,6 @@ class User < ApplicationRecord
   # validates :terms_and_agreements, acceptance: { accept: true }
   validates :terms_and_agreements, acceptance: true
 
-  # Regular user is not set as admin
-  def admin?
-    false
-  end
-
   def password_complexity
     # Regexp extracted from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
     return if password.blank? || password =~ /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/
