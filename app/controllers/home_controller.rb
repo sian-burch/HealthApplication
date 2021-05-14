@@ -40,6 +40,7 @@ class HomeController < ApplicationController
   def feedback
   end
 
+
   def request_contact
     name = params[:name]
     email = params[:email]
