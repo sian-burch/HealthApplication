@@ -22,4 +22,3 @@
 //= require highcharts/themes/dark-blue
 //= require select2
 //= require cookies_eu
-

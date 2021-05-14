@@ -45,13 +45,24 @@ en:
   home:
 
     contact:
+      enter_name: Please Enter Your Name/Nickname
+      name: Name/Nickname *
+      enter_email: Please Enter Your E-mail and We will send you a Copy of the Contact E-mail
       email: E-Mail Address *
+      enter_telephone: Please Enter Your Telephone Number
       telephone: Telephone Number
-      submit: Submit
+      enter_message: Please Enter Your Message
       message: Message
-    feedback:
-      email: E-Mail Address *
-      telephone: Telephone Number
       submit: Submit
-      feedback_category: "Please select Feedback Category:"
+    feedback:
+      enter_name: Please Enter Your Name/Nickname
+      name: Name/Nickname *
+      enter_email: Please Enter Your E-mail and We will Send you a Copy of the Feedback E-mail
+      email: E-Mail Address *
+      enter_telephone: Please Enter Your Telephone Number
+      telephone: Telephone Number
+      feedback_category: Feedback Category
+      enter_feedback: Please Enter Your Feedback Message
       feedback: Your Feedback *
+      submit: Submit
+

@@ -51,8 +51,11 @@ class HomeController < ApplicationController
 
     # If email and telephone syntax match regex
     if (email.match(emailRegex).nil?) == false
+      if (telephone == "" || telephone == nil)
+        telephone = "N/A"
+      end
     # Deliver Email with parameters and email format
-      UserMailer.feedback_form(email,name,telephone,feedback).deliver_now
+      UserMailer.contact_form(email,name,telephone,message).deliver_now
       flash[:notice] = I18n.t('emailSent')
     # Redirect back to home page after email is sent
       redirect_to root_path
@@ -80,6 +83,10 @@ class HomeController < ApplicationController
 
     # If email and telephone syntax match regex
     if (email.match(emailRegex).nil?) == false
+      if (telephone == "" || telephone == nil)
+        puts("Telephone is empty string")
+        telephone = "N/A"
+      end
       UserMailer.feedback_form(email,name,telephone,feedback_category,feedback).deliver_now
       flash[:notice] = I18n.t('emailSent')
       redirect_to root_path
