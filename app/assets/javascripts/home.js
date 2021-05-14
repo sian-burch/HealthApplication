@@ -82,3 +82,7 @@ $(document).on('turbolinks:load', function(){
 
     });
 });
+
+$(document).on('ready turbolinks:load', function() {
+    $('*:not(.bootstrap-select) > .selectpicker').selectpicker('refresh');
+  }

@@ -1,4 +1,5 @@
 <b> Please Search For or Select  your current location by city name
+<br>
 <%= form_with(url: show_weather_path, method: 'get', local: true) do %>
     <!-- <%= label_tag :city_name_param, 'Search for a city ' %>
     <%= select_tag :city_name_param, options_for_select(['London','Shanghai','Guildford']) %>
@@ -23,7 +24,8 @@
         <option value="Lancaster">Lancaster</option>
         <option value="Leeds">Leeds</option>
     </select>
+    <br>
+    <br>
     <input type='button' value='Search', id='button', class='btn btn-success btn-block'>
-    <!-- <%= button_tag 'Search', class: 'btn btn-success btn-block', id: "btnSubmit" %>  -->
 <% end %>
 <div id="result"></div>

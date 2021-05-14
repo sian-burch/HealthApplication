@@ -16,11 +16,12 @@ class UserMailer < ApplicationMailer
         mail cc:@email
     end
 
-    def feedback_form(email, name, telephone, feedback)
+    def feedback_form(email, name, telephone, feedback_category, feedback)
 
         @email = email
         @name = name
         @telephone = telephone
+        @feedback_category = feedback_category
         @feedback = feedback
 
         mail( :to => 'healthapplication2021@gmail.com',

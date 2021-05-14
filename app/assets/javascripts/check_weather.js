@@ -6,7 +6,8 @@ $(document).on('turbolinks:load',function() {
         // Allow searchbar to be cleared
         allowClear: true,
         // If typed in string does not have option, then add to option list
-        tags: true
+        tags: true,
+        width: '50%'
     });
 
     $('#button').click(function(){

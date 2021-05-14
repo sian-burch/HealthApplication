@@ -72,6 +72,7 @@ class HomeController < ApplicationController
     name = params[:name]
     email = params[:email]
     telephone = params[:telephone]
+    feedback_category = params[:feedback_category]
     feedback = params[:feedback]
 
     # Regex for validating email
@@ -79,7 +80,7 @@ class HomeController < ApplicationController
 
     # If email and telephone syntax match regex
     if (email.match(emailRegex).nil?) == false
-      UserMailer.feedback_form(email,name,telephone,feedback).deliver_now
+      UserMailer.feedback_form(email,name,telephone,feedback_category,feedback).deliver_now
       flash[:notice] = I18n.t('emailSent')
       redirect_to root_path
     elsif email.blank?

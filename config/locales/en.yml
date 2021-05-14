@@ -53,4 +53,5 @@ en:
       email: E-Mail Address *
       telephone: Telephone Number
       submit: Submit
+      feedback_category: "Please select Feedback Category:"
       feedback: Your Feedback *

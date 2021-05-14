@@ -1,14 +1,18 @@
+
 Give us feedback!
 
 <%= form_tag request_feedback_path, class: 'feedback_form' do %>
 <%= label_tag :name, t('.name') %>
-<%= text_field_tag :name, '', title: t('.enter_name'), size: 50, required: true, autofocus: true %>
+<%= text_field_tag :name, '', title: t('.enter_name'), size: 50, required: true, autofocus: true, class: "form-control" %>
 <%= label_tag :email, t('.email') %>
-<%= email_field_tag :email, '', title: t('.enter_email'), required: true, autofocus: true %>
+<%= email_field_tag :email, '', title: t('.enter_email'), required: true, autofocus: true, class:"form-control" %>
 <%= label_tag :telephone, t('.telephone') %>
-<%= telephone_field_tag :telephone, '', title: t('.enter_telephone'), required: false, autofocus: true %>
+<%= telephone_field_tag :telephone, '', title: t('.enter_telephone'), required: false, autofocus: true, class:"form-control" %>
+<%= label_tag :feedback_category, t('.feedback_category') %>
+<%= select_tag :feedback_category,  options_for_select([["Questionnaire", "Questionnaire related"], ["Recommendation", "Recommendation related"], ["Community Posts", "Community Posts related"], ["Content", "Content related"], ["Other", "Other categories"]], params[:feedback_category]), id: "different_option_value_html", class: "form-control input-sm selectpicker"%>
 <%= label_tag :feedback, t('.feedback') %>
-<%= text_area_tag :feedback, '', title: t('.enter_feedback'), size: 100, class: "form-group", required: true, autofocus: true %>
+<%= text_area_tag :feedback, '', title: t('.enter_feedback'), size: 100, class: "form-group", required: true, autofocus: true, class:"form-control" %>
+<br>
 <%= submit_tag t('.submit'), class:"btn btn-success" %>
 <% end %>
 
