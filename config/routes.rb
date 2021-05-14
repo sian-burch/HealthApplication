@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :activities
   resources :user_data
   devise_for :users
-  get 'home/about'
+ 
+  get '/about_us' => 'home#about'
   root 'home#index'
   get '/daily_recommendations' => 'user_daily_questionnaires#daily_recommendations'
   get '/user_data' => 'user_data#show'
