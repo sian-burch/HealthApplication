@@ -5,8 +5,8 @@
 
 ## **Todo before starting Rails server**
 1. "**Bundle Install**"
-2. "**rake:db migrate**"
-3. "**rake:db seed**"
+2. "**rake db:migrate**"
+3. "**rake db:seed**"
 
 ## **To use Environmental Variable of the 'figaro' Gem**
 [Figaro Gem Page](https://github.com/laserlemon/figaro)
