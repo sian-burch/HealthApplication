@@ -1,4 +1,5 @@
 class RecommendedDailyStepsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_recommended_daily_step, only: %i[ show edit update destroy ]
 
   # GET /recommended_daily_steps or /recommended_daily_steps.json
