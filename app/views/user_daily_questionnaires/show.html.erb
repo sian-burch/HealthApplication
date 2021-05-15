@@ -70,5 +70,10 @@
   <%= @user_daily_questionnaire.intensity_score %>
 </p>
 
+<p>
+  <strong>Location:</strong>
+  <%= @user_daily_questionnaire.location %>
+</p>
+
 <%= link_to 'Edit', edit_user_daily_questionnaire_path(@user_daily_questionnaire) %> |
 <%= link_to 'Back', user_daily_questionnaires_path %>

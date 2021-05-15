@@ -14,8 +14,12 @@
 
 <b>Weekend Questionnaire</b>
 <br>
-  <b> Current Location: 
-  <%= @current_location%>
+  <%if UserDailyQuestionnaire.where(user: current_user, questionnaire_date: Date.today).first == nil%>
+    <b> Current Location is not available, please set a location!
+  <% else %>
+    <b> Current Location: 
+    <%= @current_location%>
+  <%end%>
 
   <div class="field">
     <%= form.label t(".greeting_msg") %>
