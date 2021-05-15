@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   resources :activities
   resources :user_data
   devise_for :users
- 
+  get '/index' => 'home#index'
+  get '/signed_out_home' => 'home#signed_out_home'
   get '/about_us' => 'home#about'
-  root 'home#index'
+  #root 'home#index'
+  root 'home#signed_out_home'
   get '/daily_recommendations' => 'user_daily_questionnaires#daily_recommendations'
   get '/user_data' => 'user_data#show'
   get '/my_daily_questionnaire' => 'user_daily_questionnaires#index'

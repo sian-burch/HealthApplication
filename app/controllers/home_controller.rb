@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   before_action :set_user_today, only: %i[ index ]
   skip_before_action :authenticate_user!, only: %i[ privacy_policy disclaimer ]
   skip_before_action :authenticate_user!, only: %i[ cookies ]
+  skip_before_action :authenticate_user!, only: [:signed_out_home,:about]
   require 'date'
   require 'time'
   
@@ -14,21 +15,31 @@ class HomeController < ApplicationController
   end
 
  def index
+    
     # Redirect to create new user data when no user data exists
-    if UserDatum.where(user: current_user).first == nil
-      redirect_to check_weather_path
-    elsif UserDailyQuestionnaire.where(user: current_user).first == nil
-      # Remain in root path
-      # Fixed redirect_to root path prevent from infinite loop
-    elsif UserDailyQuestionnaire.where(user: current_user).first != nil && UserDailyQuestionnaire.where(user: current_user).first.location != nil
-      # Set today's location as UDQ's location
-      @locationToday = UserDailyQuestionnaire.where(user: current_user).first.location
-    elsif UserDailyQuestionnaire.where(user: current_user).first != nil && UserDailyQuestionnaire.where(user: current_user).first.location == nil
-      redirect_to check_weather_path
+      if UserDatum.where(user: current_user).first == nil
+        redirect_to check_weather_path
+      elsif UserDailyQuestionnaire.where(user: current_user).first == nil
+        # Remain in root path
+        # Fixed redirect_to root path prevent from infinite loop
+      elsif UserDailyQuestionnaire.where(user: current_user).first != nil && UserDailyQuestionnaire.where(user: current_user).first.location != nil
+        # Set today's location as UDQ's location
+        @locationToday = UserDailyQuestionnaire.where(user: current_user).first.location
+      elsif UserDailyQuestionnaire.where(user: current_user).first != nil && UserDailyQuestionnaire.where(user: current_user).first.location == nil
+        redirect_to check_weather_path
+      end
+      # gem "gon" is used to be assigned with variable from controller to javascript
+      gon.UserData = UserDatum.where(user: current_user).first
+      gon.UserDailyQuestionnaire = UserDailyQuestionnaire.where(user: current_user).first
+   
+
+  end
+
+  def signed_out_home
+    if user_signed_in?
+      redirect_to action: "index"
     end
-    # gem "gon" is used to be assigned with variable from controller to javascript
-    gon.UserData = UserDatum.where(user: current_user).first
-    gon.UserDailyQuestionnaire = UserDailyQuestionnaire.where(user: current_user).first
+   
   end
 
   def about
