@@ -1,5 +1,8 @@
 {
   "name": "HealthApp",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "chart.js": "^3.2.1",
+    "chartkick": "^4.0.4"
+  }
 }

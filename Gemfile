@@ -17,6 +17,7 @@ gem "highcharts-rails"
 gem 'jquery-rails'
 gem 'gon'
 gem 'coffee-script-source', '1.8.0'
+gem "chartkick"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
