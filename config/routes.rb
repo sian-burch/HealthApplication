@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :mental_posts
+  resources :posts
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :user_daily_questionnaires
   resources :recommended_daily_steps
