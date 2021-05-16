@@ -26,6 +26,7 @@ gem 'figaro'
 gem 'cancancan'
 gem 'cookies_eu'
 gem 'rails_admin', '~> 2.0'
+gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

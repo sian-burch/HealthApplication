@@ -29,6 +29,9 @@ class UserDailyQuestionnairesController < ApplicationController
 
   # GET /user_daily_questionnaires/new
   def new
+    $location = params[:location]
+    @location = $location
+    puts("Location is: " + @location)
     @user_daily_questionnaire = UserDailyQuestionnaire.new
   end
 
@@ -38,6 +41,9 @@ class UserDailyQuestionnairesController < ApplicationController
   
   # POST /user_daily_questionnaires or /user_daily_questionnaires.json
   def create
+    @location_name = params[:location]
+    @location = $location
+    puts("Location set as " + @location.to_s + " in Change Weather")
     # Initializing current user data as the current user
     # BEFORE MODIFYING
     # @user_daily_questionnaire = UserDailyQuestionnaire.new(user_daily_questionnaire_params)
@@ -83,6 +89,8 @@ class UserDailyQuestionnairesController < ApplicationController
       @user_daily_questionnaire.user = current_user
       @user_daily_questionnaire.day_of_week=Date.today.strftime('%A')
       @user_daily_questionnaire.questionnaire_date=Date.today
+      puts("Current location does not exist before, location passed: " + $location.to_s)
+      @user_daily_questionnaire.location = $location
       respond_to do |format|
         if @user_daily_questionnaire.save
           format.html { redirect_to root_path, notice: "User daily questionnaire was successfully created." }
@@ -118,32 +126,34 @@ class UserDailyQuestionnairesController < ApplicationController
   end
 
  def daily_recommendations
-    initial_recs=current_user.user_daily_questionnaire.user_recommendations
-    loc=UserDailyQuestionnaire.where(user: current_user, questionnaire_date: Date.today).first.location
-    @API_KEY = ENV["API_KEY"]
-    @uri = URI("http://api.openweathermap.org/data/2.5/weather?q=#{loc}&appid=#{@API_KEY}")
-    @response = JSON.parse(Net::HTTP.get(@uri)) # => String
-    weather_main=@response["weather"][0]["main"].to_s
+    if current_user.user_daily_questionnaire != nil && current_user.user_daily_questionnaire.user_recommendations !=nil
+      initial_recs=current_user.user_daily_questionnaire.user_recommendations
+      loc=UserDailyQuestionnaire.where(user: current_user, questionnaire_date: Date.today).first.location
+      @API_KEY = ENV["API_KEY"]
+      @uri = URI("http://api.openweathermap.org/data/2.5/weather?q=#{loc}&appid=#{@API_KEY}")
+      @response = JSON.parse(Net::HTTP.get(@uri)) # => String
+      weather_main=@response["weather"][0]["main"].to_s
 
-    puts("main weather:"+weather_main)
-    @recs=[]
-    if (weather_main=='Thunderstorm'||weather_main=='Rain' || weather_main=='Snow' || weather_main=='Dust'||weather_main=='Sand'|| weather_main=='Ash'||weather_main=='Squall'||weather_main=='Tornado')
-      restrictive_weather=true
-    else
-      restrictive_weather=false
-    end
-    if restrictive_weather
-      initial_recs.each do |rec|
-        if rec[:activity].weather_restricted==false #not restricted by weather
-          @recs.push(rec)
+      puts("main weather:"+weather_main)
+      @recs=[]
+      if (weather_main=='Thunderstorm'||weather_main=='Rain' || weather_main=='Snow' || weather_main=='Dust'||weather_main=='Sand'|| weather_main=='Ash'||weather_main=='Squall'||weather_main=='Tornado')
+        restrictive_weather=true
+      else
+        restrictive_weather=false
+      end
+      if restrictive_weather
+        initial_recs.each do |rec|
+          if rec[:activity].weather_restricted==false #not restricted by weather
+            @recs.push(rec)
+          end
         end
+      else
+        @recs=initial_recs
       end
     else
-      @recs=initial_recs
+      redirect_to root_path
+      flash[:alert] = "Please fill in your Daily Questionnaire first before any recommendation is available"
     end
-
-
-
     #@recs=current_user.user_daily_questionnaire.user_recommendations
   end
 
@@ -170,9 +180,11 @@ class UserDailyQuestionnairesController < ApplicationController
       redirect_to root_path
       flash[:alert] = "Current city is unavailable for weather searching or API key incorrect"
       return
-    elsif UserDailyQuestionnaire.where(user: current_user).first == nil || UserDatum.where(user: current_user).first == nil
+    elsif UserDailyQuestionnaire.where(user: current_user).first == nil && UserDatum.where(user: current_user).first == nil
       redirect_to new_user_data_path(:location => @city_name)
-      # redirect_back(fallback_location: root_path, :location => @city_name)
+      flash[:notice] = "Fill in a new user daily questionnaire first"
+    elsif UserDailyQuestionnaire.where(user: current_user).first == nil && UserDatum.where(user: current_user).first != nil
+      redirect_to new_user_daily_questionnaire_path(:location => @city_name)
       flash[:notice] = "Create a new daily questionnaire first"
     elsif @response["weather"][0]["main"] != nil || @response["weather"] != nil && UserDailyQuestionnaire.where(user: current_user).first != nil
       puts("THIS IF-STATEMENT PASSES")

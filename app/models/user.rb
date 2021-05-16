@@ -6,6 +6,11 @@ class User < ApplicationRecord
   # validates :terms_and_agreements, acceptance: { accept: true }
   validates :terms_and_agreements, acceptance: true
 
+  # Avatar Referenced from: https://gorails.com/episodes/user-avatars-with-rails-active-storage 
+  has_one_attached :avatar
+
+  # validates_attachment :avatar, :presence => true, :content_type => { :content_type => "image/jpeg", :message => "Only JPEG formats allowed" }
+
   def password_complexity
     # Regexp extracted from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
     return if password.blank? || password =~ /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/

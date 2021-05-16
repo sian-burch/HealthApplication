@@ -48,6 +48,11 @@ and in application.css:
 [RailsAdmin Gem Page](https://github.com/sferik/rails_admin)
 1. "**Bundle Install**"
 2. Make sure "**rails g rails_admin:install**" is ran or route for admin is created and "**config/Initializers/railsadmin.rb**" file is created
+
+## **To use Profile pictures**
+1. "**Bundle Install**" to make sure gem [gravatar_image_tag](https://github.com/mdeering/gravatar_image_tag) is installed
+2. "**rails active_storage:install**" to install active_storage
+3. When website in development status, to store images in server, Change the "config.active_storage.service" in "config/environments/development" to any options in config/storage.yml when development.
 -----------------------------------------------------------------------------
 This README would normally document whatever steps are necessary to get the
 application up and running.
