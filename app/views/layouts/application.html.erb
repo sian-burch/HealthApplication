@@ -13,6 +13,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= include_gon %>
+    
+    <%= render 'cookies_eu/consent_banner', link: 'cookies', target: '_blank' %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -30,8 +32,7 @@
       <% if alert %>
         <p class="alert alert-danger"><%= alert %></p>
         <% end %>
-      
-       <%= render 'cookies_eu/consent_banner', link: 'cookies', target: '_blank' %>
+     
 
       <%= yield %>
     </div>
