@@ -22,3 +22,5 @@
 //= require highcharts/themes/dark-blue
 //= require chartkick
 //= require Chart.bundle
+//= require select2
+//= require cookies_eu
