@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :weight_diaries
-  mount RailsAdmin: :Engine => '/admin', as: 'rails_admin'
+  resources :mental_posts
+  resources :posts
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :user_daily_questionnaires
   resources :recommended_daily_steps
   resources :activities
