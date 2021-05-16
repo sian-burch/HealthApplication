@@ -1,0 +1,13 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post {
+    border-width: 0px;
+    padding:20px;
+    background-color: #d7f3ff;
+}
+
+#post_creator {
+  text-align: right;
+}

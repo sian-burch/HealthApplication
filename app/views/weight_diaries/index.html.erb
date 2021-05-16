@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Weight Diaries</h1>
+
+<%= line_chart WeightDiary.all.select{ |weight_diary| weight_diary.user == current_user}.pluck(:date, :weight), xtitle: "Date", ytitle: "Weight" %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Weight</th>
+      <th>Date</th>
+      <th>User ID</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @weight_diaries.each do |weight_diary| %>
+    <% if weight_diary.user == current_user %>
+      <tr>
+        <td><%= weight_diary.weight %></td>
+        <td><%= weight_diary.date %></td>
+        <td><%= weight_diary.user_id %></td>
+        <td><%= link_to 'Show', weight_diary %></td>
+        <td><%= link_to 'Edit', edit_weight_diary_path(weight_diary) %></td>
+        <td><%= link_to 'Destroy', weight_diary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Weight Diary', new_weight_diary_path %>

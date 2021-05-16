@@ -1,0 +1,31 @@
+<%= form_with(model: weight_diary, local: true) do |form| %>
+  <% if weight_diary.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(weight_diary.errors.count, "error") %> prohibited this weight_diary from being saved:</h2>
+
+      <ul>
+      <% weight_diary.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :weight %>
+    <%= form.text_field :weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
+
+  <div class="field">
+    <%= form.number_field :user_id , id: :weight_diary_user_id, value: current_user.id, type: :hidden  %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

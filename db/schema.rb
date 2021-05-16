@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_05_16_111112) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -32,6 +33,9 @@ ActiveRecord::Schema.define(version: 2021_05_16_111112) do
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
+=======
+ActiveRecord::Schema.define(version: 2021_05_16_165547) do
+>>>>>>> 887547052732db8b90a3be1e3e6aa403969b79e1
 
   create_table "activities", force: :cascade do |t|
     t.string "name", null: false
@@ -48,6 +52,27 @@ ActiveRecord::Schema.define(version: 2021_05_16_111112) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "weather_restricted"
+  end
+
+  create_table "mental_posts", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_mental_posts_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "type"
+    t.boolean "physical"
+    t.boolean "mental"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "recommended_daily_steps", force: :cascade do |t|
@@ -121,6 +146,15 @@ ActiveRecord::Schema.define(version: 2021_05_16_111112) do
     t.boolean "user_role", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "weight_diaries", force: :cascade do |t|
+    t.float "weight"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_weight_diaries_on_user_id"
   end
 
 end
