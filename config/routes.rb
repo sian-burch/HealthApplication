@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resource :weight_diaries
   resources :mental_posts
   resources :posts
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
