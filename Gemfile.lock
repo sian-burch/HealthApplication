@@ -224,7 +224,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   chartkick
-  chromedriver-helper
+  chromedriver-helper (= 1.2.0)
   coffee-rails (~> 4.2)
   coffee-script-source (= 1.8.0)
   devise (~> 4.7, >= 4.7.3)
