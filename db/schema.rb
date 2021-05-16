@@ -93,7 +93,6 @@ ActiveRecord::Schema.define(version: 2021_05_13_172929) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.boolean "terms_and_agreements"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "superadmin_role", default: false
