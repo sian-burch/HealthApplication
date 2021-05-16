@@ -29,6 +29,27 @@ ActiveRecord::Schema.define(version: 2021_05_16_165547) do
     t.boolean "weather_restricted"
   end
 
+  create_table "mental_posts", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_mental_posts_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "type"
+    t.boolean "physical"
+    t.boolean "mental"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "recommended_daily_steps", force: :cascade do |t|
     t.integer "age", null: false
     t.integer "minimum", null: false

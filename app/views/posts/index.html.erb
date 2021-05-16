@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Physical Health Channel</h1>
+<p>This channel is about all things physical health and exercise related.</p>
+<br><br>
+
+
+    <% @posts.reverse_each do |post| %>
+    <div class='post'>
+        <h3><%= post.title %></h3>
+        <p><%= post.description %></p>
+        <p id='post_creator'>by <%= post.user.email %></p>
+    </div>
+    <br><br>
+    <% end %>
+
+<br>
+
+<%= link_to ' + New Post', new_post_path %>

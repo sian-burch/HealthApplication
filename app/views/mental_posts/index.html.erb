@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Mental Health Channel</h1>
+<p>This channel is about all things mental health and wellbeing related.</p>
+<br><br>
+
+
+    <% @mental_posts.reverse_each do |mental_post| %>
+    <div class='mental-post'>
+        <h3><%= mental_post.title %></h3>
+        <p><%= mental_post.description %></p>
+        <p id='post_creator'>by <%= mental_post.user.email %></p>
+    </div>
+    <br><br>
+    <% end %>
+
+<br>
+
+<%= link_to ' + New Post', new_mental_post_path %>

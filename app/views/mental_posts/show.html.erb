@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @mental_post.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @mental_post.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @mental_post.user %>
+</p>
+
+<%= link_to 'Edit', edit_mental_post_path(@mental_post) %> |
+<%= link_to 'Back', mental_posts_path %>
