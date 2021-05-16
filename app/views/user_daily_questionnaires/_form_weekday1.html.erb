@@ -14,11 +14,11 @@
 
 <b>Monday and Tuesday Questionnaire</b>
 <br>
-  <%if UserDailyQuestionnaire.where(user: current_user, questionnaire_date: Date.today).first == nil%>
+  <%if UserDailyQuestionnaire.where(user: current_user).first == nil%>
     <b> Current Location is not available, please set a location!
   <% else %>
     <b> Current Location: 
-    <%= @current_location%>
+    <%= UserDailyQuestionnaire.where(user: current_user).first.location%>
   <%end%>
 
   <div class="field">
