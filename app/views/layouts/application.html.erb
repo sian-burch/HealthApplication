@@ -30,6 +30,8 @@
       <% if alert %>
         <p class="alert alert-danger"><%= alert %></p>
         <% end %>
+      
+       <%= render 'cookies_eu/consent_banner', link: 'cookies', target: '_blank' %>
 
       <%= yield %>
     </div>
