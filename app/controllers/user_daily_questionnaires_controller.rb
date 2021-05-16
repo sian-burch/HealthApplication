@@ -29,9 +29,11 @@ class UserDailyQuestionnairesController < ApplicationController
 
   # GET /user_daily_questionnaires/new
   def new
-    $location = params[:location]
-    @location = $location
-    puts("Location is: " + @location)
+    if $location != nil
+      $location = params[:location]
+      @location = $location
+      puts("Location is: " + @location)
+    end
     @user_daily_questionnaire = UserDailyQuestionnaire.new
   end
 
@@ -152,7 +154,7 @@ class UserDailyQuestionnairesController < ApplicationController
       end
     else
       redirect_to root_path
-      flash[:alert] = "Please fill in your Daily Questionnaire first before any recommendation is available"
+      flash[:success] = "Please fill in your Daily Questionnaire first before any recommendation is available"
     end
     #@recs=current_user.user_daily_questionnaire.user_recommendations
   end

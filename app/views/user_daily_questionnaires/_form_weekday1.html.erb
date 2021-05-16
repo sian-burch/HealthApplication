@@ -23,6 +23,9 @@
 
   <div class="field">
     <%= form.label t(".greeting_msg") %>
+
+    <%= f.range_field :user_mood, :min=>1, :max=>5, :class=>"slide", :id=>"slider1"%>
+
     <%= form.radio_button :user_mood, '1' %> 1<br />
     <%= form.radio_button :user_mood, '2' %> 2<br />
     <%= form.radio_button :user_mood, '3' %> 3<br />
