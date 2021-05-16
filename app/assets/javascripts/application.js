@@ -20,5 +20,7 @@
 // to get the new features in 2.3.0:
 //= require highcharts/highcharts-more
 //= require highcharts/themes/dark-blue
+//= require chartkick
+//= require Chart.bundle
 //= require select2
 //= require cookies_eu
