@@ -15,7 +15,7 @@
     <div class="navbar-text float-right">
       <% if user_signed_in? %>
         Logged in as <strong><%= current_user.email %></strong>.
-      
+        
         <%# Profile picture %>
         <%if current_user.user_daily_questionnaire != nil%>
           <%if current_user.avatar.attached? %>
