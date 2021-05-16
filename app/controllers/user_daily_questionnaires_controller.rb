@@ -6,7 +6,7 @@ class UserDailyQuestionnairesController < ApplicationController
   require 'date'
   require 'net/http'
   require 'json'
-    
+
   # Function to set the day of week as today's week day
   def set_today_time
     @day_of_week=Date.today.strftime('%A')
@@ -40,7 +40,7 @@ class UserDailyQuestionnairesController < ApplicationController
   # GET /user_daily_questionnaires/1/edit
   def edit
   end
-  
+
   # POST /user_daily_questionnaires or /user_daily_questionnaires.json
   def create
     @location_name = params[:location]
@@ -164,7 +164,7 @@ class UserDailyQuestionnairesController < ApplicationController
   end
 
   def show_weather
-    
+
     @city_name = params[:city_name_param]
     puts("CityName: '" + @city_name + "'")
 
@@ -190,7 +190,7 @@ class UserDailyQuestionnairesController < ApplicationController
       flash[:notice] = "Create a new daily questionnaire first"
     elsif @response["weather"][0]["main"] != nil || @response["weather"] != nil && UserDailyQuestionnaire.where(user: current_user).first != nil
       puts("THIS IF-STATEMENT PASSES")
-      
+
       @currentUserDailyQuestionnaire = UserDailyQuestionnaire.where(user: current_user).first
       @currentUserDailyQuestionnaire.location = @city_name
       @currentUserDailyQuestionnaire.save
@@ -210,7 +210,7 @@ class UserDailyQuestionnairesController < ApplicationController
 
   #   JSON.parse(response.body)
   # end
- 
+
   private
     def calculate_new_score(prev_score,modification)
       new_score=0
@@ -235,7 +235,7 @@ class UserDailyQuestionnairesController < ApplicationController
         new_score=5
       end
 
-      return new_score      
+      return new_score
     end
     # Use callbacks to share common setup or constraints between actions.
     # Restrict user to only access its own User Daily Questionnaires, but not others
