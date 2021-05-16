@@ -1,0 +1,2 @@
+module WeightDiariesHelper
+end
