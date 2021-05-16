@@ -2,13 +2,13 @@
 
 <%# New form view will be switched to according to the day of week it is created %>
 <%if @day_of_week == "Monday" || @day_of_week == "Tuesday" %>
-    <%= render 'form_weekday1', user_daily_questionnaire: @user_daily_questionnaire %>
+    <%= render 'form_weekday1', user_daily_questionnaire: @user_daily_questionnaire, location: @location %>
 <%end%>
 <%if @day_of_week == "Wednesday" || @day_of_week == "Thursday" || @day_of_week == "Friday"%>
-    <%= render 'form_weekday2', user_daily_questionnaire: @user_daily_questionnaire %>
+    <%= render 'form_weekday2', user_daily_questionnaire: @user_daily_questionnaire, location: @location %>
 <%end%>
 <%if @day_of_week == "Saturday" || @day_of_week == "Sunday" %>
-    <%= render 'form_weekend', user_daily_questionnaire: @user_daily_questionnaire %>
+    <%= render 'form_weekend', user_daily_questionnaire: @user_daily_questionnaire, location: @location %>
 <%end%>
 
 <%= link_to 'Back', user_daily_questionnaires_path %>

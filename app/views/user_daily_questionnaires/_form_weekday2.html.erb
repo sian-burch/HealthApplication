@@ -15,7 +15,7 @@
 <b>Wednesday, Thusday and Friday Questionnaire</b>
 <br>
   <%if UserDailyQuestionnaire.where(user: current_user).first == nil%>
-    <b> Current Location is not available, please set a location!
+    <b> Current Location is not available, please make sure a location is set after daily questionnaire is created!
   <% else %>
     <b> Current Location: 
     <%= UserDailyQuestionnaire.where(user: current_user).first.location%>
