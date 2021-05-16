@@ -15,7 +15,6 @@
     <div class="navbar-text float-right">
       <% if user_signed_in? %>
         Logged in as <strong><%= current_user.email %></strong>.
-<<<<<<< HEAD
         
         <%# Profile picture %>
         <%if current_user.user_daily_questionnaire != nil%>
@@ -26,9 +25,6 @@
           <%= image_tag("default_profile", height:40, width: 40, class: 'rounded-circle')%>
           <%end%>
         <%end%>
-=======
-
->>>>>>> 887547052732db8b90a3be1e3e6aa403969b79e1
         <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
         <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
       <% else %>
