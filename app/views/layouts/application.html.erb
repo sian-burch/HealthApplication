@@ -13,8 +13,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= include_gon %>
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
   </head>
   <body>
 
@@ -27,7 +30,7 @@
       <% if alert %>
         <p class="alert alert-danger"><%= alert %></p>
         <% end %>
-        
+
       <%= yield %>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->

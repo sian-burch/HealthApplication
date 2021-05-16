@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :mental_posts
+  resources :posts
   resources :user_daily_questionnaires
   resources :recommended_daily_steps
   resources :activities
