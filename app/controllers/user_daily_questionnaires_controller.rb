@@ -47,18 +47,11 @@ class UserDailyQuestionnairesController < ApplicationController
     @location = $location
     puts("Location set as " + @location.to_s + " in Change Weather")
     # Initializing current user data as the current user
-    # BEFORE MODIFYING
-    # @user_daily_questionnaire = UserDailyQuestionnaire.new(user_daily_questionnaire_params)
-    # @user_daily_questionnaire.day_of_week = @day_of_week
-    # @user_daily_questionnaire.questionnaire_date = Date.today
-    # @user_daily_questionnaire.user = current_user
+    
     #when "creating" new DQ we need to take their input but use them as weights to recalculate based on previous DQ
-    #make "create" behave like "update"
     if UserDailyQuestionnaire.find_by_user_id(current_user.id) != nil
       @user_daily_questionnaire=UserDailyQuestionnaire.find_by_user_id(current_user.id)
       @modifications=UserDailyQuestionnaire.new(user_daily_questionnaire_params)
-      #@user_daily_questionnaire=UserDailyQuestionnaire.new
-      #DQ.user_id=current_user.id #possibly not needed?
       @user_daily_questionnaire.day_of_week=Date.today.strftime('%A')
       @user_daily_questionnaire.questionnaire_date=Date.today
       @user_daily_questionnaire.user_mood=@modifications.user_mood
@@ -134,11 +127,11 @@ class UserDailyQuestionnairesController < ApplicationController
       @API_KEY = ENV["API_KEY"]
       @uri = URI("http://api.openweathermap.org/data/2.5/weather?q=#{loc}&appid=#{@API_KEY}")
       @response = JSON.parse(Net::HTTP.get(@uri)) # => String
-      weather_main=@response["weather"][0]["main"].to_s
+      @weather_main=@response["weather"][0]["main"].to_s
 
-      puts("main weather:"+weather_main)
+      puts("main weather:"+@weather_main)
       @recs=[]
-      if (weather_main=='Thunderstorm'||weather_main=='Rain' || weather_main=='Snow' || weather_main=='Dust'||weather_main=='Sand'|| weather_main=='Ash'||weather_main=='Squall'||weather_main=='Tornado')
+      if (@weather_main=='Thunderstorm'||@weather_main=='Rain' || @weather_main=='Snow' || @weather_main=='Dust'||@weather_main=='Sand'|| @weather_main=='Ash'||@weather_main=='Squall'||@weather_main=='Tornado')
         restrictive_weather=true
       else
         restrictive_weather=false
@@ -156,7 +149,7 @@ class UserDailyQuestionnairesController < ApplicationController
       redirect_to root_path
       flash[:success] = "Please fill in your Daily Questionnaire first before any recommendation is available"
     end
-    #@recs=current_user.user_daily_questionnaire.user_recommendations
+    
   end
 
   def check_weather

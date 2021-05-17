@@ -16,7 +16,19 @@
         <%= link_to 'Mental Health', mental_posts_path, class:'nav-link active' %>
         </li>
         <li class="nav-item" style='font-weight: 600'>
+        <%= link_to 'Chatroom', '/chatroom', class:'nav-link active' %>
+        </li>
+        <li class="nav-item" style='font-weight: 600'>
         <%= link_to 'Change Location', check_weather_path, class:'nav-link active' %>
+        </li>
+        <li class="nav-item" style='font-weight: 600'>
+        <%= link_to 'Weight Diary', weight_diaries_path, class:'nav-link active' %>
+        </li>
+        <li class="nav-item" style='font-weight: 600'>
+        <%= link_to 'Sign-Up Questionnaire', '/user_data', class:'nav-link active' %>
+        </li>
+        <li class="nav-item" style='font-weight: 600'>
+        <%= link_to 'Daily Questionnaires', '/user_daily_questionnaires', class:'nav-link active' %>
         </li>
         <li class="nav-item" style='font-weight: 600'>
         <%= link_to 'Provide Feedback', feedback_path, class:'nav-link active' %>
@@ -27,9 +39,15 @@
         <li class="nav-item" style='font-weight: 600'>
         <%= link_to 'About Us', about_us_path, class:'nav-link active' %>
         </li>
-        <li class="nav-item" style='font-weight: 600'>
-        <%= link_to 'Weight Diaries', weight_diaries_path, class:'nav-link active' %>
-        </li>
+        <%if user_signed_in?%>
+          <%if current_user.superadmin_role%>
+            <li class="nav-item" style='font-weight: 600'>
+            <%= link_to 'Admin Dashboard', '/admin', class:'nav-link active' %>
+            </li>
+          <%end%>
+        <%end%>
+
+
       </ul>
       <ul class="navbar-nav float-right", style="margin-left:auto;">
         <% if user_signed_in? %>

@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Title:</strong>
@@ -12,7 +12,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @mental_post.user %>
+  <%= @mental_post.user.email %>
 </p>
 
 <%= link_to 'Edit', edit_mental_post_path(@mental_post), :class => 'btn btn-outline-primary' %> |

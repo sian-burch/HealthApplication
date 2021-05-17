@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :user_data
   devise_for :users
 
-
+  get '/chatroom' => 'home#chatroom'
   get '/index' => 'home#index'
   get '/signed_out_home' => 'home#signed_out_home'
   get '/about_us' => 'home#about'
