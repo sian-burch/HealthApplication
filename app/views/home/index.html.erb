@@ -1,5 +1,3 @@
-
-
   <h1>Welcome!</h1>
 
     <%# Display the pop-up modal if no daily questionnaire record exist today%>
@@ -72,8 +70,13 @@
       <figure class="highcharts-figure">
           <div id="user_preference_container"></div>
       </figure>
-    <%end%>
-
+<%= link_to "Home Workout", spotify_playlist_path(:playlist_id => "37i9dQZF1DXbeUHEkt5uXG"), class: "btn btn-primary"   %>
+<%= link_to "Cardio Hits", spotify_playlist_path(:playlist_id => "7kfohPIiBUM4tF2B8YEn85"), class: "btn btn-primary"  %>
+<%= link_to "Lofi Good Sleep", spotify_playlist_path(:playlist_id => "35xI4hSJ8MdO1xkXwsd56a"), class: "btn btn-primary"  %>
+<%= link_to "Calm Down - Meditation", spotify_playlist_path(:playlist_id => "3ksy3Zso4vdt4JIzTYvpF9"), class: "btn btn-primary" %>
+<%# Modal pop-up for daily questionnaire code referenced from https://www.w3schools.com/howto/howto_css_modals.asp %>
+<%# This code should be updated to be activated when user initially visits home page every day and pop up for only once %>
+<!-- The Modal -->
 
     <br>
     Chat:
