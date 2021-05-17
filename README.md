@@ -7,7 +7,11 @@
 1. "**Bundle Install**"
 2. "**rake db:migrate**"
 3. "**rake db:seed**"
+4. "**bundle exec figaro install**"
+5. "**copy API keys into required into config/application.yml**"
+-----------------------------------------------------------------------------
 
+"**Reference List:**"
 ## **To use Environmental Variable of the 'figaro' Gem**
 [Figaro Gem Page](https://github.com/laserlemon/figaro)
 1. "**Bundle Install**" 
