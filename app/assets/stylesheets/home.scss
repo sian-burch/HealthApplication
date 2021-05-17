@@ -75,3 +75,25 @@
 .highcharts-data-table tr:hover {
     background: #f1f7ff;
 }
+
+// CSS code for footer
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(51, 140, 0);
+  color: white;
+  text-align: center;
+  padding-top: 60px;
+}
+
+.container-fluid {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: rgb(218, 218, 218);
+  color: white;
+  text-align: center;
+}

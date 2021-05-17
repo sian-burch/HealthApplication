@@ -25,7 +25,11 @@ gem 'cancancan'
 gem 'cookies_eu'
 gem 'chartkick', '~> 1.4', '>= 1.4.1'
 gem 'rails_admin', '~> 2.0'
-gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
+# gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
+gem 'rest-client'
+gem 'httparty'
+
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
