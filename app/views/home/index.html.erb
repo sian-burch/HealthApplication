@@ -46,7 +46,7 @@ var modal1 = document.getElementById("myDailyQuestionnaireModal");
 var btn1 = document.getElementById("myBtn1");
 // Get the <span> element that closes the modal
 var span1 = document.getElementsByClassName("close1")[0];
-// When the user clicks the button, open the modal 
+// When the user clicks the button, open the modal
 btn1.onclick = function() {
   modal1.style.display = "block";
 }
@@ -77,3 +77,33 @@ window.onclick = function(event) {
       <div id="user_preference_container"></div>
   </figure>
 <%end%>
+
+
+<br>
+Chat:
+<br>
+<span id="chat"></span>
+<hr>
+Message:
+<br>
+<textarea id="msg" style="width:380px; height: 80px;"></textarea>
+<hr>
+<button id="send">Send Message</button>
+
+<script>
+	$(document).ready(function(){
+
+		/* RECEIVE MESSAGE */
+		App.chat.received = function(data)
+		{
+			$("#chat").append(data['message']+"<br>")
+		}
+
+		$("#send").click(function(){
+			msg = $("#msg").val()
+
+			/* SEND MESSAGE */
+			App.chat.send_msg(msg)
+		})
+	})
+</script>
