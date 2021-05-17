@@ -88,15 +88,47 @@
 
     <br>
     <br>
-    Smart Recommended Playlists:
 
-    <%= link_to "Smart Playlists", spotify_recommend_playlist_path(:category_id => @spotify_category_id), :class => 'btn btn-outline-success'   %>
+    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Smart playlist</h5>
+        <%= link_to "Discover", spotify_recommend_playlist_path(:category_id => @spotify_category_id), :class =>"btn session_button btn-success stretched-link"  %>
+      </div>
+    </div>
+
     <br><br>
-    Fixed Playlist: 
-    <%= link_to "Home Workout", spotify_playlist_path(:playlist_id => "37i9dQZF1DXbeUHEkt5uXG"), :class => 'btn btn-outline-success'   %>
-    <%= link_to "Cardio Hits", spotify_playlist_path(:playlist_id => "7kfohPIiBUM4tF2B8YEn85"), :class => 'btn btn-outline-success'  %>
-    <%= link_to "Lofi Good Sleep", spotify_playlist_path(:playlist_id => "35xI4hSJ8MdO1xkXwsd56a"), :class => 'btn btn-outline-success'  %>
-    <%= link_to "Calm Down - Meditation", spotify_playlist_path(:playlist_id => "3ksy3Zso4vdt4JIzTYvpF9"), :class => 'btn btn-outline-success' %>
+    <h1>Fixed Playlist: </h3>
+    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Home Workout</h5>
+        <%= link_to "Spotify", spotify_playlist_path(:playlist_id => "37i9dQZF1DXbeUHEkt5uXG"), :class => 'btn session_button btn-success stretched-link'   %>
+      </div>
+    </div>
+
+    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Lofi Good Sleep</h5>
+        <%= link_to "Spotify", spotify_playlist_path(:playlist_id => "35xI4hSJ8MdO1xkXwsd56a"), :class => 'btn session_button btn-success stretched-link'  %>
+      </div>
+    </div>
+
+    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Cardio Hits</h5>
+        <%= link_to "Spotify", spotify_playlist_path(:playlist_id => "7kfohPIiBUM4tF2B8YEn85"), :class => 'btn session_button btn-success stretched-link'   %>
+      </div>
+    </div>
+
+    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Calm Down - Meditation</h5>
+        <%= link_to "Spotify", spotify_playlist_path(:playlist_id => "3ksy3Zso4vdt4JIzTYvpF9"), :class => 'btn session_button btn-success stretched-link' %>
+      </div>
+    </div>
+    
+    
+    
+    
 
     <script>
   	   $(document).ready(function(){
