@@ -86,6 +86,14 @@
     <hr>
     <button id="send">Send Message</button>
 
+    <br>
+    <br>
+    Recommended Playlists
+    <%= link_to "Home Workout", spotify_playlist_path(:playlist_id => "37i9dQZF1DXbeUHEkt5uXG"), :class => 'btn btn-outline-success'   %>
+    <%= link_to "Cardio Hits", spotify_playlist_path(:playlist_id => "7kfohPIiBUM4tF2B8YEn85"), :class => 'btn btn-outline-success'  %>
+    <%= link_to "Lofi Good Sleep", spotify_playlist_path(:playlist_id => "35xI4hSJ8MdO1xkXwsd56a"), :class => 'btn btn-outline-success'  %>
+    <%= link_to "Calm Down - Meditation", spotify_playlist_path(:playlist_id => "3ksy3Zso4vdt4JIzTYvpF9"), :class => 'btn btn-outline-success' %>
+
     <script>
   	   $(document).ready(function(){
 
