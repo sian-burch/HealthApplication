@@ -75,18 +75,7 @@
     <%end%>
 
 
-    <br>
-    Chat:
-    <br>
-    <span id="chat"></span>
-    <hr>
-    Message:
-    <br>
-    <textarea id="msg" style="width:380px; height: 80px;"></textarea>
-    <hr>
-    <button id="send">Send Message</button>
-
-    <br>
+    
     <br>
     Smart Recommended Playlists:
 
@@ -98,21 +87,5 @@
     <%= link_to "Lofi Good Sleep", spotify_playlist_path(:playlist_id => "35xI4hSJ8MdO1xkXwsd56a"), :class => 'btn btn-outline-success'  %>
     <%= link_to "Calm Down - Meditation", spotify_playlist_path(:playlist_id => "3ksy3Zso4vdt4JIzTYvpF9"), :class => 'btn btn-outline-success' %>
 
-    <script>
-  	   $(document).ready(function(){
-
-    		/* RECEIVE MESSAGE */
-    		App.chat.received = function(data)
-    		{
-    			$("#chat").append(data['message']+"<br>")
-    		}
-
-    		$("#send").click(function(){
-    			msg = $("#msg").val()
-
-    			/* SEND MESSAGE */
-    			App.chat.send_msg(msg)
-    		})
-    	})
-    </script>
+   
   </div>

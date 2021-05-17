@@ -90,6 +90,9 @@ class HomeController < ApplicationController
   def feedback
   end
 
+  def chatroom
+    
+  end
 
   def request_contact
     name = params[:name]
