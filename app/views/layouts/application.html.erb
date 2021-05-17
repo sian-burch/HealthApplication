@@ -33,8 +33,12 @@
         <p class="alert alert-danger"><%= alert %></p>
         <% end %>
     <%= render 'cookies_eu/consent_banner', link: 'cookies', target: '_blank' %>
-      <%= yield %>
-    <%= render "home/footer" %>
+       <br><br><br>
+      <div class='container-fluid center shadow p-3 mb-5 rounded' style='background-color: #ffffff'>
+        <div class='center'>
+            <%= yield %>
+        </div>
+      </div>
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
