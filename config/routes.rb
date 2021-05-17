@@ -35,4 +35,5 @@ Rails.application.routes.draw do
   # Route for privacy policy and disclaimer
   get '/privacy_policy', to: 'home#privacy_policy'
   get '/disclaimer', to: 'home#disclaimer'
+  get 'spotify_playlist', to: 'home#spotify_playlist'
 end
