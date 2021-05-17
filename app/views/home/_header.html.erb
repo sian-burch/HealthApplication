@@ -32,23 +32,31 @@
         </li>
       </ul>
       <ul class="navbar-nav float-right", style="margin-left:auto;">
-               <% if user_signed_in? %>
-                 <li class="nav-item ">
-                   <%= link_to "Profile", edit_user_registration_path, class:"nav-link active" %>
-                 </li>
-                 <li class="nav-item ">
-                   <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"nav-link active" %>
-                 </li>
-               <% else %>
-                 <li class="nav-item ">
-                   <%= link_to "Sign up", new_user_registration_path, class:"nav-link active" %>
-                 </li>
+        <% if user_signed_in? %>
+          <li>
+          <%if current_user.avatar.attached? %>
+            <%= image_tag url_for(current_user.avatar), class:"rounded-circle", size: 40 %>
+          <%else%>
+          <%#  Default image referenced from https://www.business2community.com/social-media/importance-profile-picture-career-01899604%>
+            <%= image_tag("default_profile", height:40, width: 40, class: 'rounded-circle')%>
+          <%end%>
+          </li>
+          <li class="nav-item ">
+            <%= link_to "Profile", edit_user_registration_path, class:"nav-link active" %>
+          </li>
+          <li class="nav-item ">
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"nav-link active" %>
+          </li>
+        <% else %>
+          <li class="nav-item ">
+            <%= link_to "Sign up", new_user_registration_path, class:"nav-link active" %>
+          </li>
 
-                 <li class="nav-item">
-                   <%= link_to "Sign In", new_user_session_path, class:"nav-link active" %>
-                 </li>
-               <% end %>
-         </ul>
+          <li class="nav-item">
+            <%= link_to "Sign In", new_user_session_path, class:"nav-link active" %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </nav>

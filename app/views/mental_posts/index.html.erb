@@ -9,7 +9,16 @@
 <div class='card'>
   <h3 class='card-header' style='background-color:#F0F5C4'><%= mental_post.title %></h3>
     <p class='card-text' style='padding: 10px'><%= mental_post.description %></p>
-    <p class='card-footer text-center' style='padding: 10px'>by <%= mental_post.user.email %></p>
+    <p class='card-footer text-center' style='padding: 10px'>
+    <%# Code for user profile picture %>
+    <%if User.where(email: mental_post.user.email).first.avatar.attached? %>
+      <%= image_tag url_for(User.where(email: mental_post.user.email).first.avatar), class:"rounded-circle", size: 40 %>
+    <%else%>
+    <%#  Default image referenced from https://www.business2community.com/social-media/importance-profile-picture-career-01899604%>
+      <%= image_tag("default_profile", height:40, width: 40, class: 'rounded-circle')%>
+    <%end%>
+    
+    by <%= mental_post.user.email %></p>
 </div>
 <br><br>
 <% end %>

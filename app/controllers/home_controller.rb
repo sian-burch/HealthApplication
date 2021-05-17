@@ -227,7 +227,6 @@ class HomeController < ApplicationController
     puts("Category ID: "+@category_id)
     endpoint1 = RestClient.get("https://api.spotify.com/v1/browse/categories/#{@category_id}/playlists", headers=auth)
     data1 = JSON.parse(endpoint1)
-
     random_num=rand(1..10)
     puts("Random Number:" + random_num.to_s)
     @Spotify_playlist_random = data1["playlists"]["items"][random_num]
