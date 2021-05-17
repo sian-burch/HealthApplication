@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '2.5.1'
 
 gem 'rails', '~> 5.2.5'
 gem 'sqlite3'
@@ -18,13 +18,12 @@ gem 'jquery-rails'
 gem 'rails-controller-testing'
 gem 'gon'
 gem 'coffee-script-source', '1.8.0'
-gem 'chartkick'
 gem 'select2-rails'
 gem 'sendgrid-ruby'
-gem 'net-http'
 gem 'figaro'
 gem 'cancancan'
 gem 'cookies_eu'
+gem 'chartkick', '~> 1.4', '>= 1.4.1'
 gem 'rails_admin', '~> 2.0'
 gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 
