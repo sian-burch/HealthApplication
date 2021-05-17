@@ -38,5 +38,6 @@ Rails.application.routes.draw do
   get '/privacy_policy', to: 'home#privacy_policy'
   get '/disclaimer', to: 'home#disclaimer'
   get 'spotify_playlist', to: 'home#spotify_playlist'
+  get 'spotify_recommend_playlist', to: 'home#recommend_playlist'
   mount ActionCable.server => "/cable"
 end

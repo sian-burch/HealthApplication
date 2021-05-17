@@ -3,7 +3,25 @@
 <%= link_to "Come listen to it on Spotify", @Spotify_link%>
 <br>
 <h1>Playlist: <%= @Spotify_playlist_name%></h1>
-<br>
 Followers on Spotify: <%=@Spotify_followers%>
 <br>
 Description: <%=@Spotify_description%>
+<br>
+<br>
+<b><h1>Tracks Included: </h1>
+<br>
+<%=image_tag image_url(@Spotify_track_0["track"]["album"]["images"][0]["url"])%>
+<br>
+<h2><%=@Spotify_track_0["track"]["album"]["artists"][0]["name"].to_s%> - <%=@Spotify_track_0["track"]["album"]["name"].to_s%></h2>
+<br>
+<br>
+<%=image_tag image_url(@Spotify_track_1["track"]["album"]["images"][0]["url"])%>
+<br>
+<h2><%=@Spotify_track_1["track"]["album"]["artists"][0]["name"].to_s%> - <%=@Spotify_track_1["track"]["album"]["name"].to_s%></h2>
+<br>
+<br>
+<%=image_tag image_url(@Spotify_track_2["track"]["album"]["images"][0]["url"])%>
+<br>
+<h2><%=@Spotify_track_2["track"]["album"]["artists"][0]["name"].to_s%> - <%=@Spotify_track_2["track"]["album"]["name"].to_s%></h2>
+<br>
+And More...

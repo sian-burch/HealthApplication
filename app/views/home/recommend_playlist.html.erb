@@ -1,0 +1,7 @@
+<h1>Category: <%=@Genre%></h1>
+<%= image_tag image_url(@Spotify_recommend_image.to_s) %>
+<%= link_to "Come listen to it on Spotify", @Spotify_recommend_link%>
+<br>
+<h1>Playlist: <%= @Spotify_recommend_name%></h1>
+<br>
+Description: <%=@Spotify_recommend_description%>
