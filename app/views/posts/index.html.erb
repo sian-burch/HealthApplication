@@ -6,14 +6,14 @@
 
 
     <% @posts.reverse_each do |post| %>
-    <div class='post'>
-        <h3><%= post.title %></h3>
-        <p><%= post.description %></p>
-        <p id='post_creator'>by <%= post.user.email %></p>
+    <div class='card'>
+      <h3 class='card-header' style='background-color:#BAE4F5'><%= post.title %></h3>
+        <p class='card-text' style='padding: 10px'><%= post.description %></p>
+        <p class='card-footer text-center' style='padding: 10px'>by <%= post.user.email %></p>
     </div>
     <br><br>
     <% end %>
 
 <br>
 
-<%= link_to ' + New Post', new_post_path %>
+<%= link_to ' + New Post', new_post_path, :class => 'btn btn-outline-success' %>

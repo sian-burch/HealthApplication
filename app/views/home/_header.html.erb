@@ -1,36 +1,54 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar fixed-top navbar-dark navbar-expand-lg" style='box-shadow: 0px -10px 50px grey;background-color:#00cb7d'>
   <div class="container-fluid">
     <%= link_to 'Health App', root_path, class:"navbar-brand" %>
-    <%= link_to 'Daily Recommendations', '/daily_recommendations' %>
-    <%= link_to 'Physical Health', '/posts' %>
-    <%= link_to 'Mental Health', '/mental_posts' %>
-    <%= link_to 'Change Location', check_weather_path %>
-    <%= link_to 'Provide Feedback', '/feedback' %>
-    <%= link_to 'Contact Us', '/contact' %>
-    <%= link_to 'About Us', '/about_us' %>
-    <%# <%= link_to "Today's Questionnaire", "/new_daily_questionnaire" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="navbar-text float-right">
-      <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
-        
-        <%# Profile picture %>
-        <%if current_user.user_daily_questionnaire != nil%>
-          <%if current_user.avatar.attached? %>
-            <%= image_tag url_for(current_user.avatar), class:"rounded-circle", size: 40 %>
-          <%else%>
-           <%#  Default image referenced from https://www.business2community.com/social-media/importance-profile-picture-career-01899604%>
-          <%= image_tag("default_profile", height:40, width: 40, class: 'rounded-circle')%>
-          <%end%>
-        <%end%>
-        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-      <% end %>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" style='font-weight: 600'>
+        <%= link_to 'Daily Recommendations', daily_recommendations_path, class:'nav-link active' %>
+        </li>
+        <li class="nav-item" style='font-weight: 600'>
+        <%= link_to 'Physical Health', posts_path, class:'nav-link active' %>
+        </li>
+        <li class="nav-item" style='font-weight: 600'>
+        <%= link_to 'Mental Health', mental_posts_path, class:'nav-link active' %>
+        </li>
+        <li class="nav-item" style='font-weight: 600'>
+        <%= link_to 'Change Location', check_weather_path, class:'nav-link active' %>
+        </li>
+        <li class="nav-item" style='font-weight: 600'>
+        <%= link_to 'Provide Feedback', feedback_path, class:'nav-link active' %>
+        </li>
+        <li class="nav-item" style='font-weight: 600'>
+        <%= link_to 'Contact Us', contact_path, class:'nav-link active' %>
+        </li>
+        <li class="nav-item" style='font-weight: 600'>
+        <%= link_to 'About Us', about_us_path, class:'nav-link active' %>
+        </li>
+        <li class="nav-item" style='font-weight: 600'>
+        <%= link_to 'Weight Diaries', weight_diaries_path, class:'nav-link active' %>
+        </li>
+      </ul>
+      <ul class="navbar-nav float-right", style="margin-left:auto;">
+               <% if user_signed_in? %>
+                 <li class="nav-item ">
+                   <%= link_to "Profile", edit_user_registration_path, class:"nav-link active" %>
+                 </li>
+                 <li class="nav-item ">
+                   <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"nav-link active" %>
+                 </li>
+               <% else %>
+                 <li class="nav-item ">
+                   <%= link_to "Sign up", new_user_registration_path, class:"nav-link active" %>
+                 </li>
+
+                 <li class="nav-item">
+                   <%= link_to "Sign In", new_user_session_path, class:"nav-link active" %>
+                 </li>
+               <% end %>
+         </ul>
     </div>
   </div>
 </nav>

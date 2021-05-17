@@ -5,15 +5,15 @@
 <br><br>
 
 
-    <% @mental_posts.reverse_each do |mental_post| %>
-    <div class='mental-post'>
-        <h3><%= mental_post.title %></h3>
-        <p><%= mental_post.description %></p>
-        <p id='post_creator'>by <%= mental_post.user.email %></p>
-    </div>
-    <br><br>
-    <% end %>
+<% @mental_posts.reverse_each do |mental_post| %>
+<div class='card'>
+  <h3 class='card-header' style='background-color:#F0F5C4'><%= mental_post.title %></h3>
+    <p class='card-text' style='padding: 10px'><%= mental_post.description %></p>
+    <p class='card-footer text-center' style='padding: 10px'>by <%= mental_post.user.email %></p>
+</div>
+<br><br>
+<% end %>
 
 <br>
 
-<%= link_to ' + New Post', new_mental_post_path %>
+<%= link_to ' + New Post', new_mental_post_path, :class => 'btn btn-outline-success' %>
