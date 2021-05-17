@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Weight Diaries</h1>
+<h1>Weight Diary</h1>
 
 <%= line_chart WeightDiary.all.select{ |weight_diary| weight_diary.user == current_user}.pluck(:date, :weight), xtitle: "Date", ytitle: "Weight" %>
 
@@ -31,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Weight Diary', new_weight_diary_path, :class => 'btn btn-outline-success' %>
+<%= link_to 'New Weight Diary Entry', new_weight_diary_path, :class => 'btn btn-outline-success' %>
