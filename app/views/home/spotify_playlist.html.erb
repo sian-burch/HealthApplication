@@ -1,4 +1,9 @@
 
 <%= image_tag image_url(@Spotify_playlist_image_URI) %>
-<h1>Playlist: <%= @Spotify_playlist_name%>
-<%=link_to "Listen in Spotify", @Spotify_link%>
+<%= link_to "Come listen to it on Spotify", @Spotify_link%>
+<br>
+<h1>Playlist: <%= @Spotify_playlist_name%></h1>
+<br>
+Followers on Spotify: <%=@Spotify_followers%>
+<br>
+Description: <%=@Spotify_description%>
