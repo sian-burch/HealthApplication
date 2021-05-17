@@ -134,11 +134,11 @@ class UserDailyQuestionnairesController < ApplicationController
       @API_KEY = ENV["API_KEY"]
       @uri = URI("http://api.openweathermap.org/data/2.5/weather?q=#{loc}&appid=#{@API_KEY}")
       @response = JSON.parse(Net::HTTP.get(@uri)) # => String
-      weather_main=@response["weather"][0]["main"].to_s
+      @weather_main=@response["weather"][0]["main"].to_s
 
-      puts("main weather:"+weather_main)
+      puts("main weather:"+@weather_main)
       @recs=[]
-      if (weather_main=='Thunderstorm'||weather_main=='Rain' || weather_main=='Snow' || weather_main=='Dust'||weather_main=='Sand'|| weather_main=='Ash'||weather_main=='Squall'||weather_main=='Tornado')
+      if (@weather_main=='Thunderstorm'||@weather_main=='Rain' || @weather_main=='Snow' || @weather_main=='Dust'||@weather_main=='Sand'|| @weather_main=='Ash'||@weather_main=='Squall'||@weather_main=='Tornado')
         restrictive_weather=true
       else
         restrictive_weather=false
