@@ -8,8 +8,6 @@ class HomeController < ApplicationController
   require 'time'
   require 'rest-client'
   require 'json'
-  require 'net/http'
-  require 'uri'
   
   # Function to set the day of week as today's week day
   def set_user_today
