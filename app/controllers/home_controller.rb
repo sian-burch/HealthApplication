@@ -142,6 +142,6 @@ class HomeController < ApplicationController
     @Spotify_playlist_image_URI = data1["images"][0]["url"].to_s
     @Spotify_playlist_name = data1["name"].to_s
     @Spotify_link = data1["external_urls"]["spotify"].to_s
-    redirect_to @Spotify_link
+    # redirect_to @Spotify_link
   end
 end
