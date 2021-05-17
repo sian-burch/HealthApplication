@@ -9,6 +9,10 @@
     <div class='card'>
       <h3 class='card-header' style='background-color:#BAE4F5'><%= post.title %></h3>
         <p class='card-text' style='padding: 10px'><%= post.description %></p>
+        <%if current_user==post.user%>
+            <%= link_to 'Edit', edit_post_path(post), :class=>"btn btn-outline-primary" %>
+            <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-outline-danger" %>
+        <%end%>
         <p class='card-footer text-center' style='padding: 10px'>
         <%# Code for user profile picture %>
         <%if User.where(email: post.user.email).first.avatar.attached? %>
@@ -18,7 +22,9 @@
           <%= image_tag("default_profile", height:40, width: 40, class: 'rounded-circle')%>
         <%end%>
         by <%= post.user.email %></p>
+
     </div>
+
     <br><br>
     <% end %>
 
