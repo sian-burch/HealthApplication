@@ -5,7 +5,11 @@ class HomeController < ApplicationController
   skip_before_action :authenticate_user!, only: [:signed_out_home,:about]
   require 'date'
   require 'time'
-  
+  require 'rest-client'
+  require 'json'
+  require 'net/http'
+  require 'uri'
+
   # Function to set the day of week as today's week day
   def set_user_today
     @day_of_week=Date.today.strftime('%A')
@@ -15,7 +19,7 @@ class HomeController < ApplicationController
   end
 
  def index
-    
+
     # Redirect to create new user data when no user data exists
       if UserDatum.where(user: current_user).first == nil
         redirect_to check_weather_path
@@ -31,7 +35,7 @@ class HomeController < ApplicationController
       # gem "gon" is used to be assigned with variable from controller to javascript
       gon.UserData = UserDatum.where(user: current_user).first
       gon.UserDailyQuestionnaire = UserDailyQuestionnaire.where(user: current_user).first
-   
+
 
   end
 
@@ -39,7 +43,7 @@ class HomeController < ApplicationController
     if user_signed_in?
       redirect_to action: "index"
     end
-   
+
   end
 
   def about
@@ -109,5 +113,34 @@ class HomeController < ApplicationController
       flash.now[:alert] = I18n.t('emailSyntaxError')
       render "feedback"
     end
+  end
+  def spotify_playlist
+
+    client_id_and_secret = Base64.strict_encode64(ENV["SPOTIFY_KEYS"])
+    result = HTTParty.post(
+        "https://accounts.spotify.com/api/token",
+        :body => {:grant_type => "refresh_token",
+                  :refresh_token => "#{ENV['SPOTIFY_REFRESH_TOKEN']}"},
+        :headers => {"Authorization" => "Basic #{client_id_and_secret}"}
+        )
+
+    body = JSON.parse(result.body)
+    puts("Result body is: " + body.to_s)
+    puts("Access_token is: " + body["access_token"].to_s)
+    @auth_token = body["access_token"].to_s
+
+
+    auth = {"Authorization":"Bearer #{@auth_token}"}
+    @playlist_id = params[:playlist_id]
+    puts("Playlist ID: "+@playlist_id)
+    endpoint1 = RestClient.get("https://api.spotify.com/v1/playlists/#{@playlist_id}", headers=auth)
+    data1 = JSON.parse(endpoint1)
+    puts("Endpoint Playlist Image URL: " + data1["images"][0]["url"].to_s)
+    puts("Endpoint Playlist Name: " + data1["name"].to_s)
+    puts("Endpoint Playlist External URLS: " + data1["external_urls"]["spotify"].to_s)
+    @Spotify_playlist_image = data1["images"][0]["url"].to_s
+    @Spotify_playlist_name = data1["name"].to_s
+    @Spotify_link = data1["external_urls"]["spotify"].to_s
+    redirect_to @Spotify_link
   end
 end
