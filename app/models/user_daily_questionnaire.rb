@@ -14,135 +14,74 @@ class UserDailyQuestionnaire < ApplicationRecord
    	def opposite_fields
 		puts("Mentality: " + self.mentality_score.to_s)
 		puts("Outdoor:" + self.outdoor_score.to_s + ", Teams: " + self.team_score.to_s)
-		if self.indoor_score == nil && self.outdoor_score != 0
-			if self.outdoor_score == 5
-				self.indoor_score = 1
-			elsif self.outdoor_score == 4
-				self.indoor_score = 2
-			elsif self.outdoor_score == 3
-				self.indoor_score = 3
-			elsif self.outdoor_score == 2
-				self.indoor_score = 4
-			elsif self.outdoor_score == 1
-				self.indoor_score = 5
-			end
+		
+		if self.outdoor_score == 5
+			self.indoor_score = 1
+		elsif self.outdoor_score == 4
+			self.indoor_score = 2
+		elsif self.outdoor_score == 3
+			self.indoor_score = 3
+		elsif self.outdoor_score == 2
+			self.indoor_score = 4
+		elsif self.outdoor_score == 1
+			self.indoor_score = 5
 		end
-	  	if self.outdoor_score == nil && self.indoor_score != 0
-			if self.indoor_score == 5
-				self.outdoor_score = 1
-			elsif self.indoor_score == 4
-				self.outdoor_score = 2
-			elsif self.indoor_score == 3
-				self.outdoor_score = 3
-			elsif self.indoor_score == 2
-				self.outdoor_score = 4
-			elsif self.indoor_score == 1
-				self.outdoor_score = 5
-        	end 
-      	end
-		if self.cardio_score == nil && self.strength_score != 0
-			if self.strength_score == 5
-				self.cardio_score = 1
-			elsif self.strength_score == 4
-				self.cardio_score = 2
-			elsif self.strength_score == 3
-				self.cardio_score = 3
-			elsif self.strength_score == 2
-				self.cardio_score = 4
-			elsif self.strength_score == 1
-				self.cardio_score = 5
-			end 
-      	end
-		if self.strength_score == nil && self.cardio_score != 0
-			if self.cardio_score == 5
-				self.strength_score = 1
-			elsif self.cardio_score == 4
-				self.strength_score = 2
-			elsif self.cardio_score == 3
-				self.strength_score = 3
-			elsif self.cardio_score == 2
-				self.strength_score = 4
-			elsif self.cardio_score == 1
-				self.strength_score = 5
-			end 
-      	end
-		if self.solo_score == nil && self.team_score != 0
-			if self.team_score == 5
-				self.solo_score = 1
-			elsif self.team_score == 4
-				self.solo_score = 2
-			elsif self.team_score == 3
-				self.solo_score = 3
-			elsif self.team_score == 2
-				self.solo_score = 4
-			elsif self.team_score == 1
-				self.solo_score = 5
-			end 
-		end
-		if self.team_score == nil && self.solo_score != 0
-			if self.solo_score == 5
-				self.team_score = 1
-			elsif self.solo_score == 4
-				self.team_score = 2
-			elsif self.solo_score == 3
-				self.team_score = 3
-			elsif self.solo_score == 2
-				self.team_score = 4
-			elsif self.solo_score == 1
-				self.team_score = 5
-			end 
-		end
-		if self.duration_score == nil && self.duration_mins != 0
-			if self.duration_mins <= 12 && self.duration_mins > 0
-				self.duration_score = 1
-			elsif self.duration_mins <= 24 && self.duration_mins > 12
-				self.duration_score = 2
-			elsif self.duration_mins <= 36 && self.duration_mins > 24
-				self.duration_score = 3
-			elsif self.duration_mins <= 48 && self.duration_mins > 36
-				self.duration_score = 4
-			elsif self.duration_mins <= 60 && self.duration_mins > 48
-				self.duration_score = 5
-			end 
-		end
-		if self.physicality_score == 5 && self.mentality_score == 5
-			puts("TEST PASSED")
-			if ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 1
-				self.physicality_score = 1
-				self.mentality_score = 5
-			elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 2
-				self.physicality_score = 2
-				self.mentality_score = 4
-			elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 3
-				self.physicality_score = 3
-				self.mentality_score = 3
-			elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 4
-				self.physicality_score = 4
-				self.mentality_score = 2
-			elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 5
-				self.physicality_score = 5
-				self.mentality_score = 1
-			end 
-		end
-		if self.physicality_score == nil && self.mentality_score == nil
-			puts("TEST PASSED")
-			if ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 1
-				self.physicality_score = 1
-				self.mentality_score = 5
-			elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 2
-				self.physicality_score = 2
-				self.mentality_score = 4
-			elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 3
-				self.physicality_score = 3
-				self.mentality_score = 3
-			elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 4
-				self.physicality_score = 4
-				self.mentality_score = 2
-			elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 5
-				self.physicality_score = 5
-				self.mentality_score = 1
-			end 
-		end
+		
+		if self.strength_score == 5
+			self.cardio_score = 1
+		elsif self.strength_score == 4
+			self.cardio_score = 2
+		elsif self.strength_score == 3
+			self.cardio_score = 3
+		elsif self.strength_score == 2
+			self.cardio_score = 4
+		elsif self.strength_score == 1
+			self.cardio_score = 5
+		end 
+
+		
+		if self.team_score == 5
+			self.solo_score = 1
+		elsif self.team_score == 4
+			self.solo_score = 2
+		elsif self.team_score == 3
+			self.solo_score = 3
+		elsif self.team_score == 2
+			self.solo_score = 4
+		elsif self.team_score == 1
+			self.solo_score = 5
+		end 
+
+		if self.duration_mins <= 12 && self.duration_mins > 0
+			self.duration_score = 1
+		elsif self.duration_mins <= 24 && self.duration_mins > 12
+			self.duration_score = 2
+		elsif self.duration_mins <= 36 && self.duration_mins > 24
+			self.duration_score = 3
+		elsif self.duration_mins <= 48 && self.duration_mins > 36
+			self.duration_score = 4
+		elsif self.duration_mins <= 60 && self.duration_mins > 48
+			self.duration_score = 5
+		end 
+
+		puts("TEST PASSED")
+		if ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 1
+			self.physicality_score = 1
+			self.mentality_score = 5
+		elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 2
+			self.physicality_score = 2
+			self.mentality_score = 4
+		elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 3
+			self.physicality_score = 3
+			self.mentality_score = 3
+		elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 4
+			self.physicality_score = 4
+			self.mentality_score = 2
+		elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 5
+			self.physicality_score = 5
+			self.mentality_score = 1
+		end 
+
 		puts("Physicality: " + self.physicality_score.to_s)
 		puts("Mentality: " + self.mentality_score.to_s)
 		puts("Outdoor:" + self.outdoor_score.to_s + ", Teams: " + self.team_score.to_s)
