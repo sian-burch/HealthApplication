@@ -64,32 +64,6 @@ class UserDailyQuestionnaire < ApplicationRecord
 				self.strength_score = 5
 			end 
       	end
-		if self.physicality_score == nil && self.mentality_score != 0
-			if self.mentality_score == 5
-				self.physicality_score = 1
-			elsif self.mentality_score == 4
-				self.physicality_score = 2
-			elsif self.mentality_score == 3
-				self.physicality_score = 3
-			elsif self.mentality_score == 2
-				self.physicality_score = 4
-			elsif self.mentality_score == 1
-				self.physicality_score = 5
-			end 
-		end
-		if self.mentality_score == nil && self.physicality_score != 0
-			if self.physicality_score == 5
-				self.mentality_score = 1
-			elsif self.physicality_score == 4
-				self.mentality_score = 2
-			elsif self.physicality_score == 3
-				self.mentality_score = 3
-			elsif self.physicality_score == 2
-				self.mentality_score = 4
-			elsif self.physicality_score == 1
-				self.mentality_score = 5
-			end 
-		end
 		if self.solo_score == nil && self.team_score != 0
 			if self.team_score == 5
 				self.solo_score = 1
@@ -129,6 +103,46 @@ class UserDailyQuestionnaire < ApplicationRecord
 				self.duration_score = 5
 			end 
 		end
+		if self.physicality_score == 5 && self.mentality_score == 5
+			puts("TEST PASSED")
+			if ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 1
+				self.physicality_score = 1
+				self.mentality_score = 5
+			elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 2
+				self.physicality_score = 2
+				self.mentality_score = 4
+			elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 3
+				self.physicality_score = 3
+				self.mentality_score = 3
+			elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 4
+				self.physicality_score = 4
+				self.mentality_score = 2
+			elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 5
+				self.physicality_score = 5
+				self.mentality_score = 1
+			end 
+		end
+		if self.physicality_score == nil && self.mentality_score == nil
+			puts("TEST PASSED")
+			if ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 1
+				self.physicality_score = 1
+				self.mentality_score = 5
+			elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 2
+				self.physicality_score = 2
+				self.mentality_score = 4
+			elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 3
+				self.physicality_score = 3
+				self.mentality_score = 3
+			elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 4
+				self.physicality_score = 4
+				self.mentality_score = 2
+			elsif ((self.outdoor_score + self.strength_score + self.intensity_score)/3).round == 5
+				self.physicality_score = 5
+				self.mentality_score = 1
+			end 
+		end
+		puts("Physicality: " + self.physicality_score.to_s)
+		puts("Mentality: " + self.mentality_score.to_s)
 	end	
 
     def user_activity_similarity(activity)

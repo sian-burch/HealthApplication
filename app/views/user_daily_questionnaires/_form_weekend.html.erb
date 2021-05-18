@@ -54,12 +54,6 @@
   </div>
 
   <div class="field">
-    <%= form.label "How much would you like to do Physical Activities" %>
-      <%= form.range_field :physicality_score, :min=>1, :max=>5, :class=>"slide", :id=>"slider6"%>
-    <text id="physicality_score">Neutral</text>
-  </div>
-
-  <div class="field">
     <%= form.label "Working in teams?" %>
       <%= form.range_field :team_score, :min=>1, :max=>5, :class=>"slide", :id=>"slider7"%>
     <text id="team_score">Neutral</text>
@@ -156,24 +150,6 @@
         var newValue = "Very"
       }          
       $("#strength_score").html(newValue);
-  });
-  $("#slider6").change(function () {    
-      if($('#slider6').val()==1){
-        var newValue = "Nope"
-      }          
-      if($('#slider6').val()==2){
-        var newValue = "Not really"
-      }          
-      if($('#slider6').val()==3){
-        var newValue = "Neutral"
-      }          
-      if($('#slider6').val()==4){
-        var newValue = "Slightly"
-      }          
-      if($('#slider6').val()==5){
-        var newValue = "Very"
-      }          
-      $("#physicality_score").html(newValue);
   });
    $("#slider7").change(function () {    
       if($('#slider7').val()==1){

@@ -19,7 +19,7 @@ class HomeController < ApplicationController
 
  def recommend_recommendation_playlist
   if UserDailyQuestionnaire.where(user: current_user).first != nil
-    if UserDailyQuestionnaire.where(user: current_user).first.cardio_score > 3 || UserDailyQuestionnaire.where(user: current_user).first.physicality_score > 3 || UserDailyQuestionnaire.where(user: current_user).first.intensity_score > 3 ||  UserDailyQuestionnaire.where(user: current_user).first.outdoor_score > 3 
+    if UserDailyQuestionnaire.where(user: current_user).first.physicality_score > 3 
       random_num = rand(1..3)
       if random_num == 1
         @spotify_category_id = "workout"
@@ -28,7 +28,7 @@ class HomeController < ApplicationController
       else
         @spotify_category_id = "metal"
       end
-    elsif UserDailyQuestionnaire.where(user: current_user).first.indoor_score > 3 || UserDailyQuestionnaire.where(user: current_user).first.mentality_score > 3
+    elsif UserDailyQuestionnaire.where(user: current_user).first.mentality_score > 3
       random_num = rand(1..3)
       if random_num == 1
         @spotify_category_id = "at_home"
