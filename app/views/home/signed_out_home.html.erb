@@ -1,3 +1,9 @@
-<h1>Welcome!</h1>
-<p>Before allowing us to change your life for the better, you need to have an account.</p>
-<p>Go sign-up or log in, if you already have an account!</p>
+      <div class="card mx-auto bg-success text-white text-center" style="width: 30rem; box-shadow: 0px -10px 20px grey;">
+        <div class="card-body">
+          <h1 class="text-center display-1"><b>Welcome</b></h1>
+          <p class="card-text"><strong>Before allowing us to change your life for the better...</strong></p>
+          <p class="card-text"><strong><u>YOU WILL NEED AN ACCOUNT</u></strong></p>
+          <%= link_to "Create an Account", new_user_registration_path, class:"btn btn-outline-light text-white" %>
+          <%= link_to "Already got an Account", new_user_session_path, class:"btn btn-outline-light text-white" %>
+        </div>
+      </div>

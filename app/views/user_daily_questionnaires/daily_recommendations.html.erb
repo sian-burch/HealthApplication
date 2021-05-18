@@ -1,41 +1,53 @@
-<h1>Daily Recommendations</h1>
-<p>Currect location weather (can affect recommended activities): <%=@weather_main%></p>
-<p>Recommended number of daily steps: <%=current_user.user_datum.recommended_daily_steps%></p>
-<table>
-  <thead>
-    <tr>
-      <th>Activity Name</th>
-      <th>Duration Mins</th>
-      <th>Indoor score</th>
-      <th>Outdoor score</th>
-      <th>Cardio score</th>
-      <th>Strength score</th>
-      <th>Physicality score</th>
-      <th>Mentality score</th>
-      <th>Solo score</th>
-      <th>Team score</th>
-      <th>Intensity score</th>
-      <th>Similarity score</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @recs.each do |rec| %>
-      <tr>
-        <td><%= rec[:activity].name %></td>
-        <td><%= rec[:activity].duration_mins %></td>
-        <td><%= rec[:activity].indoor_score %></td>
-        <td><%= rec[:activity].outdoor_score %></td>
-        <td><%= rec[:activity].cardio_score %></td>
-        <td><%= rec[:activity].strength_score %></td>
-        <td><%= rec[:activity].physicality_score %></td>
-        <td><%= rec[:activity].mentality_score %></td>
-        <td><%= rec[:activity].solo_score %></td>
-        <td><%= rec[:activity].team_score %></td>
-        <td><%= rec[:activity].intensity_score %></td>
-        <td><%= rec[:similarity_score] %></td>
-        
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+<div class="container center">
+  <h1 class="text-center display-1">Daily Recommendations</h1>
+  <div class="row">
+    <div class="col-6">
+      <div class="card border-success mb-3 text-center" style="max-width: 50rem;">
+        <div class="card-header">Currect location weather (can affect recommended activities)</div>
+        <div class="card-body text-success">
+          <table class="table table-borderless">
+            <thead>
+              <tr>
+                <th>Activity Name</th>
+                <th>Duration Mins</th>
+                <th>Similarity Score</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @recs.each do |rec| %>
+                <tr>
+                  <td><%= rec[:activity].name %></td>
+                  <td><%= rec[:activity].duration_mins %></td>
+                  <td><%= rec[:similarity_score] %></td>
+
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <div class="card border-success mb-3 text-center" style="max-width: 18rem;">
+        <div class="card-header">Recommended number of daily steps</div>
+        <div class="card-body text-success">
+          <h5 class="card-title"><%=current_user.user_datum.recommended_daily_steps%></h5>
+        </div>
+        </div>
+    </div>
+    <div class="col-3">
+      <div class="card border-success mb-3 text-center" style="max-width: 18rem;">
+        <div class="card-header">Currect location weather (can affect recommended activities)</div>
+        <div class="card-body text-success">
+          <h5 class="card-title"><%=@weather_main%></h5>
+        </div>
+        </div>
+    </div>
+
+  </div>
+
+</div>

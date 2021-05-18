@@ -1,6 +1,8 @@
 <nav class="navbar fixed-top navbar-dark navbar-expand-lg" style='box-shadow: 0px -10px 50px grey;background-color:#00cb7d'>
   <div class="container-fluid">
-    <%= link_to 'Health App', root_path, class:"navbar-brand" %>
+    <%= link_to root_path, class:"navbar-brand" do %>
+        <%= image_tag("logo", height:70, width: 70, class: 'rounded-circle')%>
+    <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
