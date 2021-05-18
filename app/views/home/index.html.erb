@@ -75,25 +75,27 @@
     <%end%>
 
 
-    
-    <br>
-    <div class="card border-light text-white bg-dark mb-3" style="max-width: 18rem;">
-      <img class="card-img-top" src="<%= asset_path( 'recommend_cover' ) %>" alt="Card image" style="width:100%">
-      <div class="card-body">
-        <h5 class="card-title">Smart playlist</h5>
-        <%= link_to "Discover", spotify_recommend_playlist_path(:category_id => @spotify_category_id), :class =>"btn session_button btn-success stretched-link"  %>
+
+<br>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-3">
+      <div class="card text-white bg-dark mb-3 text-center" style="max-width: 18rem;">
+        <div class="card-body center">
+          <h5 class="card-title">Smart playlist</h5>
+          <%= link_to "Discover", spotify_recommend_playlist_path(:category_id => @spotify_category_id), :class =>"btn session_button btn-success stretched-link"  %>
+        </div>
       </div>
     </div>
 
-    <br><br>
-    <h1>Fixed Playlist: </h3>
-    <div class="card border-light text-white bg-dark mb-3" style="max-width: 18rem;">
-      <img class="card-img-top" src="<%= asset_path( 'home_workout' ) %>" alt="Card image" style="width:100%">
-      <div class="card-body">
-        <h5 class="card-title">Home Workout</h5>
-        <%= link_to "Spotify", spotify_playlist_path(:playlist_id => "37i9dQZF1DXbeUHEkt5uXG"), :class => 'btn session_button btn-success stretched-link'   %>
-      </div>
-    </div>
+<div class="row justify-content-center">
+  <h1 class="text-center"> <strong> <u> Fixed Playlist </u> </strong> </h1>
+</div>
+
+<div class="row justify-content-end">
+  <div class="col-5">
+    <div class="card text-white bg-dark mb-3 text-center" style="max-width: 18rem;">
+    
 
     <div class="card border-light text-white bg-dark mb-3" style="max-width: 18rem;">
       <img class="card-img-top" src="<%= asset_path( 'lofi_good_sleep' ) %>" alt="Card image" style="width:100%">
