@@ -9,7 +9,7 @@
 3. "**rake db:seed**"
 4. "**bundle exec figaro install**"
 5. "**copy API keys into required into config/application.yml**"
-
+The API keys can be found inside our Final Audit Report (FAR)
 ## **The admin and supervisor account**
 1. "**A user can be either three roles: user, admin and supervisor (which are determined by three corresponding boolean values). User can only access their own Questionnaire and UserData, supervisor can manage all users and admin can manage all database objects and access '/admin' dashboard.**"
 2. **Users created through the website are in default "user_role", while "supervisor_role" and "superadmin_role" user accounts are created when "rake db:migrate" is executed.**
