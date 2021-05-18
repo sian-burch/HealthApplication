@@ -1,5 +1,5 @@
 # README
-
+# **THIS IS NOT THE BRANCH TO BE SUBMITTED, PLEASE SELECT BRANCH 'DEPLOYMENT'**
 -----------------------------------------------------------------------------
 # **PLEASE FOLLOW THE FOLLOWING STEPS TO RUN THIS APPLICATION UNDER DEVELOPMENT STATUS**
 
@@ -7,7 +7,17 @@
 1. "**Bundle Install**"
 2. "**rake db:migrate**"
 3. "**rake db:seed**"
+4. "**bundle exec figaro install**"
+5. "**copy API keys into required into config/application.yml**"
 
+## **The admin and supervisor account**
+1. "**A user can be either three roles: user, admin and supervisor (which are determined by three corresponding boolean values). User can only access their own Questionnaire and UserData, supervisor can manage all users and admin can manage all database objects and access '/admin' dashboard.**"
+2. **Users created through the website are in default "user_role", while "supervisor_role" and "superadmin_role" user accounts are created when "rake db:migrate" is executed.**
+- admin user account: '**website_admin@test.com**', password: '**@Password123**'
+- supervisor user account: '**website_supervisor@test.com**', password: '**@Password456**'
+-----------------------------------------------------------------------------
+
+# **Reference List:**
 ## **To use Environmental Variable of the 'figaro' Gem**
 [Figaro Gem Page](https://github.com/laserlemon/figaro)
 1. "**Bundle Install**" 
@@ -50,29 +60,5 @@ and in application.css:
 2. Make sure "**rails g rails_admin:install**" is ran or route for admin is created and "**config/Initializers/railsadmin.rb**" file is created
 
 ## **To use Profile pictures**
-1. "**Bundle Install**" to make sure gem [gravatar_image_tag](https://github.com/mdeering/gravatar_image_tag) is installed
-2. "**rails active_storage:install**" to install active_storage
-3. When website in development status, to store images in server, Change the "config.active_storage.service" in "config/environments/development" to any options in config/storage.yml when development.
------------------------------------------------------------------------------
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. "**rails active_storage:install**" to install active_storage
+2. When website in development status, to store images in server, Change the "config.active_storage.service" in "config/environments/development" to any options in config/storage.yml when development.
