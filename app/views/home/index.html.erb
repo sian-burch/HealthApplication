@@ -77,7 +77,8 @@
 
     
     <br>
-    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+    <div class="card border-light text-white bg-dark mb-3" style="max-width: 18rem;">
+      <img class="card-img-top" src="<%= asset_path( 'recommend_cover' ) %>" alt="Card image" style="width:100%">
       <div class="card-body">
         <h5 class="card-title">Smart playlist</h5>
         <%= link_to "Discover", spotify_recommend_playlist_path(:category_id => @spotify_category_id), :class =>"btn session_button btn-success stretched-link"  %>
