@@ -2,7 +2,6 @@ require 'test_helper'
 
 class HomeControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
-
   setup do
     get '/users/sign_in'
     sign_in users(:one)
@@ -13,28 +12,15 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
   
   test "should get home index but no user_datum" do
     # Directed to new user data path to fill in sign-in questionnaire
-    get new_user_data_path
+    get check_weather_path
     assert_response :success
   end
+  
   test "should get contact" do
     get contact_url
     assert_response :success
     assert_template layout: 'application'
     assert_select'h1', 'Contact Us!'
-  end
-
-  test 'should post request contact but no email' do
-    post request_contact_url
-    assert_template :contact
-    assert_not_empty flash[:alert]
-    assert_nil flash[:notice]
-  end
-
-  test 'should post request feedback but no email' do
-    post request_feedback_url
-    assert_template :feedback
-    assert_not_empty flash[:alert]
-    assert_nil flash[:notice]
   end
 
 end

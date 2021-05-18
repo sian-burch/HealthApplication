@@ -13,7 +13,7 @@ class UserMailerTest < ActionMailer::TestCase
 
   test "Should return feedback email" do
     
-    mail = UserMailer.feedback_form("example@me.com", "Me", "7712345678", @feedback = "Hello, this is a test feedback")
+    mail = UserMailer.feedback_form("example@me.com", "Me", "7712345678", @feedback_category="Questionnaire", @feedback = "Hello, this is a test feedback")
 
     assert_equal ['healthapplication2021@gmail.com'], mail.to
     assert_equal ['healthapplication2021@gmail.com'], mail.from

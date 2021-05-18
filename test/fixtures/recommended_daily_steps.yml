@@ -2,12 +2,12 @@
 
 one:
   age: 20
-  minimum: 1
-  medium: 1
-  high: 1
+  minimum: 6000
+  medium: 10000
+  high: 145000
 
 two:
   age: 30
-  minimum: 1
-  medium: 1
-  high: 1
+  minimum: 6000
+  medium: 10000
+  high: 145000
