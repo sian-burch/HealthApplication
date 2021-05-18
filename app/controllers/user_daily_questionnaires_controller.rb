@@ -216,17 +216,20 @@ class UserDailyQuestionnairesController < ApplicationController
       when 4
         new_score=prev_score+1
       when 5
+        puts("HELLO!!!")
         new_score=prev_score+2
+        puts("New Score:" + new_score.to_s)
       else
         new_score=prev_score
       end
-
-      if new_score<0 || new_score=0
+      puts("Then New Score:" + new_score.to_s)
+      if new_score<=0
         new_score=1
       elsif new_score>5
         new_score=5
       end
 
+      puts("Final New Score:" + new_score.to_s)
       return new_score
     end
     # Use callbacks to share common setup or constraints between actions.
