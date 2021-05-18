@@ -39,5 +39,6 @@ Rails.application.routes.draw do
   get '/disclaimer', to: 'home#disclaimer'
   get 'spotify_playlist', to: 'home#spotify_playlist'
   get 'spotify_recommend_playlist', to: 'home#recommend_playlist'
+  get 'weight_diary_index', to: 'weight_diary#index'
   mount ActionCable.server => "/cable"
 end

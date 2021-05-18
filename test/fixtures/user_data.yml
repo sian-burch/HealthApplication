@@ -1,19 +1,18 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 1
-  height: 15
-  weight: 15
-  age: 15
-  gender: MyString
-  athletic_lvl: MyString
+  id: 3
+  height: 150
+  weight: 44
+  age: 23
+  gender: Male
+  athletic_lvl: Beginner
   physical: false
   mental: false
-  indoor_score: 1
-  outdoor_score: 1
-  frequency_pref: 1
+  indoor_score: 3
+  outdoor_score: 4
+  frequency_pref: 5
   duration_pref: 1
-  BMI: 1.5
   cardio_score: 3
   strength_score: 2
   physicality_score: 3
@@ -23,19 +22,18 @@ one:
   intensity_score: 2
 
 two:
-  user_id: 2
-  height: 15
-  weight: 15
-  age: 15
-  gender: MyString
-  athletic_lvl: MyString
+  id: 4
+  height: 159
+  weight: 52
+  age: 23
+  gender: Female
+  athletic_lvl: Beginner
   physical: false
   mental: false
   indoor_score: 1
   outdoor_score: 1
   frequency_pref: 1
   duration_pref: 1
-  BMI: 1.5
   cardio_score: 3
   strength_score: 2
   physicality_score: 3
