@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :weight %>
-    <%= form.text_field :weight %>
+    <%= form.text_field :weight, class: "form-control" %>
   </div>
 
   <div class="field">
@@ -22,10 +22,10 @@
   </div>
 
   <div class="field">
-    <%= form.number_field :user_id , id: :weight_diary_user_id, value: current_user.id, type: :hidden  %>
+    <%= form.number_field :user_id , id: :weight_diary_user_id, value: current_user.id, type: :hidden, class: "form-control"  %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Submit', class: "btn btn-success" %>
   </div>
 <% end %>

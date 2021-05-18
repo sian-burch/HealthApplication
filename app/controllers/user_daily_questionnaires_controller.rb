@@ -32,7 +32,6 @@ class UserDailyQuestionnairesController < ApplicationController
     if $location != nil
       $location = params[:location]
       @location = $location
-      puts("Location is: " + @location)
     end
     @user_daily_questionnaire = UserDailyQuestionnaire.new
   end

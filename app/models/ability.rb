@@ -20,8 +20,11 @@ class Ability
       # Only able to manage their own User Datum and UDQ but not others
       can :manage, UserDatum, user_id: user.id
       can :manage, UserDailyQuestionnaire, user_id: user.id
+      can :manage, UserDailyQuestionnaire, user_id: user.id
+      can :manage, WeightDiary, user_id: user.id
       can [:show, :create], UserDatum
       can [:show, :create], UserDailyQuestionnaire
+      can [:show, :create], WeightDiary
 
       # Further code can be used on Posts open to public users for viewing only
     end

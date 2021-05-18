@@ -32,8 +32,8 @@
           <%= render :partial => 'user_daily_questionnaires/form_weekend', locals: {user_daily_questionnaire: @user_daily_questionnaire || UserDailyQuestionnaire.new }%>
         <%end%>
       </div>
-
     </div>
+    <br>
 
     <script>
     // Get the modal
@@ -77,7 +77,6 @@
 
     
     <br>
-
     <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">Smart playlist</h5>
@@ -87,28 +86,32 @@
 
     <br><br>
     <h1>Fixed Playlist: </h3>
-    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+    <div class="card border-light text-white bg-dark mb-3" style="max-width: 18rem;">
+      <img class="card-img-top" src="<%= asset_path( 'home_workout' ) %>" alt="Card image" style="width:100%">
       <div class="card-body">
         <h5 class="card-title">Home Workout</h5>
         <%= link_to "Spotify", spotify_playlist_path(:playlist_id => "37i9dQZF1DXbeUHEkt5uXG"), :class => 'btn session_button btn-success stretched-link'   %>
       </div>
     </div>
 
-    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+    <div class="card border-light text-white bg-dark mb-3" style="max-width: 18rem;">
+      <img class="card-img-top" src="<%= asset_path( 'lofi_good_sleep' ) %>" alt="Card image" style="width:100%">
       <div class="card-body">
         <h5 class="card-title">Lofi Good Sleep</h5>
         <%= link_to "Spotify", spotify_playlist_path(:playlist_id => "35xI4hSJ8MdO1xkXwsd56a"), :class => 'btn session_button btn-success stretched-link'  %>
       </div>
     </div>
 
-    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+    <div class="card border-light text-white bg-dark mb-3" style="max-width: 18rem;">
+      <img class="card-img-top" src="<%= asset_path( 'cardio_hits' ) %>" alt="Card image" style="width:100%">
       <div class="card-body">
         <h5 class="card-title">Cardio Hits</h5>
         <%= link_to "Spotify", spotify_playlist_path(:playlist_id => "7kfohPIiBUM4tF2B8YEn85"), :class => 'btn session_button btn-success stretched-link'   %>
       </div>
     </div>
 
-    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+    <div class="card border-light text-white bg-dark mb-3" style="max-width: 18rem;">
+      <img class="card-img-top" src="<%= asset_path( 'calm_down' ) %>" alt="Card image" style="width:100%">
       <div class="card-body">
         <h5 class="card-title">Calm Down - Meditation</h5>
         <%= link_to "Spotify", spotify_playlist_path(:playlist_id => "3ksy3Zso4vdt4JIzTYvpF9"), :class => 'btn session_button btn-success stretched-link' %>

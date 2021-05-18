@@ -8,7 +8,8 @@ $(document).on('turbolinks:load', function(){
 
         chart: {
             polar: true,
-            type: 'line'
+            type: 'line',
+            borderRadius: 20
         },
 
         accessibility: {
@@ -55,7 +56,7 @@ $(document).on('turbolinks:load', function(){
             pointPlacement: 'on'
         }, 
         {
-            name: 'User initial activity preference',
+            name: 'User Initial activity preference',
             data: [gon.UserData.indoor_score, gon.UserData.outdoor_score, gon.UserData.cardio_score, gon.UserData.strength_score,
                 gon.UserData.physicality_score, gon.UserData.mentality_score, gon.UserData.solo_score,gon.UserData.team_score],
             pointPlacement: 'on'

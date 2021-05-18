@@ -74,4 +74,14 @@
 }
 .highcharts-data-table tr:hover {
     background: #f1f7ff;
-}.session_button:visited { color:#FFF; }
+}.session_button:visited {
+  color:#FFF; 
+}.card{
+  border-radius: 20px;
+  border-top-left-radius: 23px;
+  border-top-right-radius: 23px;
+}.card-img-top{
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-color: white;
+}
