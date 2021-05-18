@@ -23,112 +23,194 @@
 
   <div class="field">
     <%= form.label t(".greeting_msg") %>
-
-    <%= form.radio_button :user_mood, '1' %> 1<br />
-    <%= form.radio_button :user_mood, '2' %> 2<br />
-    <%= form.radio_button :user_mood, '3' %> 3<br />
-    <%= form.radio_button :user_mood, '4' %> 4<br />
-    <%= form.radio_button :user_mood, '5' %> 5<br />
+    <%= form.range_field :user_mood, :min=>1, :max=>5, :class=>"slide", :id=>"slider1"%>
+    <text id="user_mood">Neutral</text>
   </div>
 
   <div class="field">
-    <%= form.label :duration_mins %>
-    <%= form.radio_button :duration_mins, '15' %> 15<br />
-    <%= form.radio_button :duration_mins, '30' %> 30<br />
-    <%= form.radio_button :duration_mins, '60' %> 60<br />
+    <%= form.label "How long do you want to do exercise today?" %>
+      <%= form.range_field :duration_mins, :min=>1, :max=>60, :class=>"slide", :id=>"slider2"%>
+    <text id="duration_mins">30 minutes</text>
+  </div>
+
+
+
+  <div class="field">
+    <%= form.label "How much do you want to do outdoor activities" %>
+        <%= form.range_field :outdoor_score, :min=>1, :max=>5, :class=>"slide", :id=>"slider3"%>
+    <text id="outdoor_score">Neutral</text>
   </div>
 
   <div class="field">
-    <%= form.label :indoor_score %>
-    <%= form.radio_button :indoor_score, '1' %> 1<br />
-    <%= form.radio_button :indoor_score, '2' %> 2<br />
-    <%= form.radio_button :indoor_score, '3' %> 3<br />
-    <%= form.radio_button :indoor_score, '4' %> 4<br />
-    <%= form.radio_button :indoor_score, '5' %> 5<br />
+    <%= form.label "Your preference in Cardio Activities" %>
+      <%= form.range_field :cardio_score, :min=>1, :max=>5, :class=>"slide", :id=>"slider4"%>
+    <text id="cardio_score">Neutral</text>
   </div>
 
   <div class="field">
-    <%= form.label :outdoor_score %>
-    <%= form.radio_button :outdoor_score, '1' %> 1<br />
-    <%= form.radio_button :outdoor_score, '2' %> 2<br />
-    <%= form.radio_button :outdoor_score, '3' %> 3<br />
-    <%= form.radio_button :outdoor_score, '4' %> 4<br />
-    <%= form.radio_button :outdoor_score, '5' %> 5<br />
+    <%= form.label "Your preference in Strength Activities" %>
+      <%= form.range_field :strength_score, :min=>1, :max=>5, :class=>"slide", :id=>"slider5"%>
+    <text id="strength_score">Neutral</text>
   </div>
 
   <div class="field">
-    <%= form.label :cardio_score %>
-    <%= form.radio_button :cardio_score, '1' %> 1<br />
-    <%= form.radio_button :cardio_score, '2' %> 2<br />
-    <%= form.radio_button :cardio_score, '3' %> 3<br />
-    <%= form.radio_button :cardio_score, '4' %> 4<br />
-    <%= form.radio_button :cardio_score, '5' %> 5<br />
+    <%= form.label "How much would you like to do Physical Activities" %>
+      <%= form.range_field :physicality_score, :min=>1, :max=>5, :class=>"slide", :id=>"slider6"%>
+    <text id="physicality_score">Neutral</text>
   </div>
 
   <div class="field">
-    <%= form.label :strength_score %>
-    <%= form.radio_button :strength_score, '1' %> 1<br />
-    <%= form.radio_button :strength_score, '2' %> 2<br />
-    <%= form.radio_button :strength_score, '3' %> 3<br />
-    <%= form.radio_button :strength_score, '4' %> 4<br />
-    <%= form.radio_button :strength_score, '5' %> 5<br />
+    <%= form.label "Working in teams?" %>
+      <%= form.range_field :team_score, :min=>1, :max=>5, :class=>"slide", :id=>"slider7"%>
+    <text id="team_score">Neutral</text>
   </div>
 
   <div class="field">
-    <%= form.label :physicality_score %>
-    <%= form.radio_button :physicality_score, '1' %> 1<br />
-    <%= form.radio_button :physicality_score, '2' %> 2<br />
-    <%= form.radio_button :physicality_score, '3' %> 3<br />
-    <%= form.radio_button :physicality_score, '4' %> 4<br />
-    <%= form.radio_button :physicality_score, '5' %> 5<br />
-  </div>
-
-  <div class="field">
-    <%= form.label :mentality_score %>
-    <%= form.radio_button :mentality_score, '1' %> 1<br />
-    <%= form.radio_button :mentality_score, '2' %> 2<br />
-    <%= form.radio_button :mentality_score, '3' %> 3<br />
-    <%= form.radio_button :mentality_score, '4' %> 4<br />
-    <%= form.radio_button :mentality_score, '5' %> 5<br />
-  </div>
-
-  <div class="field">
-    <%= form.label :solo_score %>
-    <%= form.radio_button :solo_score, '1' %> 1<br />
-    <%= form.radio_button :solo_score, '2' %> 2<br />
-    <%= form.radio_button :solo_score, '3' %> 3<br />
-    <%= form.radio_button :solo_score, '4' %> 4<br />
-    <%= form.radio_button :solo_score, '5' %> 5<br />
-  </div>
-
-  <div class="field">
-    <%= form.label :team_score %>
-    <%= form.radio_button :team_score, '1' %> 1<br />
-    <%= form.radio_button :team_score, '2' %> 2<br />
-    <%= form.radio_button :team_score, '3' %> 3<br />
-    <%= form.radio_button :team_score, '4' %> 4<br />
-    <%= form.radio_button :team_score, '5' %> 5<br />
-  </div>
-
-  <div class="field">
-    <%= form.label :intensity_score %>
-    <%= form.radio_button :intensity_score, '1' %> 1<br />
-    <%= form.radio_button :intensity_score, '2' %> 2<br />
-    <%= form.radio_button :intensity_score, '3' %> 3<br />
-    <%= form.radio_button :intensity_score, '4' %> 4<br />
-    <%= form.radio_button :intensity_score, '5' %> 5<br />
-  </div>
-
-  <div class="field">
-    <%= form.label :duration_score %>
-    <%= form.radio_button :duration_score, '1' %> 1<br />
-    <%= form.radio_button :duration_score, '2' %> 2<br />
-    <%= form.radio_button :duration_score, '3' %> 3<br />
-    <%= form.radio_button :duration_score, '4' %> 4<br />
-    <%= form.radio_button :duration_score, '5' %> 5<br />
+    <%= form.label "What intensity would you prefer?" %>
+      <%= form.range_field :intensity_score, :min=>1, :max=>5, :class=>"slide", :id=>"slider8"%>
+    <text id="intensity_score">Neutral</text>
   </div>
 
   <div class="actions", class = "btn btn-success">
     <%= form.submit 'Save', class: "btn btn-primary"%>
   </div>
+
+<%# Code for range field slider Javascript %>
+  <script>
+    $("#slider1").change(function () {    
+      if($('#slider1').val()==1){
+        var newValue = "Sad"
+      }          
+      if($('#slider1').val()==2){
+        var newValue = "Not really good"
+      }          
+      if($('#slider1').val()==3){
+        var newValue = "Neutral"
+      }          
+      if($('#slider1').val()==4){
+        var newValue = "Not bad"
+      }          
+      if($('#slider1').val()==5){
+        var newValue = "Delighted"
+      }          
+      $("#user_mood").html(newValue);
+  });
+  $("#slider2").change(function () {    
+      if ($('#slider2').val() == 1){
+        var newValue = $('#slider2').val() + " minute";
+      }else{
+        var newValue = $('#slider2').val() + " minutes";
+      }
+      $("#duration_mins").html(newValue);
+  });
+  $("#slider3").change(function () {    
+      if($('#slider3').val()==1){
+        var newValue = "Nope"
+      }          
+      if($('#slider3').val()==2){
+        var newValue = "Not really"
+      }          
+      if($('#slider3').val()==3){
+        var newValue = "Neutral"
+      }          
+      if($('#slider3').val()==4){
+        var newValue = "Slightly"
+      }          
+      if($('#slider3').val()==5){
+        var newValue = "Very"
+      }          
+      $("#outdoor_score").html(newValue);
+  });
+  $("#slider4").change(function () {    
+      if($('#slider4').val()==1){
+        var newValue = "Nope"
+      }          
+      if($('#slider4').val()==2){
+        var newValue = "Not really"
+      }          
+      if($('#slider4').val()==3){
+        var newValue = "Neutral"
+      }          
+      if($('#slider4').val()==4){
+        var newValue = "Slightly"
+      }          
+      if($('#slider4').val()==5){
+        var newValue = "Very"
+      }          
+      $("#cardio_score").html(newValue);
+  });
+  $("#slider5").change(function () {    
+      if($('#slider5').val()==1){
+        var newValue = "Nope"
+      }          
+      if($('#slider5').val()==2){
+        var newValue = "Not really"
+      }          
+      if($('#slider5').val()==3){
+        var newValue = "Neutral"
+      }          
+      if($('#slider5').val()==4){
+        var newValue = "Slightly"
+      }          
+      if($('#slider5').val()==5){
+        var newValue = "Very"
+      }          
+      $("#strength_score").html(newValue);
+  });
+  $("#slider6").change(function () {    
+      if($('#slider6').val()==1){
+        var newValue = "Nope"
+      }          
+      if($('#slider6').val()==2){
+        var newValue = "Not really"
+      }          
+      if($('#slider6').val()==3){
+        var newValue = "Neutral"
+      }          
+      if($('#slider6').val()==4){
+        var newValue = "Slightly"
+      }          
+      if($('#slider6').val()==5){
+        var newValue = "Very"
+      }          
+      $("#physicality_score").html(newValue);
+  });
+   $("#slider7").change(function () {    
+      if($('#slider7').val()==1){
+        var newValue = "Very low"
+      }          
+      if($('#slider7').val()==2){
+        var newValue = "Low"
+      }          
+      if($('#slider7').val()==3){
+        var newValue = "Neutral"
+      }          
+      if($('#slider7').val()==4){
+        var newValue = "High"
+      }          
+      if($('#slider7').val()==5){
+        var newValue = "Very High"
+      }          
+      $("#team_score").html(newValue);
+  });
+  $("#slider8").change(function () {    
+      if($('#slider8').val()==1){
+        var newValue = "Very low"
+      }          
+      if($('#slider8').val()==2){
+        var newValue = "Low"
+      }          
+      if($('#slider8').val()==3){
+        var newValue = "Neutral"
+      }          
+      if($('#slider8').val()==4){
+        var newValue = "High"
+      }          
+      if($('#slider8').val()==5){
+        var newValue = "Very High"
+      }          
+      $("#intensity_score").html(newValue);
+  });
+  </script>
+
 <% end %>
