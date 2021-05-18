@@ -1,7 +1,11 @@
-<h1>Category: <%=@Genre%></h1>
-<%= image_tag image_url(@Spotify_recommend_image.to_s) %>
-<%= link_to "Come listen to it on Spotify", @Spotify_recommend_link%>
-<br>
-<h1>Playlist: <%= @Spotify_recommend_name%></h1>
-<br>
-Description: <%=@Spotify_recommend_description%>
+<div class="card border-light text-white bg-dark mb-3 text-center mx-auto" style="max-width: 50rem;">
+  <div class="card-header">
+    <h1>Category: <%=@Genre%></h1>
+  </div>
+  <div class="card-body">
+    <%= image_tag image_url(@Spotify_recommend_image.to_s) %>
+    <h2 class="card-title">Playlist: <%= @Spotify_recommend_name%></h2>
+    <h5>Description: <%=@Spotify_recommend_description%></h5>
+    <%= link_to "Come listen to it on Spotify", @Spotify_recommend_link, class:"btn btn-outline-light text-white" %>
+  </div>
+</div>
