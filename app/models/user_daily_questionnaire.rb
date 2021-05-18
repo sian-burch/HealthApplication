@@ -9,9 +9,11 @@ class UserDailyQuestionnaire < ApplicationRecord
 
  	def create_user_scores
     	@user_scores=Vector[self.indoor_score,self.outdoor_score,self.cardio_score,self.strength_score,self.physicality_score,self.mentality_score,self.solo_score,self.team_score,self.intensity_score]
-    end
+	end
 
    	def opposite_fields
+		puts("Mentality: " + self.mentality_score.to_s)
+		puts("Outdoor:" + self.outdoor_score.to_s + ", Teams: " + self.team_score.to_s)
 		if self.indoor_score == nil && self.outdoor_score != 0
 			if self.outdoor_score == 5
 				self.indoor_score = 1
@@ -143,6 +145,10 @@ class UserDailyQuestionnaire < ApplicationRecord
 		end
 		puts("Physicality: " + self.physicality_score.to_s)
 		puts("Mentality: " + self.mentality_score.to_s)
+		puts("Outdoor:" + self.outdoor_score.to_s + ", Teams: " + self.team_score.to_s)
+		puts("Cardio now:" + self.cardio_score.to_s + ", Strengh now: " + self.strength_score.to_s)
+		puts("Physicality:" + ((((self.outdoor_score + self.strength_score + self.intensity_score)/3)).round.to_s))
+		puts("Mentality:" + self.mentality_score.to_s)
 	end	
 
     def user_activity_similarity(activity)

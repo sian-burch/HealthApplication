@@ -221,8 +221,8 @@ class UserDailyQuestionnairesController < ApplicationController
         new_score=prev_score
       end
 
-      if new_score<0
-        new_score=0
+      if new_score<0 || new_score=0
+        new_score=1
       elsif new_score>5
         new_score=5
       end
