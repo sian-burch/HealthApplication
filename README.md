@@ -3,6 +3,8 @@
 # **API KEYS SHOULD BE WORKING IN DEFAULT DURING DEPLOYMENT**
 # **TO REQUEST ACTUAL API KEYS, CONTACT TEAM 5**
 -----------------------------------------------------------------------------
+Ruby version: '2.7.2'
+Rails version:'5.2.5'
 # **PLEASE FOLLOW THE FOLLOWING STEPS TO RUN THIS APPLICATION UNDER DEVELOPMENT STATUS**
 
 ## **Todo before starting Rails server**
