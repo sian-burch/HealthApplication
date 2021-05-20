@@ -1,7 +1,6 @@
 # README
 # **THIS WILL BE THE BRANCH TO SUBMIT OR VIEW THE FINAL CODE TO BE DEPLOYED**
-# **API KEYS SHOULD BE WORKING IN DEFAULT DURING DEPLOYMENT**
-# **TO REQUEST ACTUAL API KEYS, CONTACT TEAM 5**
+# **!!API KEYS ARE IN PAGE 3, SECTION "IMPORTANT INFORMATION" IN FINAL AUDIT REPORT!! Please input them in 'config/application.yml' file in step 5, which after "**bundle exec figaro install**" has been run in step 4 in 'Todo List'**
 -----------------------------------------------------------------------------
 Ruby version: '2.7.2'
 Rails version:'5.2.5'
